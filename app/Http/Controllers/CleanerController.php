@@ -21,6 +21,7 @@ class CleanerController extends Controller
         //$users= = User::where('id',$d)
 
         $timearr[]= $request->session()->get('time');
+        $request->session()->forget('time');
        
     $yeah= $request->session()->get('yesno');
         $city=null;
@@ -31,7 +32,7 @@ class CleanerController extends Controller
         $role=auth()->user()->role_id;
         $city = $request->session()->get('city');
         
-        
+        $request->session()->forget('city');
        // $currcity=$curruser->city;
        if($city==null) {
         
