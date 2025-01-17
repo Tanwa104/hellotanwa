@@ -71,7 +71,7 @@ sort($items);
    
         foreach (Timeline::all() as $time) {
             foreach ($users as $user) {
-                dump($user);
+                
             // Ensure time comparison is done using Carbon correctly
             $startCarbon = Carbon::createFromFormat('H:i:s', $user->start_time);
             $endCarbon = Carbon::createFromFormat('H:i:s', $user->end_time);
