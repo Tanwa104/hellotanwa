@@ -10,6 +10,8 @@ use App\Http\Controllers\UsereditController;
 use App\Http\Controllers\HelpeditController;
 use App\Http\Controllers\NewClientController;
 use App\Http\Controllers\filtercontroller;
+use App\Http\Controllers\ViewProfileController;
+
 
 
 /*
@@ -82,6 +84,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/viewpro/{id}', [ViewProfileController::class, 'index'])->name('viewpro.index');
 Route::get('/cust-view/{id}', [CustController::class, 'view'])->name('cust.view');
 Route::resource('edus', UsereditController::class);
 Route::resource('edhelp', HelpeditController::class);

@@ -17,7 +17,7 @@
       <a href="#" class="btn btn-primary">book</a>
     </div>
     <div class="card-footer text-body-secondary">
-      <a href="#" >view Profile</a>
+      <a href="{{route('viewpro.index',['id' => $user->id])}}" >view Profile</a>
     </div>
   </div>
 
