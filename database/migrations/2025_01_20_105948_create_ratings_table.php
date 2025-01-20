@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('bookings', function (Blueprint $table) {
-            $table->unsignedBigInteger('helper_id')->after('id');
+        Schema::create('ratings', function (Blueprint $table) {
+            $table->id();
             
-            $table->foreign('helper_id')->references('id')->on('helpers');
+            $table->longText('comments')->nullable();
+            $table->integer('star_rating');
+            $table->timestamps();
         });
     }
 
@@ -23,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('bookings', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('ratings');
     }
 };
