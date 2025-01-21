@@ -19,7 +19,7 @@
         <div class="row">
           <div class="row">
           <div class="col-8">
-            <img src="/img/coll.png" alt="logo" style="height:80%;width:120%;"/>
+            <img src="/img/gruh.png" alt="logo" style="height:80%;width:120%;"/>
         </div>
         
         <div class="col">

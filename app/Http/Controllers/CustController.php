@@ -55,9 +55,11 @@ class CustController extends Controller
             if($add->id==$id)
             {
                 $city=$add->city;
+                $area=$add->address_line_2;
             }
         }
         $request->session()->put('city', $city);
+        $request->session()->put('area', $area);
         return redirect()->route('cust.view',['id'=>$id]);
     }
 

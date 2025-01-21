@@ -69,5 +69,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Timeline::class,'helpers_id','id');
     }
+    public function areas(): HasMany
+    {
+        return $this->hasMany(Area::class);
+    }
     
 }
