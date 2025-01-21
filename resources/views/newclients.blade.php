@@ -12,11 +12,11 @@
         
             <form class="row g-3" action="{{route('newc.store')}}" method="POST">
                 @csrf
-                @if (\Session::has('msg'))
+                @if (session('success'))
     <div class="alert alert-success">
-        <ul>
-            <li>{!! \Session::get('msg') !!}</li>
-        </ul>
+        {{ session('success') }}
+            
+    
     </div>
 @endif
                 <div class="col-md-6">
@@ -101,11 +101,11 @@
     <label class="btn" for="btn-check-17">singletime</label>  or  <input type="checkbox" class="btn-check" id="btn-check-18" autocomplete="off">
     <label class="btn" for="btn-check-18">fulltime</label><br></label></span></div>
 
-<input type="submit" value="confirm">
+   <input type="submit" value="confirm"></form>
 
 
 <a href="{{route('help.build')}}" class="btn btn-primary col-md-3">Back</a>     
 
-        </form>
+        
     </body>
 </html>

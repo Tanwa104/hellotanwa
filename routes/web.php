@@ -86,6 +86,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/viewpro/{id}', [ViewProfileController::class, 'index'])->name('viewpro.index');
 Route::get('/cust-view/{id}', [CustController::class, 'view'])->name('cust.view');
+Route::get('/addarea', [NewClientController::class, 'addarea'])->name('area.fill');
 Route::resource('edus', UsereditController::class);
 Route::resource('edhelp', HelpeditController::class);
 Route::resource('newc', NewClientController::class);

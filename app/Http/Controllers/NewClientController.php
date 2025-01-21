@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\Timeline;
-use App\models\User;
+use App\Models\User;
+use App\Models\Area;
 
 class NewClientController extends Controller
 {
@@ -34,6 +35,7 @@ class NewClientController extends Controller
 $sec=new Timeline();
 
        $uid=auth()->user()->id; 
+       
        $users=User::get();
        foreach($users as $user)
        {
@@ -97,12 +99,24 @@ if(in_array('sunday', $request->get('weekdays'))){
 $sec->weekdays=$items;
 $sec->jobtype='fulltime';
 $sec->save();
-return redirect()->back()->with('msg','your request is registered');
+return view('multiadd');
 }
 
-    /**
-     * Display the specified resource.
-     */
+  public function addarea(Request $request)
+  {
+    $uid=auth()->user()->id;
+    $areas=new Area();
+    $ui=$request->input('textbox-count');
+    
+    $cities = $request->input('city');
+$areas->user_id=$uid;
+    $areas->areas=$cities;
+    $areas->save();
+    $message = 'Your action was successful!';
+    session()->flash('success', $message);
+    
+    return view('newclients');
+  }
     public function show(string $id)
     {
         //

@@ -75,10 +75,9 @@
             <a class="btn btn-secondary" href="" role="button">Clients</a>
         </div>
       </div>
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-        
-            <input type="submit" value="logout" onclick="event.preventDefault();
-                                this.closest('form').submit();">
-           </form>
-    
+      <form method="POST" action="{{ route('logout') }}">
+        @csrf
+
+        <input type="submit" value="logout" onclick="event.preventDefault();
+                            this.closest('form').submit();">
+      </form>
