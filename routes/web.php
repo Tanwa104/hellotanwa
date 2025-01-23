@@ -11,6 +11,7 @@ use App\Http\Controllers\HelpeditController;
 use App\Http\Controllers\NewClientController;
 use App\Http\Controllers\filtercontroller;
 use App\Http\Controllers\ViewProfileController;
+use App\Http\Controllers\ReqController;
 
 
 
@@ -50,6 +51,9 @@ Route::get('/fliter', [filtercontroller::class, 'index'])->name('fliter');
 Route::get('/filstrore', [filtercontroller::class, 'store'])->name('fliter.build');
 Route::get('/filnanny', [filtercontroller::class, 'storenanny'])->name('filnanny.build');
 Route::get('/filcook', [filtercontroller::class, 'storecook'])->name('filcook.build');
+Route::get('/reqcleanner', [ReqController::class, 'udclean'])->name('udclean.build');
+Route::get('/reqnanny', [ReqController::class, 'udnanny'])->name('udnanny.build');
+Route::get('/reqcook', [ReqController::class, 'udcook'])->name('udcook.build');
 
 Route::get('/helpdash', function () {
     return view('help_dash');

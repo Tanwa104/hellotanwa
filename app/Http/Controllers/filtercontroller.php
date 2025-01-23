@@ -21,14 +21,15 @@ class filtercontroller extends Controller
 
     public function store(Request $request)
     {
+        
         $bool=false;
         $roles= $request->session()->get('role');
         $secs=Timeline::get();
         $no=Timeline::get()->count();
         $timehel=Helper::get();
-        $users = DB::table('timelines')
-        ->leftJoin('helpers', 'timelines.helpers_id', '=', 'helpers.id')  // Use left join to include all timelines
-        ->get();
+        // $users = DB::table('timelines')
+        // ->leftJoin('helpers', 'timelines.helpers_id', '=', 'helpers.id')  // Use left join to include all timelines
+        // ->get();
     
           
         
@@ -47,7 +48,7 @@ $ahour=$request->input('ahours');
        
         $atime=$ahour.$amins." ".$aampm;
         $carbon1 = Carbon::create($atime);
-
+        $options=$request->input('options');
     
         
 
@@ -63,59 +64,65 @@ $ahour=$request->input('ahours');
         // Debug weekdays
           // Check the weekdays array
     
-$times=Timeline::get();
-$timestore = [];
-sort($items);
+$times=new Timeline();
+$times->user_id=$uid;
+$times->start_time=$carbon;
+$times->end_time=$carbon1;
+$times->weekdays=$items;
+$times->jobtype=$options;
+$times->save();
+// $timestore = [];
+// sort($items);
 
-    $timestore = [];
+//     $timestore = [];
    
-        foreach (Timeline::all() as $time) {
-            foreach ($users as $user) {
+//         foreach (Timeline::all() as $time) {
+//             foreach ($users as $user) {
                 
-            // Ensure time comparison is done using Carbon correctly
-            $startCarbon = Carbon::createFromFormat('H:i:s', $user->start_time);
-            $endCarbon = Carbon::createFromFormat('H:i:s', $user->end_time);
+//             // Ensure time comparison is done using Carbon correctly
+//             $startCarbon = Carbon::createFromFormat('H:i:s', $user->start_time);
+//             $endCarbon = Carbon::createFromFormat('H:i:s', $user->end_time);
             
-            if ($carbon->eq($startCarbon) && $carbon1->eq($endCarbon)) {
-                // Decode and sort weekdays
-                $weekdays = is_string($user->weekdays) ? json_decode($user->weekdays, true) : $user->weekdays;
-                sort($weekdays);
+//             if ($carbon->eq($startCarbon) && $carbon1->eq($endCarbon)) {
+//                 // Decode and sort weekdays
+//                 $weekdays = is_string($user->weekdays) ? json_decode($user->weekdays, true) : $user->weekdays;
+//                 sort($weekdays);
 
 
-                // Compare weekdays and roles
-                if ($items === $weekdays && $roles === $user->role) {
-                    if (!in_array($user->helpers_id, $timestore)) {
-                        $timestore[] = $user->helpers_id;
-                        $bool = true;
-                    }
-                }
-            }
-    }
-}
+//                 // Compare weekdays and roles
+//                 if ($items === $weekdays && $roles === $user->role) {
+//                     if (!in_array($user->helpers_id, $timestore)) {
+//                         $timestore[] = $user->helpers_id;
+//                         $bool = true;
+//                     }
+//                 }
+//             }
+//     }
+// }
 
 
 
-// After checking, store the results
-if ($bool == true) {
-    $request->session()->put('yesno', $bool);
-    $request->session()->put('time', $timestore);
-} 
+// // After checking, store the results
+// if ($bool == true) {
+//     $request->session()->put('yesno', $bool);
+//     $request->session()->put('time', $timestore);
+// } 
     if($roles =='Housecleaner')
     {
         
-        return redirect()->route('clean');
+        return view('udcleaner');
 
     }
      if($roles =='childcare')
     {
         
-        return redirect()->route('nanny');
+        return view('nanny');
 
     }
      if($roles =='houseCook')
     {
         
-        return redirect()->route('cook');
+        return view('cook');
 
     }
     

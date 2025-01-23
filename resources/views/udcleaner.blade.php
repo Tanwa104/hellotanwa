@@ -7,7 +7,7 @@
     </script>
     </head>
     <body>
-        <form> 
+        <form method="GET" action="{{route('udclean.build')}}"> 
             <div class="col-md-12">
                 
             <label class="form-label" for="place">Enter the type of place you have</label>
@@ -24,11 +24,14 @@
             <br>
             <label class="form-label" for="typeclean">Enter the type of cleaning</label>
             <span id="typeclean" class="form-control">
-            <select>
+            <select name="typeclean">
+                <option>select</option>
                 <option value="normal">Normal Day to Day cleaning</option>
-                <option value="special">deep cleaning</option> 
+                <option value="deep">deep cleaning</option> 
             </select>
             </span>
             </div>
+            <input type="submit" value="submit"/>
+        </form>
     </body>
 </html>

@@ -96,11 +96,16 @@
             </span>
           </div>
           <div class="col-md-6">
-            <label for="inputEmail6" class="form-label">enter the time for work</label>
-<span id="inputEmail6" class="form-control">
-    <label class="btn" for="btn-check-17">singletime</label>  or  <input type="checkbox" class="btn-check" id="btn-check-18" autocomplete="off">
-    <label class="btn" for="btn-check-18">fulltime</label><br></label></span></div>
-
+            <label for="inputEmail6" class="form-label">want to work for </label>
+            <span id="inputEmail6" class="form-control">
+                <input type="radio" class="btn-check" name="options" id="singletime" autocomplete="off" value="singletime">
+                <label class="btn btn-outline-danger" for="singletime">Singletime</label>&nbsp;&nbsp;
+                
+                or&nbsp;&nbsp;
+                
+                <input type="radio" class="btn-check" name="options" id="fulltime" autocomplete="off" value="fulltime">
+                <label class="btn btn-outline-danger" for="fulltime">Fulltime</label>
+             </span></div></div>
 <input type="submit" value="confirm">
 
 
