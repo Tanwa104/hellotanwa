@@ -74,6 +74,12 @@ Route::get('/cleaner', function () {
 Route::POST('/edhelp-change/{id}', [ HelpeditController::class, 'changes'])->name('edhelp.changes');
 Route::get('/helperedit', function () {
     return view('helperedit');});
+    Route::get('/udclean', function () {
+        return view('cleanerreq');});
+        Route::get('/nannyreq', function () {
+            return view('nanny');});
+            Route::get('/cookreq', function () {
+                return view('cook');});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
