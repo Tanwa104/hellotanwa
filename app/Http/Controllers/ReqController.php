@@ -29,7 +29,7 @@ class ReqController extends Controller
         $clean->kichenno=$kitchen;
         $clean->cleaningtype=$typeclean;
         $clean->save();
-
+        return redirect()->route('bvcleaner.build');
     }
     public function udnanny(Request $request)
     {
@@ -45,14 +45,14 @@ class ReqController extends Controller
         // Store the children data in the database
         for ($i = 0; $i < $validatedData['childno']; $i++) {
             Nannyreq::create([
-                'name' => $validatedData['Name'][$i],
-                'age' => $validatedData['Age'][$i],
-                'gender' => $validatedData['Gender'][$i],
+                'childname' => $validatedData['Name'][$i],
+                'childage' => $validatedData['Age'][$i],
+                'childgender' => $validatedData['Gender'][$i],
                 'user_id' => $uid, // Save the user_id with the child data
             ]);
         }
         
-
+        return redirect()->route('bvnanny.build');
     }
     public function udcook(Request $request)
     {
@@ -69,12 +69,12 @@ class ReqController extends Controller
         for ($i = 1; $i <= $validatedData['meals']; $i++) {
             // Save each meal description with the related data
             Cookreq::create([
-                'occasion' => $validatedData['occasion'],
+                'ocassion' => $validatedData['occasion'],
                 'peopleno' => $validatedData['peopleno'],
                 'cusine' => $validatedData['cus'],
                 'description' => $validatedData['mealDescription'][$i], // Storing meal description
                 'mealno' => $i,
-                'user_id'=> $uid// Save the meal number
+                'user_id'=> $uid,// Save the meal number
             ]);
 
     }

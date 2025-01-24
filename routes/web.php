@@ -12,6 +12,7 @@ use App\Http\Controllers\NewClientController;
 use App\Http\Controllers\filtercontroller;
 use App\Http\Controllers\ViewProfileController;
 use App\Http\Controllers\ReqController;
+use App\Http\Controllers\BidviewController;
 
 
 
@@ -28,6 +29,9 @@ use App\Http\Controllers\ReqController;
 
 Route::get('/', function () {
     return view('home');
+});
+Route::get('/bvcleanuser', function () {
+    return view('bvcleanuser');
 });
 Route::get('/useredit', function () {
     return view('useredit');
@@ -54,6 +58,10 @@ Route::get('/filcook', [filtercontroller::class, 'storecook'])->name('filcook.bu
 Route::get('/reqcleanner', [ReqController::class, 'udclean'])->name('udclean.build');
 Route::get('/reqnanny', [ReqController::class, 'udnanny'])->name('udnanny.build');
 Route::get('/reqcook', [ReqController::class, 'udcook'])->name('udcook.build');
+Route::get('/bvcleaner', [BidviewController::class, 'bvcleaner'])->name('bvcleaner.build');
+Route::get('/bvnanny', [BidviewController::class, 'bvnanny'])->name('bvnanny.build');
+
+
 
 Route::get('/helpdash', function () {
     return view('help_dash');

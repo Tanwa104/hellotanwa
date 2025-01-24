@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cookreq extends Model
 {
-    protected $fillable = ['occasion', 'age', 'gender', 'user_id'];
+    protected $fillable = ['ocassion', 'peopleno', 'cusine', 'user_id','mealno','description'];
 
     protected $table="cookreq";
     use HasFactory;

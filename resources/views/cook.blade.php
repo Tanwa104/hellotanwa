@@ -15,6 +15,7 @@
             <div class="mb-3">
                 <label for="occasion" class="form-label">Enter the type of cooking</label>
                 <select name="occasion" id="occasion" class="form-control">
+                    <option> select</option>
                     <option value="normal">Day to day cooking</option>
                     <option value="special">Small occasion</option>
                 </select>
@@ -30,6 +31,7 @@
             <div class="mb-3">
                 <label for="cus" class="form-label">Enter the type of cuisine</label>
                 <select name="cus" id="cus" class="form-control">
+                    <option> select</option>
                     <option value="normal">Indian</option>
                     <option value="multi">Multicuisine</option>
                 </select>

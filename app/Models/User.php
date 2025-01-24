@@ -65,6 +65,20 @@ class User extends Authenticatable
         return $this->hasMany(Helper::class);
     }
 
+    public function cleanerreq()
+    {
+        return $this->hasMany(Cleanerreq::class); 
+    }
+    public function nannyreq()
+    {
+        return $this->hasMany(Nannyreq::class);
+    }
+    public function cookreq()
+    {
+        return $this->hasMany(Cookreq::class);
+    }
+    
+
     public function timelines(): HasOne
     {
         return $this->hasOne(Timeline::class,'helpers_id','id');
