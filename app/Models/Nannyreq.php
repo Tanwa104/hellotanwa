@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Nannyreq extends Model
 {
     protected $table="nannyreq";
-    protected $fillable = ['childname', 'childage', 'childgender', 'user_id'];
+    protected $fillable = ['childname', 'childage', 'childgender', 'user_id','timeline_id'];
 
 
     public function usernan()

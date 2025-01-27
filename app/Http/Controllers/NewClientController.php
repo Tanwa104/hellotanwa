@@ -15,7 +15,7 @@ class NewClientController extends Controller
      */
     public function index()
     {
-        return view('newclients');
+        return view('multiadd');
     }
 
     /**
@@ -115,7 +115,7 @@ $areas->user_id=$uid;
     $message = 'Your action was successful!';
     session()->flash('success', $message);
     
-    return view('newclients');
+    
   }
     public function show(string $id)
     {

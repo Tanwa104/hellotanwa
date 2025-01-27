@@ -33,6 +33,9 @@ Route::get('/', function () {
 Route::get('/bvcleanuser', function () {
     return view('bvcleanuser');
 });
+Route::get('/bvnannyuser', function () {
+    return view('bvnannyuser');
+});
 Route::get('/useredit', function () {
     return view('useredit');
     
@@ -60,6 +63,7 @@ Route::get('/reqnanny', [ReqController::class, 'udnanny'])->name('udnanny.build'
 Route::get('/reqcook', [ReqController::class, 'udcook'])->name('udcook.build');
 Route::get('/bvcleaner', [BidviewController::class, 'bvcleaner'])->name('bvcleaner.build');
 Route::get('/bvnanny', [BidviewController::class, 'bvnanny'])->name('bvnanny.build');
+Route::get('/bvcook', [BidviewController::class, 'bvcook'])->name('bvcook.build');
 
 
 

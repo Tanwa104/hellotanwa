@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Cleanerreq;
 use App\Models\Nannyreq;
 use App\Models\Cookreq;
-
+use App\Models\User;
+use App\Models\Timeline;
 
 class ReqController extends Controller
 {
@@ -21,8 +22,20 @@ class ReqController extends Controller
         $hallno=$request->input('hallno');
         $kitchen=$request->input('kitchen');
         $typeclean=$request->input('typeclean');
+        $times=Timeline::get();
+        foreach($times as $time)
+        {
+            if($uid==$time->user_id)
+            {
+                $timesnow=Timeline::latest()->first();
+            }
+        }
+
+        
+        $timesid=$timesnow->id;
         $clean=new Cleanerreq();
         $clean->user_id=$uid;
+        $clean->timeline_id=$timesid;
         $clean->hometype=$place;
         $clean->bedroomno=$bedno;
         $clean->hallno=$hallno;
@@ -34,7 +47,18 @@ class ReqController extends Controller
     public function udnanny(Request $request)
     {
         $uid=auth()->user()->id;
+        $user1 = User::with('timeline')->find($uid);
+        $times=Timeline::get();
+        foreach($times as $time)
+        {
+            if($uid==$time->user_id)
+            {
+                $timesnow=Timeline::latest()->first();
+            }
+        }
+
         
+        $timesid=$timesnow->id;
         $validatedData = $request->validate([
             'childno' => 'required|integer|min:1',
             'Age' => 'required|array', // Validate that Age is an array
@@ -45,6 +69,7 @@ class ReqController extends Controller
         // Store the children data in the database
         for ($i = 0; $i < $validatedData['childno']; $i++) {
             Nannyreq::create([
+                'timeline_id' => $timesid,
                 'childname' => $validatedData['Name'][$i],
                 'childage' => $validatedData['Age'][$i],
                 'childgender' => $validatedData['Gender'][$i],
@@ -57,6 +82,18 @@ class ReqController extends Controller
     public function udcook(Request $request)
     {
         $uid=auth()->user()->id;
+        $user1 = User::with('timeline')->find($uid);
+        $times=Timeline::get();
+        foreach($times as $time)
+        {
+            if($uid==$time->user_id)
+            {
+                $timesnow=Timeline::latest()->first();
+            }
+        }
+
+        
+        $tid=$timesnow->id;
         $validatedData = $request->validate([
             'occasion' => 'required|string',
             'peopleno' => 'required|integer',
@@ -69,6 +106,7 @@ class ReqController extends Controller
         for ($i = 1; $i <= $validatedData['meals']; $i++) {
             // Save each meal description with the related data
             Cookreq::create([
+                'timeline_id' => $tid,
                 'ocassion' => $validatedData['occasion'],
                 'peopleno' => $validatedData['peopleno'],
                 'cusine' => $validatedData['cus'],
@@ -78,5 +116,6 @@ class ReqController extends Controller
             ]);
 
     }
+    return redirect()->route('bvcook.build');
 }
 }

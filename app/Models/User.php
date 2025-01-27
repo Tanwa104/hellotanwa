@@ -79,9 +79,13 @@ class User extends Authenticatable
     }
     
 
-    public function timelines(): HasOne
+    // public function timelines(): HasOne
+    // {
+    //     return $this->hasOne(Timeline::class,'helpers_id','id');
+    // }
+    public function timeline(): HasMany
     {
-        return $this->hasOne(Timeline::class,'helpers_id','id');
+        return $this->hasMany(Timeline::class);
     }
     public function areas(): HasMany
     {
