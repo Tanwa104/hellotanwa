@@ -6,16 +6,21 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\models\Nannyreq;
 use App\models\Cookreq;
+use App\models\createseva;
 use Illuminate\Support\Facades\DB;
 class BidviewController extends Controller
 {
     public function bvcleaner(Request $request)
     {
         $uid=auth()->user()->id;
+        $yeah= $request->session()->get('timesid');
+        $yeah1= $request->session()->get('addid');
+        $rolew= $request->session()->get('role');
         $us = DB::table('cleanerreq')
          ->leftJoin('timelines', 'cleanerreq.timeline_id', '=', 'timelines.id')  // Use left join to include all timelines
          ->get();
-        
+         $yeah= $request->session()->get('timesid');
+         $yeah1= $request->session()->get('addid');
        $users = User::get();
        $city = $request->session()->get('addstr');
        foreach ($users as $user)
@@ -28,15 +33,28 @@ class BidviewController extends Controller
            
 
         }
+
     
        } 
+       
+
     }
+    $cre=new createseva();
+       $cre->user_id=$uid;
+       $cre->useradd_id=$yeah1;
+       $cre->timeline_id=$yeah;
+       $cre->roletype=$rolew;
+       $cre->save();
        return view('bvcleanuser',compact('items','city','us'));
     }
     public function bvnanny(Request $request)
     {
         $city = $request->session()->get('addstr');
         $uid=auth()->user()->id;
+        $yeah= $request->session()->get('timesid');
+        $yeah1= $request->session()->get('addid');
+        $rolew= $request->session()->get('role');
+
  $us = DB::table('nannyreq')
          ->leftJoin('timelines', 'nannyreq.timeline_id', '=', 'timelines.id')  // Use left join to include all timelines
          ->get();
@@ -56,6 +74,12 @@ class BidviewController extends Controller
     ->groupBy('user_id');
     $items=$posts[$uid];
 $no=count($items);
+$cre=new createseva();
+       $cre->user_id=$uid;
+       $cre->useradd_id=$yeah1;
+       $cre->timeline_id=$yeah;
+       $cre->roletype=$rolew;
+       $cre->save();
  return view('bvnannyuser',compact('items','city','us','no','itemadd'));
     
 
@@ -69,10 +93,14 @@ $no=count($items);
     {
         $city = $request->session()->get('addstr');
         $uid=auth()->user()->id;
+        $yeah= $request->session()->get('timesid');
+        $yeah1= $request->session()->get('addid');
+        $rolew= $request->session()->get('role');
+
  $us = DB::table('cookreq')
          ->leftJoin('timelines', 'cookreq.timeline_id', '=', 'timelines.id')  // Use left join to include all timelines
          ->get();
-        
+     
         $users=User::get();
         foreach($users as $user)
         {
@@ -88,6 +116,12 @@ $no=count($items);
     ->groupBy('user_id');
     $items=$posts[$uid];
 $no=count($items);
+$cre=new createseva();
+       $cre->user_id=$uid;
+       $cre->useradd_id=$yeah1;
+       $cre->timeline_id=$yeah;
+       $cre->roletype=$rolew;
+       $cre->save();
  return view('bvcookuser',compact('items','city','us','no','itemadd'));
     
 

@@ -33,6 +33,7 @@ class ReqController extends Controller
 
         
         $timesid=$timesnow->id;
+        $request->session()->put('timesid', $timesid);
         $clean=new Cleanerreq();
         $clean->user_id=$uid;
         $clean->timeline_id=$timesid;
@@ -59,6 +60,7 @@ class ReqController extends Controller
 
         
         $timesid=$timesnow->id;
+        $request->session()->put('timesid', $timesid);
         $validatedData = $request->validate([
             'childno' => 'required|integer|min:1',
             'Age' => 'required|array', // Validate that Age is an array
@@ -94,6 +96,7 @@ class ReqController extends Controller
 
         
         $tid=$timesnow->id;
+        $request->session()->put('timesid', $tid);
         $validatedData = $request->validate([
             'occasion' => 'required|string',
             'peopleno' => 'required|integer',

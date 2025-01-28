@@ -6,6 +6,9 @@
    
             @foreach ($items as $user)
 <div class="card text-center">
+  @php
+  $no1=count($us)
+  @endphp
     <div class="card-header">
       View the proposals made by the helpers
     </div>
@@ -13,8 +16,8 @@
        
       <h5 class="card-title">{{$user->name}}</h5>
       <p class="card-text">{{$city}}</p>
-      {{ \Carbon\Carbon::parse($us[0]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($us[0]->end_time)->format('g:i A') }}
-      <p class="card-text">{{$us[0]->weekdays}}</p>
+      {{ \Carbon\Carbon::parse($us[$no1-1]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($us[$no1-1]->end_time)->format('g:i A') }}
+      <p class="card-text">{{$us[$no1-1]->weekdays}}</p>
       <p class="card-text">type of house @foreach($user->cleanerreq as $add){{{$add->hometype}}}@endforeach</p>
       <p class="card-text"> number of bedrooms @foreach($user->cleanerreq as $add){{{$add->bedroomno}}}@endforeach</p>
       <p class="card-text"> number of halls @foreach($user->cleanerreq as $add){{{$add->hallno}}}@endforeach</p>

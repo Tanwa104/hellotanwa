@@ -9,11 +9,13 @@
       View the proposals made by the helpers
     </div>
     <div class="card-body">
-       
+       @php
+       $no1=count($us)
+       @endphp
       <h5 class="card-title">{{$itemadd->name}}</h5>
       <p class="card-text">{{$city}}</p>
-      {{ \Carbon\Carbon::parse($us[0]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($us[0]->end_time)->format('g:i A') }}
-    <p class="card-text">{{$us[0]->weekdays}}</p>
+      {{ \Carbon\Carbon::parse($us[$no1-1]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($us[$no1-1]->end_time)->format('g:i A') }}
+    <p class="card-text">{{$us[$no1-1]->weekdays}}</p>
     <p class="card-text">type of ocassion &nbsp;{{$items[0]->ocassion}}</p>
     <p class="card-text">number of people &nbsp;{{$items[0]->peopleno}}</p>
     <p class="card-text">type of cusine &nbsp;{{$items[0]->cusine}}</p>

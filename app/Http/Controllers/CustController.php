@@ -54,6 +54,7 @@ class CustController extends Controller
         {
             if($add->id==$id)
             {
+                $addid=$add->id;
                 $city=$add->city;
                 $add1=$add->address_line_1;
                 $add2=$add->address_line_2;
@@ -64,6 +65,7 @@ class CustController extends Controller
         $addstring=$add1." ".$add2." ".$city." ".$state." ".$country;
 
         $request->session()->put('addstr', $addstring);
+        $request->session()->put('addid', $addid);
         
         return redirect()->route('cust.view',['id'=>$id]);
     }

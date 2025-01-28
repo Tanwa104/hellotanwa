@@ -70,7 +70,7 @@
       <div class="offcanvas-body">
         <div>
             <a class="btn btn-secondary" href="" role="button">Daily timesheet</a><br><br>
-            <a class="btn btn-secondary" href="{{route('newc.index')}}" role="button">Find new Clients</a><br><br>
+            <a class="btn btn-secondary" href="{{route('cleanhelper.build')}}" role="button">Find new Clients</a><br><br>
             <a class="btn btn-secondary" href="{{route('edhelp.index')}}" role="button">Edit Profile</a><br><br>
             <a class="btn btn-secondary" href="" role="button">Clients</a>
         </div>

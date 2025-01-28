@@ -113,7 +113,7 @@ $areas->user_id=$uid;
     $areas->areas=$cities;
     $areas->save();
     $message = 'Your action was successful!';
-    session()->flash('success', $message);
+    
     
     
   }

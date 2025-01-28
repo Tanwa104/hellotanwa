@@ -13,7 +13,7 @@ use App\Http\Controllers\filtercontroller;
 use App\Http\Controllers\ViewProfileController;
 use App\Http\Controllers\ReqController;
 use App\Http\Controllers\BidviewController;
-
+use App\Http\Controllers\BidMakeController;
 
 
 /*
@@ -65,6 +65,7 @@ Route::get('/bvcleaner', [BidviewController::class, 'bvcleaner'])->name('bvclean
 Route::get('/bvnanny', [BidviewController::class, 'bvnanny'])->name('bvnanny.build');
 Route::get('/bvcook', [BidviewController::class, 'bvcook'])->name('bvcook.build');
 
+Route::get('/cleanhelp', [BidMakeController::class, 'cleanhelper'])->name('cleanhelper.build');
 
 
 Route::get('/helpdash', function () {
