@@ -14,15 +14,15 @@
     </div>
     <div class="card-body">
        
-      <h5 class="card-title">{{$user->name}}</h5>
+      <h5 class="card-title">{{$itemadd->name}}</h5>
       <p class="card-text">{{$city}}</p>
       {{ \Carbon\Carbon::parse($us[$no1-1]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($us[$no1-1]->end_time)->format('g:i A') }}
       <p class="card-text">{{$us[$no1-1]->weekdays}}</p>
-      <p class="card-text">type of house @foreach($user->cleanerreq as $add){{{$add->hometype}}}@endforeach</p>
-      <p class="card-text"> number of bedrooms @foreach($user->cleanerreq as $add){{{$add->bedroomno}}}@endforeach</p>
-      <p class="card-text"> number of halls @foreach($user->cleanerreq as $add){{{$add->hallno}}}@endforeach</p>
-      <p class="card-text"> numberof kitchen @foreach($user->cleanerreq as $add){{{$add->kichenno}}}@endforeach</p>
-      <p class="card-text"> type of cleaning @foreach($user->cleanerreq as $add){{{$add->cleaningtype}}}@endforeach</p>
+      <p class="card-text">type of house @foreach($user->cleanerreqs as $add){{{$add->hometype}}}@endforeach</p>
+      <p class="card-text"> number of bedrooms @foreach($user->cleanerreqs as $add){{{$add->bedroomno}}}@endforeach</p>
+      <p class="card-text"> number of halls @foreach($user->cleanerreqs as $add){{{$add->hallno}}}@endforeach</p>
+      <p class="card-text"> numberof kitchen @foreach($user->cleanerreqs as $add){{{$add->kichenno}}}@endforeach</p>
+      <p class="card-text"> type of cleaning @foreach($user->cleanerreqs as $add){{{$add->cleaningtype}}}@endforeach</p>
       
     </div>
     <div class="card-footer text-body-secondary">

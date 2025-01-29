@@ -30,7 +30,7 @@
       <a href="#" class="btn btn-primary">book</a>
     </div>
     <div class="card-footer text-body-secondary">
-      <a>view Profile</a>
+      <a href="">view Profile</a>
     </div>
   </div><br><br>
   @endfor

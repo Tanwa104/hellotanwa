@@ -38,4 +38,8 @@ protected $table='timelines';
 {
     return $this->belongsTo(User::class);
 }
+public function cleanerreqs()
+    {
+        return $this->hasMany(Cleanerreq::class); 
+    }
 }

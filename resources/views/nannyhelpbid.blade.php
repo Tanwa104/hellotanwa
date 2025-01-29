@@ -33,7 +33,7 @@
       <a href="#" class="btn btn-primary">book</a>
     </div>
     <div class="card-footer text-body-secondary">
-      <a>view Profile</a>
+      <a href="{{route('propindex.build')}}">make proposal</a>
     </div>
   </div><br><br>
   @endfor

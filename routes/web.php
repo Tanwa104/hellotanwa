@@ -14,6 +14,7 @@ use App\Http\Controllers\ViewProfileController;
 use App\Http\Controllers\ReqController;
 use App\Http\Controllers\BidviewController;
 use App\Http\Controllers\BidMakeController;
+use App\Http\Controllers\ProposalController;
 
 
 /*
@@ -110,6 +111,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/viewpro/{id}', [ViewProfileController::class, 'index'])->name('viewpro.index');
 Route::get('/cust-view/{id}', [CustController::class, 'view'])->name('cust.view');
 Route::get('/addarea', [NewClientController::class, 'addarea'])->name('area.fill');
+Route::get('/propindex', [ProposalController::class, 'index'])->name('propindex.build');
+Route::get('/propstore', [ProposalController::class, 'store'])->name('propindex.fill');
 Route::resource('edus', UsereditController::class);
 Route::resource('edhelp', HelpeditController::class);
 Route::resource('newc', NewClientController::class);

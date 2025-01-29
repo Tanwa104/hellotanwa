@@ -7,6 +7,7 @@ use App\Models\User;
 use App\models\Nannyreq;
 use App\models\Cookreq;
 use App\models\createseva;
+use App\models\Timeline;
 use Illuminate\Support\Facades\DB;
 class BidviewController extends Controller
 {
@@ -21,13 +22,21 @@ class BidviewController extends Controller
          ->get();
          $yeah= $request->session()->get('timesid');
          $yeah1= $request->session()->get('addid');
-       $users = User::get();
+         $users=User::get();
+         foreach($users as $user)
+         {
+             if($uid==$user->id)
+             {
+                 $itemadd=$user;
+             }
+         }
+       $users = Timeline::get();
        $city = $request->session()->get('addstr');
        foreach ($users as $user)
        {
-        foreach($user->cleanerreq as $clean)
+        foreach($user->cleanerreqs as $clean)
         {
-        if($uid==$clean->user_id)
+        if($yeah==$clean->timeline_id)
         {
                     $items[]=$user;
            
@@ -45,7 +54,7 @@ class BidviewController extends Controller
        $cre->timeline_id=$yeah;
        $cre->roletype=$rolew;
        $cre->save();
-       return view('bvcleanuser',compact('items','city','us'));
+       return view('bvcleanuser',compact('items','city','us','itemadd'));
     }
     public function bvnanny(Request $request)
     {
@@ -71,8 +80,8 @@ class BidviewController extends Controller
         //$nanny=Nannyreq::orderBy('id','desc')->usernan->get();
         $posts = Nannyreq::query()
     ->get()
-    ->groupBy('user_id');
-    $items=$posts[$uid];
+    ->groupBy('timeline_id');
+    $items=$posts[$yeah];
 $no=count($items);
 $cre=new createseva();
        $cre->user_id=$uid;
@@ -113,8 +122,8 @@ $cre=new createseva();
         //$nanny=Nannyreq::orderBy('id','desc')->usernan->get();
         $posts = Cookreq::query()
     ->get()
-    ->groupBy('user_id');
-    $items=$posts[$uid];
+    ->groupBy('timeline_id');
+    $items=$posts[$yeah];
 $no=count($items);
 $cre=new createseva();
        $cre->user_id=$uid;
