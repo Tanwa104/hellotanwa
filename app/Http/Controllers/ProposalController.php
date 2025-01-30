@@ -26,6 +26,8 @@ class ProposalController extends Controller
         
         return view('makeprop',compact('items'));
     }
+   
+
     public function store(Request $request)
     {
         $uid=auth()->user()->id;

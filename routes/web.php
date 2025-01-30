@@ -15,6 +15,7 @@ use App\Http\Controllers\ReqController;
 use App\Http\Controllers\BidviewController;
 use App\Http\Controllers\BidMakeController;
 use App\Http\Controllers\ProposalController;
+use App\Http\Controllers\PropUserController;
 
 
 /*
@@ -113,6 +114,8 @@ Route::get('/cust-view/{id}', [CustController::class, 'view'])->name('cust.view'
 Route::get('/addarea', [NewClientController::class, 'addarea'])->name('area.fill');
 Route::get('/propindex', [ProposalController::class, 'index'])->name('propindex.build');
 Route::get('/propstore', [ProposalController::class, 'store'])->name('propindex.fill');
+Route::get('/propsel', [PropUserController::class, 'propuser'])->name('propuser.select');
+Route::get('/propview', [PropUserController::class, 'propuserview'])->name('propuser.build');
 Route::resource('edus', UsereditController::class);
 Route::resource('edhelp', HelpeditController::class);
 Route::resource('newc', NewClientController::class);

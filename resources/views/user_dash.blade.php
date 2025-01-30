@@ -124,6 +124,7 @@
             <div>
                 <a class="btn btn-secondary" href="{{route('edus.index')}}" role="button">Edit Profile</a><br><br>
                 <a class="btn btn-secondary" href="" role="button">Bookings</a>
+                <a class="btn btn-secondary" href="{{route('propuser.select')}}" role="button">View Proposals</a>
             </div>
         </div>
         <form method="POST" action="{{ route('logout') }}">
