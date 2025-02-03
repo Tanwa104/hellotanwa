@@ -7,8 +7,12 @@ use App\Models\User;
 use App\Models\Proposal;
 class ProposalController extends Controller
 {
-    public function index()
+    public function index(Request $request,$id,$tid)
     {
+        $cid=$id;
+        $ctid=$tid;
+        $request->session()->put('custid', $cid);
+        $request->session()->put('custtimeid', $ctid);
         $uid=auth()->user()->id;
         
         $users=User::get();
@@ -24,13 +28,16 @@ class ProposalController extends Controller
         }
         
         
-        return view('makeprop',compact('items'));
+        return view('makeprop',compact('items','cid'));
     }
    
 
-    public function store(Request $request)
+    public function makestore(Request $request)
     {
         $uid=auth()->user()->id;
+        $yeah= $request->session()->get('custid');
+        $ytime= $request->session()->get('custtimeid');
+        
         $pprice=$request->input('price');
         $users=User::get();
         foreach($users as $user)
@@ -50,8 +57,10 @@ class ProposalController extends Controller
                 }
             }
         }
-
+       
         $prop=new Proposal();
+        $prop->cust_userid=$yeah;
+        $prop->cust_timeid=$ytime;
         $prop->user_id=$uid;
         $prop->helper_id=$helpid;
         $prop->useradd_id=$addid;

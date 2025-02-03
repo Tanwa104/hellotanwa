@@ -29,10 +29,10 @@
       <tr><td>{{$usercook[$usertime[$i]->id][$j]->description}}</td></tr>
       
       @endfor</table>
-      <a href="#" class="btn btn-primary">book</a>
+      <a href="{{route('propsee.build',[$usertime[$i]->id])}}" class="btn btn-primary">View profile</a>
     </div>
     <div class="card-footer text-body-secondary">
-      <a href="{{route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id])}}">make proposal</a>
+      
     </div>
   </div><br><br>
   @endfor

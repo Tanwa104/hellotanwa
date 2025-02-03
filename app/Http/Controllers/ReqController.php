@@ -17,7 +17,7 @@ class ReqController extends Controller
             'typeclean' => 'required|string',
         ]);
         $uid=auth()->user()->id;
-        $place=$request->input('place');
+        $place=$request->input('apart_villa');
         $bedno=$request->input('bedno');
         $hallno=$request->input('hallno');
         $kitchen=$request->input('kitchen');

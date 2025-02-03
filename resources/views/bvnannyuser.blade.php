@@ -25,9 +25,12 @@
       <tr><td>{{$items[$i]->childname}}</td><td>{{$items[$i]->childage}}</td><td>{{$items[$i]->childgender}}</td></tr>
       @endfor
       </table>
+      <p class="card-text" style="background-color: green;color:white"> your request has been registered and you will get the proposals soon<br>
+        go to view proposals to see proposals made
+      </p>
     </div>
     <div class="card-footer text-body-secondary">
-        <a href="" >view proposals</a>
+      <a href="{{route('user.build')}}">Back</a>     
 
           </div>
   </div>

@@ -11,8 +11,15 @@
             <div class="col-md-12">
                 
             <label class="form-label" for="place">Enter the type of place you have</label>
-            <input type="text" class="form-control" name="place" id="place" placeholder="eg apartment,villa,duplex,etc"/>
-            <br>
+         <span class="form-control" id="place">
+            <select name="apart_villa" >
+                <option>select</option>
+            <option value="apartment">Apartment</option>
+            <option value="tenament">Tenament</option>
+            <option value="duplex">Duplex</option>
+            <option value="villa">Villa</option>
+            <option value="penthouse">Penthouse</option>
+           </select></span>
             <label class="form-label" for="bedno">Enter the number of bedrooms you have</label>
             <input type="text" name="bedno"  class="form-control" id="bedno"/>
             <br>

@@ -5,7 +5,7 @@
             </head>
    @php
     $n=count($users);   
-
+    $no=count($usernanny);
    @endphp
    @for($i=0;$i<$n;$i++)      
 <div class="card text-center">
@@ -19,20 +19,24 @@
     {{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}<br>
     <p class="card-text">{{$usertime[$i]->weekdays}}</p>
     <table border  class="card-text">
-        <tr><th>description</th>
-            
+        <tr><th>childname</th>
+            <th>age</th>
+            <th>gender</th></tr>
 
       @php
-      $no=count($usercook[$usertime[$i]->id]);
+      $no=count($usernanny[$usertime[$i]->id]);
       @endphp
       @for($j=0;$j<$no;$j++)
-      <tr><td>{{$usercook[$usertime[$i]->id][$j]->description}}</td></tr>
+      <tr><td>{{$usernanny[$usertime[$i]->id][$j]->childname}}</td><td>{{$usernanny[$usertime[$i]->id][$j]->childage}}</td><td>{{$usernanny[$usertime[$i]->id][$j]->childgender}}</td></tr>
       
       @endfor</table>
-      <a href="#" class="btn btn-primary">book</a>
+      @php
+      $num=$usertime[$i]->id
+      @endphp
+      <a href="{{route('propsee.build',[$num])}}" class="btn btn-primary">View Proposals</a>
     </div>
     <div class="card-footer text-body-secondary">
-      <a href="{{route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id])}}">make proposal</a>
+      
     </div>
   </div><br><br>
   @endfor

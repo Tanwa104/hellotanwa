@@ -16,7 +16,7 @@ use App\Http\Controllers\BidviewController;
 use App\Http\Controllers\BidMakeController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\PropUserController;
-
+use App\Http\Controllers\AcceptMailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,10 +112,13 @@ Route::middleware('auth')->group(function () {
 Route::get('/viewpro/{id}', [ViewProfileController::class, 'index'])->name('viewpro.index');
 Route::get('/cust-view/{id}', [CustController::class, 'view'])->name('cust.view');
 Route::get('/addarea', [NewClientController::class, 'addarea'])->name('area.fill');
-Route::get('/propindex', [ProposalController::class, 'index'])->name('propindex.build');
-Route::get('/propstore', [ProposalController::class, 'store'])->name('propindex.fill');
+Route::get('/dress/{id}/{btntype}');
+
+Route::get('/propindex/{id}/{tid}', [ProposalController::class, 'index'])->name('propindex.build');
+Route::get('/propinsert/{id}', [ProposalController::class, 'makestore'])->name('makeprop.fill');
 Route::get('/propsel', [PropUserController::class, 'propuser'])->name('propuser.select');
 Route::get('/propview', [PropUserController::class, 'propuserview'])->name('propuser.build');
+Route::get('/propsee/{tid}', [PropUserController::class, 'see_props'])->name('propsee.build');
 Route::resource('edus', UsereditController::class);
 Route::resource('edhelp', HelpeditController::class);
 Route::resource('newc', NewClientController::class);
@@ -125,4 +128,5 @@ Route::resource('help', helpController::class)->names(['index'=> 'help.build']);
 Route::get('/cleaner', [CleanerController::class, 'cleaner'])->name('clean');
 Route::get('/nanny', [CleanerController::class, 'nanny'])->name('nanny');
 Route::get('/cook', [CleanerController::class, 'cook'])->name('cook');
+Route::get('/acctest', [AcceptMailController::class, 'accepttest']);
 require __DIR__.'/auth.php';

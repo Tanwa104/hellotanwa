@@ -70,7 +70,7 @@
                     textarea.setAttribute('id', `mealDesc${i}`);
                     textarea.setAttribute('rows', '5');
                     textarea.setAttribute('cols', '40');
-                    textarea.setAttribute('placeholder', `Enter the description for Meal ${i}`);
+                    textarea.setAttribute('placeholder', `eg paneer pulav for lunch ,mention meal name and food name`);
                     textarea.classList.add('form-control');
 
                     // Append label and textarea to the container

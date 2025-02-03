@@ -25,12 +25,12 @@
       <p class="card-text">number of kitchen {{{$userclean[$i]->kichenno}}}</p>
 
       <p class="card-text">type of cleaning {{{$userclean[$i]->cleaningtype}}}</p>
-
       
       <a href="#" class="btn btn-primary">book</a>
     </div>
     <div class="card-footer text-body-secondary">
-      <a href="">view Profile</a>
+      {{-- <a href="{{route(('propindex', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id])}}">make proposal</a> --}}
+      <a href="{{route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id])}}">make proposal</a>
     </div>
   </div><br><br>
   @endfor

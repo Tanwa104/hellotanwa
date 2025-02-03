@@ -8,8 +8,8 @@
     </script>
     </head>
     <body>
-        <form method="get" action="{{route('propindex.fill')}}">
-        </form>
+        <form method="get" action="{{route('makeprop.fill',[$cid])}}">
+        
         @if (\Session::has('msg'))
             <div class="alert alert-success">
                 <ul>

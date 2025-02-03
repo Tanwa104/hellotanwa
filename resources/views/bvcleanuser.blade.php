@@ -23,10 +23,13 @@
       <p class="card-text"> number of halls @foreach($user->cleanerreqs as $add){{{$add->hallno}}}@endforeach</p>
       <p class="card-text"> numberof kitchen @foreach($user->cleanerreqs as $add){{{$add->kichenno}}}@endforeach</p>
       <p class="card-text"> type of cleaning @foreach($user->cleanerreqs as $add){{{$add->cleaningtype}}}@endforeach</p>
-      
+      <p class="card-text" style="background-color: green;color:white"> your request has been registered and you will get the proposals soon<br>
+        go to view proposals to see proposals made
+      </p>
     </div>
     <div class="card-footer text-body-secondary">
-      <a href="" >view proposals</a>
+      
+      <a href="{{route('user.build')}}">Back</a>     
     </div>
   </div>
 

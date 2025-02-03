@@ -1,105 +1,20 @@
 <html>
-    <head>
-        <title>select job you made request for</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    </head>
-    <body>
-        @php
-        $no=count($users)
-        @endphp
-         @for($i=0;$i<$no;$i++)
-        @if($userclean[$i]->timeline_id!=null)
-        <div class="card text-center">
-            <div class="card-header">
-        <div class="card-body">
-      
-            <h5 class="card-title">{{$users[$i]->name}}&nbsp;{{$users[$i]->lastname}}</h5>
-          <p>{{$useradd[$i]->address_line_1}}&nbsp;{{$useradd[$i]->address_line_2}}&nbsp;{{$useradd[$i]->city}}&nbsp;{{$useradd[$i]->state}}</p>
-          {{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}<br>
-          <p class="card-text">{{$usertime[$i]->weekdays}}</p>
-            <p class="card-text">type of house {{{$userclean[$i]->hometype}}}</p>
-            <p class="card-text">number of bedrooms {{{$userclean[$i]->bedroomno}}}</p>
-      
-            <p class="card-text">numbers of halls {{{$userclean[$i]->hallno}}}</p>
-      
-            <p class="card-text">number of kitchen {{{$userclean[$i]->kichenno}}}</p>
-      
-            <p class="card-text">type of cleaning {{{$userclean[$i]->cleaningtype}}}</p>
-      
-            
-            <a href="#" class="btn btn-primary">book</a>
-          </div>
-            </div></div>
-        @endif
-        @endfor 
-        @for($i=0;$i<$no;$i++)
-        @if($usernan[$i]->timeline_id!=null)
-        <div class="card text-center">
-            <div class="card-header">
-              Find Assistence
-            </div>
-            <div class="card-body">
-               
-              <h5 class="card-title">{{$users[$i]->name}}&nbsp;{{$users[$i]->lastname}}</h5>
-            <p>{{$useradd[$i]->address_line_1}}&nbsp;{{$useradd[$i]->address_line_2}}&nbsp;{{$useradd[$i]->city}}&nbsp;{{$useradd[$i]->state}}</p>
-            {{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}<br>
-            <p class="card-text">{{$usertime[$i]->weekdays}}</p>
-            <table border  class="card-text">
-                <tr><th>childname</th>
-                    <th>age</th>
-                    <th>gender</th></tr>
-        
-              @php
-            
-              $no1=count($usernanny[$usertime[$i]->id]);
-              @endphp
-              @for($j=0;$j<$no1;$j++)
-              <tr><td>{{$usernanny[$usertime[$i]->id][$j]->childname}}</td><td>{{$usernanny[$usertime[$i]->id][$j]->childage}}</td><td>{{$usernanny[$usertime[$i]->id][$j]->childgender}}</td></tr>
-              
-              @endfor</table>
-              <a href="#" class="btn btn-primary">book</a>
-            </div>
-            <div class="card-footer text-body-secondary">
-              <a href="{{route('propindex.build')}}">make proposal</a>
-            </div>
-          </div><br><br>
-        @endif
-
-        @endfor 
-        @for($i=0;$i<$no;$i++)
-        @if($userchef[$i]->timeline_id!=null)
-       <div class="card text-center">
-    <div class="card-header">
-      Find Assistence
-    </div>
-    <div class="card-body">
-       
-      <h5 class="card-title">{{$users[$i]->name}}&nbsp;{{$users[$i]->lastname}}</h5>
-    <p>{{$useradd[$i]->address_line_1}}&nbsp;{{$useradd[$i]->address_line_2}}&nbsp;{{$useradd[$i]->city}}&nbsp;{{$useradd[$i]->state}}</p>
-    {{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}<br>
-    <p class="card-text">{{$usertime[$i]->weekdays}}</p>
-    <table border  class="card-text">
-        <tr><th>description</th>
-            
-
-      @php
-      $no=count($usercook[$usertime[$i]->id]);
-      @endphp
-      @for($j=0;$j<$no;$j++)
-      <tr><td>{{$usercook[$usertime[$i]->id][$j]->description}}</td></tr>
-      
-      @endfor</table>
-      <a href="#" class="btn btn-primary">book</a>
-    </div>
-    <div class="card-footer text-body-secondary">
-      <a>view Profile</a>
-    </div>
-  </div><br><br>
-        @endif
-        @endfor
-    </body>
-</html>
+  <head><title>Select type of job</title></head>
+  <body>
+    <div style="margin-left:45%;">
+      <form action="{{ route('propuser.build') }}" method="get">
+          <input type="hidden" id="role" name="role" value="Housecleaner">
+          <input type="image" src="/img/cleaning.png" alt="Submit"
+              width="48" height="48" >
+      </form>house clean<br>
+      <form action="{{ route('propuser.build') }}" method="get">
+          <input type="hidden" id="role" name="role" value="childcare">
+           <input type="image" src="/img/nanny.png" alt="Submit"
+              width="48" height="48">
+      </form>childcare<br>
+      <form action="{{ route('propuser.build') }}" method="get">
+          <input type="hidden" id="role" name="role" value="houseCook">
+          <input type="image" src="/img/cook.png" alt="Submit"
+              width="48" height="48">
+      </form>cook
+    </div></body></html>
