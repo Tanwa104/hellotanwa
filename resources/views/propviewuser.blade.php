@@ -41,7 +41,7 @@
             <div class="collapse" id="collapseExample">
               <div class="card card-body">
                are you sure you want to Book
-               <a class="btn btn-primary-col4" href="">book</a>
+               <a class="btn btn-primary-col4" href="{{}}">book</a>
               </div>
             </div>
           

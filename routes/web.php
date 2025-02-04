@@ -17,7 +17,7 @@ use App\Http\Controllers\BidMakeController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\PropUserController;
 use App\Http\Controllers\AcceptMailController;
-
+use App\Http\Controllers\OtpController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -129,4 +129,5 @@ Route::get('/cleaner', [CleanerController::class, 'cleaner'])->name('clean');
 Route::get('/nanny', [CleanerController::class, 'nanny'])->name('nanny');
 Route::get('/cook', [CleanerController::class, 'cook'])->name('cook');
 Route::get('/acctest', [AcceptMailController::class, 'accepttest']);
+Route::get('/getotp', [OtpController::class, 'genotp'])->name('getotp.build');
 require __DIR__.'/auth.php';
