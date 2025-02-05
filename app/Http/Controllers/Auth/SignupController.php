@@ -19,6 +19,7 @@ class SignupController extends Controller
 {
     public function create(): View
     {
+
         return view('auth.signup');
     }
  /**
@@ -34,7 +35,7 @@ class SignupController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            
             'phone'=>['required'],
             
             
@@ -43,7 +44,7 @@ $emailid=$request->email;
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+          
             'phone'=>$request->phone,
             'role_id'=>$rid,
             'lastname'=>$lname,

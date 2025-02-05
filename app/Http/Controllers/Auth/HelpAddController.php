@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Helper;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,29 @@ class HelpAddController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+    public function lema(Request $request)
+    {
+        $valotp = Session::get('otpsee1');
+        $valmail = Session::get('mail1');
+        $otpre=$request->input('otp1');
+        $users=User::get();
+        foreach($users as $user)
+        {
+           if($valotp==$otpre)
+           {
+           if($valmail==$user->email)
+           {
+               Auth::login($user);
+   
+               return redirect()->route('help.build');
+           }
+        }
+       }
+       if($valotp==$otpre)
+{
+    return view('auth.signup',compact('valmail'));
+}
+    }
     public function store(Request $request): RedirectResponse
     {
         $id=0;

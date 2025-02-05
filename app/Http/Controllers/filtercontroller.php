@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use App\Models\User;
 use App\Models\Timeline;
 use App\Models\Helper;
 class filtercontroller extends Controller
@@ -12,11 +13,19 @@ class filtercontroller extends Controller
     public function index(Request $request)
     {
        
-       
+       $uid=auth()->user()->id;
         $roles=$request->role;
         $request->session()->put('role', $roles);
+        $users=User::get();
+        foreach($users as $user)
+        {
+            if($uid==$user->id)
+            {
+                $items[]=$user;
+            }
+        }
         
-        return view('fliter');
+        return view('fliter',compact('items'));
     }
 
     public function store(Request $request)
@@ -24,7 +33,10 @@ class filtercontroller extends Controller
         
         $bool=false;
         $roles= $request->session()->get('role');
+        $name=$request->input('name');
+        $lastname=$request->input('lastname');
         $secs=Timeline::get();
+        $useone=User::get();
         $no=Timeline::get()->count();
         $timehel=Helper::get();
         // $users = DB::table('timelines')
@@ -34,7 +46,19 @@ class filtercontroller extends Controller
           
         
         
-       $uid=auth()->user()->id; 
+       $uid=auth()->user()->id;
+       foreach($useone as $user1)
+       {
+        if($uid==$user1->id)
+        {
+            if($user1->name==null&&$user1->lastname==null)
+            {
+                $user1->name=$name;
+                $user1->lastname=$lastname;
+                $user1->save();
+            }
+        }
+       }
         $bhour=$request->input('bhours');
         $bmins=$request->input('bmin');
         $bampm=$request->input('bampm');

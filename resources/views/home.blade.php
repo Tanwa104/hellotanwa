@@ -26,29 +26,37 @@
                     <img src="/img/gruh.png" alt="logo" style="height:80%;width:120%;" />
                 </div>
 
-                <div class="col">
+                <div class="col ">
                     <!-- Customer Form -->
-                    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+<!--<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                         aria-controls="offcanvasExample" style="margin-left:50%;margin-top:25%;">
                         Customer
-                    </a><br>
-                    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#sidebar" role="button"
+                    </a><br>-->
+                   <!-- <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#sidebar" role="button"
                         aria-controls="sidebar" style="margin-left:50%;margin-top:12pt">
                         Helper
-                    </a>
+                    </a>-->
                     <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseWidthExample" aria-expanded="false"
                         aria-controls="collapseWidthExample" style="margin-left:50%;margin-top:12pt">
-                        Toggle width collapse
+                        for customer
                     </button>
                     <div style="min-height: 120px;">
                         <div class="collapse collapse-horizontal" id="collapseWidthExample">
                             <div class="card card-body" style="width: 300px;">
+                                <div id="response" style="background-color: greenyellow"></div>
                                 <form>
-                                    <label>Enter Email</label>
-                                    <input type="email" name="ni" id="ni" value="abd@gmail.com">
-                                    <input type="button" value="submit" onclick="fetchData()">
-                                </form>
+                                    
+                                    <input type="email" name="ni" id="ni"class="form-control" placeholder="Enter Email">
+                                    <input type="button" value="genrate OTP" class="btn" onclick="fetchData()">
+                                    <br>
+                            
+                                </form><form method="POST" action="{{route('register.build')}}">
+                                    @csrf
+                                    
+                                    <input type="number" name="otp" id="otp" class="form-control" placeholder="enter otp"/>
+                                    <input type="submit" value="confirm" class="btn"/>
+                                    </form>
 
                             </div>
 
@@ -58,7 +66,39 @@
 
                         </div>
 
+                    
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseWidthExample1" aria-expanded="false"
+                    aria-controls="collapseWidthExample" style="margin-left:50%;margin-top:12pt">
+                    for helper
+                </button>
+                <div style="min-height: 120px;">
+                    <div class="collapse collapse-horizontal" id="collapseWidthExample1">
+                        <div class="card card-body" style="width: 300px;">
+                            <div id="response1" style="background-color: greenyellow"></div>
+                            <form>
+                                
+                                <input type="email" name="ni1" id="ni1" class="form-control" placeholder="Enter email">
+                                <input type="button" value="genrate OTP" class="btn" onclick="fetchDataHelp()">
+                                <br>
+                        
+                            </form><form method="POST" action="{{route('helpotp.seen')}}">
+                                @csrf
+                            
+                                <input type="number" name="otp1" id="otp1" class="form-control" placeholder="Enter otp"/>
+                                <input type="submit" value="confirm" class="btn"/>
+                                </form>
+
+                        </div>
+
+
+
+
+
                     </div>
+
+    
+            </div>
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
                         aria-labelledby="offcanvasExampleLabel">
                         <div class="offcanvas-header">
@@ -104,7 +144,6 @@
     <script>
         function fetchData() {
             // preventDefault();
-            console.log("dfgd");
             const input = document.getElementById("ni");
 const inputValue = input.value;
             $.ajax({
@@ -116,10 +155,32 @@ const inputValue = input.value;
                     _token: "{{ csrf_token() }}"
                 },
                 success: function(response) {
+                    console.log(response);
                     $("#response").text(response.message);
                 },
                 error: function(xhr) {
                     $("#response").text("Error: " + xhr.statusText);
+                }
+            });
+        }
+        function fetchDataHelp() {
+            // preventDefault();
+            const input = document.getElementById("ni1");
+const inputValue = input.value;
+            $.ajax({
+                url: "{{ route('otphelp.build') }}",
+                type: "GET",
+                datatype: "json",
+                data: {
+                    email: inputValue,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    console.log(response);
+                    $("#response1").text(response.message);
+                },
+                error: function(xhr) {
+                    $("#response1").text("Error: " + xhr.statusText);
                 }
             });
         }

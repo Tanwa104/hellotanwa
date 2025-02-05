@@ -36,7 +36,9 @@ Route::get('signin', [SigninController::class, 'create'])
     Route::post('signin', [SigninController::class, 'store'])->name('signin.build');
     Route::get('helpadd', [HelpAddController::class, 'create'])
                 ->name('helpadd');
+
                 Route::post('helpadd', [HelpAddController::class, 'store'])->name('helpadd.build');
+                Route::post('helpotp', [HelpAddController::class, 'lema'])->name('helpotp.seen');
 
 
 

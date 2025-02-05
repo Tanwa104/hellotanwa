@@ -18,31 +18,23 @@
         </ul>
     </div>
 @endif
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name="name" placeholder="name">
-                <label for="floatingInput">Name</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name="lastname" placeholder="name">
-                <label for="floatingInput">lastName</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="add Email">
-                <label for="floatingInput">Email Address</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="tel" class="form-control" id="floatingInput" name="phone" placeholder="add Phone">
-                <label for="floatingInput">Phone Number</label>
-              </div>
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingInput"  name="password" placeholder="Enter password">
-                    <label for="floatingInput">Password</label>
-
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingInput" name="password_confirmation" placeholder="confirm password">
-                    <label for="floatingInput">Confirm Password</label>
-                  </div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+  <input type="text" class="form-control" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" >
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">LastName</span>
+  <input type="text" class="form-control" name="lastname" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Email Address</span>
+  <input type="text" class="form-control" name="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$valmail}}">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
+  <input type="text" class="form-control" name="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+                
                   <input type="submit" value="submit" class="btn btn-dark"/>
                   
                   </div>

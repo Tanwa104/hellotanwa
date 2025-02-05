@@ -27,7 +27,7 @@ class helpController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

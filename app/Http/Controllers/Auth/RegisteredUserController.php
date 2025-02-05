@@ -8,10 +8,12 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+
 
 class RegisteredUserController extends Controller
 {
@@ -30,24 +32,32 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $valotp = Session::get('otpsee');
+        $valmail = Session::get('mail');
+        
+        $otpreq=$request->input('otp');
         $rid=1;
         $lname=$request->lastname;
         
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone'=>['required'],
-            
-        ]);
+     $users=User::get();
+     foreach($users as $user)
+     {
+        if($valotp==$otpreq)
+        {
+        if($valmail==$user->email)
+        {
+            Auth::login($user);
 
+            return redirect()->route('user.build');
+        }
+     }
+    }
+if($valotp==$otpreq)
+{
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'phone'=>$request->phone,
-            'role_id'=>$rid,
-            'lastname'=>$lname,
+           
+            'email' => $valmail,
+            'role_id'=> $rid,
         ]);
 
         event(new Registered($user));
@@ -56,4 +66,5 @@ class RegisteredUserController extends Controller
 
         return redirect()->route('user.build');
     }
+}
 }

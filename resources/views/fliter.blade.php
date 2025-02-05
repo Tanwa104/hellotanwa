@@ -19,6 +19,14 @@
         </ul>
     </div>
 @endif
+<div class="col-md-6">
+    @foreach($items as $item)
+    <label for="name" class="form-label">Name </label>
+    <input type="text" class="form-control" id="name" name="name" value="{{$item->name}}"/>
+    <label for="lastname" class="form-label">lastname </label>
+    <input type="text" class="form-control" id="lastname" name="lastname" value="{{$item->lastname}}"/>
+    @endforeach
+</div>
                 <div class="col-md-6">
                   <label for="inputEmail4" class="form-label">enter the time for work</label>
                   <span id="inputEmail4" class="form-control">

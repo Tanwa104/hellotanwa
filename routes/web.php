@@ -130,4 +130,8 @@ Route::get('/nanny', [CleanerController::class, 'nanny'])->name('nanny');
 Route::get('/cook', [CleanerController::class, 'cook'])->name('cook');
 Route::get('/acctest', [AcceptMailController::class, 'accepttest']);
 Route::get('/getotp', [OtpController::class, 'genotp'])->name('getotp.build');
+Route::get('/otp-help', [OtpController::class,  'genotphelp'])->name('otphelp.build');
+
+
+
 require __DIR__.'/auth.php';
