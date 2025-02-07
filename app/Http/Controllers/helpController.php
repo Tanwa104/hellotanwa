@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Booking;
 class helpController extends Controller
 {
     /**
@@ -11,6 +11,9 @@ class helpController extends Controller
      */
     public function index()
     {
+        $books=Booking::get();
+        $uid=auth()->user()->id;
+        
         return view('help_dash');
     }
 

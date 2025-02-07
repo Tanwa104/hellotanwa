@@ -21,7 +21,7 @@ class OtpController extends Controller
        
     
         Mail::to($id)->send(new OtpMail($otp));
-        return response()->json(['message' => 'OTP sent successfully,please wait for few minutes and check email']);
+        return response()->json(['message' => 'OTP sent successfully,please wait for few minutes and check email and spam/junk email folder']);
     }
     public function genotphelp(Request $request)
     {
@@ -33,7 +33,7 @@ class OtpController extends Controller
        
     
         Mail::to($id)->send(new OtpMail($otp));
-        return response()->json(['message' => 'OTP sent successfully,please wait for few minutes and check email']);
+        return response()->json(['message' => 'OTP sent successfully,please wait for few minutes and check email and spam/junk email folder']);
     }
     }
 

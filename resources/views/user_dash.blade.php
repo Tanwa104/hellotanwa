@@ -38,6 +38,9 @@
         </ul>
     </div>
 @endif
+@if (session('message'))
+    <div class="alert" style="background-color:green;color:white">{{ session('message') }}</div>
+@endif
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
     style="margin-right:0pt;margin-left:90%;">

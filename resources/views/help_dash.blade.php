@@ -60,7 +60,9 @@
           </div>
         </div>
         <div>
+          <div>
           
+          </div>
           
           <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
@@ -72,7 +74,7 @@
             <a class="btn btn-secondary" href="" role="button">Daily timesheet</a><br><br>
             <a class="btn btn-secondary" href="{{route('cleanhelper.build')}}" role="button">Find new Clients</a><br><br>
             <a class="btn btn-secondary" href="{{route('edhelp.index')}}" role="button">Edit Profile</a><br><br>
-            <a class="btn btn-secondary" href="" role="button">Clients</a>
+            <a class="btn btn-secondary" href="{{route('bookhelp.fill')}}" role="button">Clients</a>
         </div>
       </div>
       <form method="POST" action="{{ route('logout') }}">

@@ -8,6 +8,13 @@
     </script>
     </head>
     <body>
+      @if (\Session::has('msg'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('msg') !!}</li>
+        </ul>
+    </div>
+@endif
         <div class="card text-center">
            @php
            $no=count($user);
@@ -29,19 +36,16 @@
                 <p class="card-text">price&nbsp;{{$props[$i]->price}}</p>
         
               
-                  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    book
-                  </a>
-                @endfor
+                <a class="btn btn-primary-col4" href="{{route('book',[$props[$i]->id])}}">book</a>
+               
               </div>
               <div class="card-footer text-body-secondary">
-                
+              @endfor
+
               </div>
             </div>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body">
-               are you sure you want to Book
-               <a class="btn btn-primary-col4" href="{{}}">book</a>
+           
+              
               </div>
             </div>
           

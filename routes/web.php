@@ -18,6 +18,10 @@ use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\PropUserController;
 use App\Http\Controllers\AcceptMailController;
 use App\Http\Controllers\OtpController;
+use App\Http\Controllers\bookcontroller;
+use App\Http\Controllers\BookhelpController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -112,13 +116,15 @@ Route::middleware('auth')->group(function () {
 Route::get('/viewpro/{id}', [ViewProfileController::class, 'index'])->name('viewpro.index');
 Route::get('/cust-view/{id}', [CustController::class, 'view'])->name('cust.view');
 Route::get('/addarea', [NewClientController::class, 'addarea'])->name('area.fill');
-Route::get('/dress/{id}/{btntype}');
-
+Route::get('/clientacc', [BookhelpController::class, 'bookhelp'])->name('bookhelp.fill');
+Route::get('/acceptbook/{$bid}', [BookhelpController::class, 'acceptbook'])->name('acceptbook.fill');
+Route::get('/deniedbook{$bid}', [BookhelpController::class, 'deniedbook'])->name('deniedbook.fill');
 Route::get('/propindex/{id}/{tid}', [ProposalController::class, 'index'])->name('propindex.build');
 Route::get('/propinsert/{id}', [ProposalController::class, 'makestore'])->name('makeprop.fill');
 Route::get('/propsel', [PropUserController::class, 'propuser'])->name('propuser.select');
 Route::get('/propview', [PropUserController::class, 'propuserview'])->name('propuser.build');
 Route::get('/propsee/{tid}', [PropUserController::class, 'see_props'])->name('propsee.build');
+Route::get('/book/{pid}', [bookcontroller::class, 'book'])->name('book');
 Route::resource('edus', UsereditController::class);
 Route::resource('edhelp', HelpeditController::class);
 Route::resource('newc', NewClientController::class);
