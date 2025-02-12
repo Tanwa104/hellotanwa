@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Helper;
+use App\Models\Booking;
 use Illuminate\Support\Facades\DB;
 class BookhelpController extends Controller
 {
@@ -15,7 +16,7 @@ class BookhelpController extends Controller
         $helpers=Helper::get();
         foreach($helpers as $help)
         {
-            if($helpers->user_id=$uid)
+            if($help->user_id==$uid)
             {
                 $helpid=$help->id;
             }
@@ -38,11 +39,41 @@ class BookhelpController extends Controller
     }
     public function acceptbook($bid)
         {
-            
+            $ubid=$bid;
+           $books= Booking::get();
+           foreach($books as $book)
+           {
+            if($ubid==$book->id)
+            {
+                $book->Acceptedpending='accepted';
+                $book->save();
+                $timeid=$book->timeline_id;
+                $helpid=$book->helper_id;
+            }
+        }
+            DB::table('proposals')->where('cust_timeid', $timeid)->where('helper_id', $helpid)->delete();
+            DB::table('createseva')->where('timeline_id', $timeid)->delete();
+
+
+
+           
         }
         public function deniedbook($bid)
         {
-            
+            $books=Booking::get();
+            foreach($books as $books)
+            {
+                if($bid==$book->id)
+                {
+                    $book->Acceptedpending='denied';
+                    $book->save();
+                    $help=$book->helper_id;
+                    $timeid=$book->timeline_id;
+                }
+            }
+            DB::table('proposals')->where('cust_timeid', $timeid)->where('helper_id', $helpid)->delete();
+
+
         }
 
     }

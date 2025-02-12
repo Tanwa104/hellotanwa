@@ -117,8 +117,8 @@ Route::get('/viewpro/{id}', [ViewProfileController::class, 'index'])->name('view
 Route::get('/cust-view/{id}', [CustController::class, 'view'])->name('cust.view');
 Route::get('/addarea', [NewClientController::class, 'addarea'])->name('area.fill');
 Route::get('/clientacc', [BookhelpController::class, 'bookhelp'])->name('bookhelp.fill');
-Route::get('/acceptbook/{$bid}', [BookhelpController::class, 'acceptbook'])->name('acceptbook.fill');
-Route::get('/deniedbook{$bid}', [BookhelpController::class, 'deniedbook'])->name('deniedbook.fill');
+Route::get('/acceptbook/{bid}', [BookhelpController::class, 'acceptbook'])->name('acceptbook.fill');
+Route::get('/deniedbook{bid}', [BookhelpController::class, 'deniedbook'])->name('deniedbook.fill');
 Route::get('/propindex/{id}/{tid}', [ProposalController::class, 'index'])->name('propindex.build');
 Route::get('/propinsert/{id}', [ProposalController::class, 'makestore'])->name('makeprop.fill');
 Route::get('/propsel', [PropUserController::class, 'propuser'])->name('propuser.select');
