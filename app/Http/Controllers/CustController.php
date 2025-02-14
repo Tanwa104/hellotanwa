@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\User;
+use App\Models\User;
 use App\Models\UserAdd;
 use Session;
 
@@ -80,18 +80,31 @@ class CustController extends Controller
     public function view($id)
     {
         // dd($id);
-        $items[]=null;
+        $uid=auth()->user()->id;
+
+        $uid=auth()->user()->id;
+        
+        $itemadd[]=null;
+        $users=User::get();
+        foreach($users as $user)
+        {
+            if($uid==$user->id)
+            {
+                $items[]=$user;
+            }
+            
+        }
         $addresses=UserAdd::get();
         foreach($addresses as $address)
         {
             if(auth()->user()->id==$address->user_id)
             {
-                $items[]=$address;
+                $itemadd[]=$address;
             }
         }
         
 // dd($items);
-        return view('user_dash',compact('items','id'));
+        return view('fliter',compact('itemadd','id','items'));
     }
 
     /**

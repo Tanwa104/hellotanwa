@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use App\Models\User;
+use App\Models\UserAdd;
 use App\Models\Timeline;
 use App\Models\Helper;
 class filtercontroller extends Controller
@@ -15,7 +16,9 @@ class filtercontroller extends Controller
        
        $uid=auth()->user()->id;
         $roles=$request->role;
+        
         $request->session()->put('role', $roles);
+        $itemadd[]=null;
         $users=User::get();
         foreach($users as $user)
         {
@@ -23,9 +26,21 @@ class filtercontroller extends Controller
             {
                 $items[]=$user;
             }
+            
         }
+    
+        $addresses=UserAdd::get();
+        foreach($addresses as $address)
+        {
+            if(auth()->user()->id==$address->user_id)
+            {
+                $itemadd[]=$address;
+            }
+        }
+        $id = null;
+    
         
-        return view('fliter',compact('items'));
+        return view('fliter',compact('items','itemadd','id'));
     }
 
     public function store(Request $request)
@@ -33,6 +48,7 @@ class filtercontroller extends Controller
         
         $bool=false;
         $roles= $request->session()->get('role');
+        
         $name=$request->input('name');
         $lastname=$request->input('lastname');
         $secs=Timeline::get();
