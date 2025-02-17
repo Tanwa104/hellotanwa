@@ -1,43 +1,71 @@
-<html>
-    <head>
-        <title>Register Customer </title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    </head>
-    
-    <body style="">
-        <form method="POST" action="{{ route('signup.build') }}">
-            @csrf
-            @method('POST')
-            @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-<div class="input-group mb-3">
-  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-  <input type="text" class="form-control" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" >
-</div>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="inputGroup-sizing-default">LastName</span>
-  <input type="text" class="form-control" name="lastname" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="inputGroup-sizing-default">Email Address</span>
-  <input type="text" class="form-control" name="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$valmail}}">
-</div>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
-  <input type="text" class="form-control" name="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
+@extends('layout.master')
+@section('container')
+
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Helper Email Verification</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase">
                 
-                  <input type="submit" value="submit" class="btn btn-dark"/>
-                  
-                  </div>
-              
-        </form>
-    </body></html>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Enter</h5>
+                <h1 class="mb-5">The given details</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="row gy-4">
+
+
+                        
+                    </div>
+                </div>
+                <div class="col-md-6 wow fadeIn" data-wow-delay="0.1s">
+                    <iframe class="position-relative rounded w-100 h-100"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                        frameborder="0" style="min-height: 350px; border:0;" allowfullscreen="" aria-hidden="false"
+                        tabindex="0"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <form method="POST" action="{{ route('signup.build') }}">
+                        @csrf
+                        @method('POST')
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                            <input type="text" class="form-control" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" >
+                          </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">LastName</span>
+                            <input type="text" class="form-control" name="lastname" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                          </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Email Address</span>
+                            <input type="text" class="form-control" name="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$valmail}}">
+                          </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
+                            <input type="text" class="form-control" name="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                          </div>
+                                          
+                                            <input type="submit" value="submit" class="btn btn-dark"/>
+                                            
+                                            </div>
+                                        
+                                  </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+@endsection

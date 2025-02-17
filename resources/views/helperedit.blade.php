@@ -1,91 +1,121 @@
+@extends('layout.master')
+@section('container')
 
-<html>
-    <head>
-        <title> Edit your Profile</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    </head>
-        <body>
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        @if (\Session::has('msg'))
-    <div class="alert alert-success">
-        <ul>
-            <li>{!! \Session::get('msg') !!}</li>
-        </ul>
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Edit your profile</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase">
+                <li class="breadcrumb-item"><a class="text-white" href="{{route('help.build')}}">Back</a></li> <span class="mx-2 text-white">/</span>
+                <li class="breadcrumb-item text-white active" aria-current="page">Edit Profile</li>
+            </ol>
+        </nav>
     </div>
-@endif
+</div>
 
-            @foreach ($items as $item)
-            @php
- foreach($item->helpers as $help)
- {
-    $tid=$help->id;
- }
-@endphp
-        <form method="post" action="{{route('edhelp.changes',[$tid])}}">
+<div class="container">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    @if (\Session::has('msg'))
+        <div class="alert alert-success">
+            <ul>
+                <li>{!! \Session::get('msg') !!}</li>
+            </ul>
+        </div>
+    @endif
+
+    @foreach ($items as $item)
+        @php
+            foreach($item->helpers as $help){
+                $tid=$help->id;
+            }
+        @endphp
+
+        <form method="post" action="{{route('edhelp.changes',[$tid])}}" class="mb-5">
             @csrf
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-                <input type="text" class="form-control" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$item->name}}">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">LastName</span>
-                <input type="text" class="form-control"  name="lastname" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$item->lastname}}">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
-                <input type="text" class="form-control" name="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$item->email}}">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                <input type="password" class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Confirm Password</span>
-                <input type="password" class="form-control" name="password_confirmation" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
-                <input type="text" class="form-control" name="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$item->phone}}">
-              </div>
-             
-              <input type="submit" value="submit">
+            <div class="row mb-3">
+                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" name="name" value="{{$item->name}}" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="lastname" class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="lastname" name="lastname" value="{{$item->lastname}}" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email" name="email" value="{{$item->email}}" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+                <div class="col-sm-10">
+                    <input type="tel" class="form-control" id="phone" name="phone" value="{{$item->phone}}" required>
+                </div>
+            </div>
 
-             @foreach($item->helpers as $helper)
-             
-                <select name="roles" >
-                    <option value="Housecleaner" {{$helper->role == 'Housecleaner' ? 'selected' :  ''}}>HouseCleaner</option>
-                    <option value="childcare" {{$helper->role == 'childcare' ? 'selected' :  ''}}>ChildCare</option>
-                    <option value="houseCook" {{$helper->role == 'houseCook' ? 'selected' :  ''}}>houseCook</option>
-                </select>
-             @endforeach
-        </form>
-        <table border="1">
-           
-            @foreach($item->address as $dat)
-            <tr>
-            <td>{{$dat->address_line_1}}</td>
-            <td>{{$dat->address_line_2}}</td>
-            <td>{{$dat->city}}</td>
-            
-            <form action="{{route('edhelp.destroy',[$dat->id])}}" method="POST">
-                @csrf
-            @method("DELETE")
-            <td><input type="submit" value="delete"/></td> 
-            </form>     
-           <td><a href="{{route('edhelp.edit',[$dat->id])}}">edit</a></td>
-           </tr>
-           @endforeach
-        </table>
+            @foreach($item->helpers as $helper)
+                <div class="row mb-3">
+                    <label for="role" class="col-sm-2 col-form-label">Role</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" id="role" name="roles">
+                            <option value="Housecleaner" {{$helper->role == 'Housecleaner' ? 'selected' : ''}}>House Cleaner</option>
+                            <option value="childcare" {{$helper->role == 'childcare' ? 'selected' : ''}}>Child Care</option>
+                            <option value="houseCook" {{$helper->role == 'houseCook' ? 'selected' : ''}}>House Cook</option>
+                        </select>
+                    </div>
+                </div>
             @endforeach
-      <a href="{{route('help.build')}}">Back</a>     
-        </body>
-</html>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Submit Changes</button>
+            </div>
+        </form>
+
+        <h2 class="mt-4">Addresses</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Address Line 1</th>
+                    <th>Address Line 2</th>
+                    <th>City</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($item->address as $dat)
+                    <tr>
+                        <td>{{$dat->address_line_1}}</td>
+                        <td>{{$dat->address_line_2}}</td>
+                        <td>{{$dat->city}}</td>
+                        <td>
+                            <div class="d-flex">
+                                <a href="{{route('edhelp.edit',[$dat->id])}}" class="btn btn-sm btn-warning me-2">Edit</a>
+                                <form action="{{route('edhelp.destroy',[$dat->id])}}" method="POST">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @endforeach
+
+</div>
+
+@endsection

@@ -36,6 +36,14 @@ use App\Http\Controllers\BookhelpController;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/loguser', function () {
+    return view('loguser');
+});
+
+Route::get('/loghelp', function () {
+    return view('loghelp');
+});
 Route::get('/bvcleanuser', function () {
     return view('bvcleanuser');
 });

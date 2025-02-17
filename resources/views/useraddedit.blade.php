@@ -1,44 +1,54 @@
-<html>
-    <head>
-        <title> edit blog</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    </head>
-    <body>
-       
-    <form method="POST" action="{{route('edus.update',[$pid])}}">
-        @csrf
-        @method("PUT")
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">address line 1</span>
-            <input type="text" class="form-control" name="address1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$data->address_line_1}}">
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">address line 2</span>
-            <input type="text" class="form-control" name="address2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$data->address_line_2}}">
-          </div>
-       
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">City</span>
-            <input type="text" class="form-control" name="city" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$data->city}}">
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">State</span>
-            <input type="text" class="form-control" name="state" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$data->state}}">
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Country</span>
-            <input type="text" class="form-control" name="country" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$data->country}}">
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">zip</span>
-            <input type="text" class="form-control" name="zip" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$data->pincode}}">
-          </div>
-        <input type="submit" value="submit"/>
-       
-    </form>
-    </body>
-</html>
+@extends('layout.master')
+@section('container')
+
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Change Profile</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase">
+                <li class="breadcrumb-item"><a class="text-white" href="{{route('user.build')}}">Back</a></li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">  <form method="POST" action="{{route('edus.update',[$pid])}}" class="mb-5">
+                @csrf
+                @method("PUT")
+
+                <div class="mb-3">
+                    <label for="address1" class="form-label">Address Line 1</label>
+                    <input type="text" class="form-control" id="address1" name="address1" value="{{$data->address_line_1}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="address2" class="form-label">Address Line 2</label>
+                    <input type="text" class="form-control" id="address2" name="address2" value="{{$data->address_line_2}}">
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" name="city" value="{{$data->city}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="state" class="form-label">State</label>
+                    <input type="text" class="form-control" id="state" name="state" value="{{$data->state}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" class="form-control" id="country" name="country" value="{{$data->country}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="zip" class="form-label">Zip Code</label>
+                    <input type="text" class="form-control" id="zip" name="zip" value="{{$data->pincode}}" required>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary">Update Address</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@endsection

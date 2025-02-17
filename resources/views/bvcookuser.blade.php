@@ -6,9 +6,9 @@
                 <div class="row align-items-center g-5">
                     <div class="col-lg-6 text-center text-lg-start">
                         <h1 class="display-3 text-white animated slideInLeft">Karvae<br>Ghar ki seva</h1>
-                        <p class="text-white animated slideInLeft mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor
-                            diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem
-                            sit clita duo justo magna dolore erat amet</p>
+                        <p class="text-white animated slideInLeft mb-4 pb-2">Your everyday needs, expertly handled.
+                          Home services, simplified. Connecting you with top-rated pros. Get things done, the easy way.
+                          Trusted professionals, at your service.</p>
 
                     </div>
                     <div class="col-lg-6 text-center text-lg-end overflow-hidden">

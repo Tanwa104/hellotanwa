@@ -1,18 +1,11 @@
-@extends('layout.master')
-@section('container')
-<div class="container-xxl py-5 bg-dark hero-header mb-5">
-    <div class="container text-center my-5 pt-5 pb-4">
-        <h1 class="display-3 text-white mb-3 animated slideInDown">See request</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb justify-content-center text-uppercase">
-                
-            </ol>
-        </nav>
-    </div>
-</div>
-@php
+<html>
+    <head> <title>find Assistence</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+            </head>
+   @php
     $n=count($users);   
-    $no=count($usernanny);
+
    @endphp
    @for($i=0;$i<$n;$i++)      
 <div class="card text-center">
@@ -26,15 +19,14 @@
     {{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}<br>
     <p class="card-text">{{$usertime[$i]->weekdays}}</p>
     <table border  class="card-text">
-        <tr><th>childname</th>
-            <th>age</th>
-            <th>gender</th></tr>
+        <tr><th>description</th>
+            
 
       @php
-      $no=count($usernanny[$usertime[$i]->id]);
+      $no=count($usercook[$usertime[$i]->id]);
       @endphp
       @for($j=0;$j<$no;$j++)
-      <tr><td>{{$usernanny[$usertime[$i]->id][$j]->childname}}</td><td>{{$usernanny[$usertime[$i]->id][$j]->childage}}</td><td>{{$usernanny[$usertime[$i]->id][$j]->childgender}}</td></tr>
+      <tr><td>{{$usercook[$usertime[$i]->id][$j]->description}}</td></tr>
       
       @endfor</table>
       <a href="#" class="btn btn-primary">book</a>
@@ -44,4 +36,5 @@
     </div>
   </div><br><br>
   @endfor
-@endsection
+
+    
