@@ -49,12 +49,12 @@
                     <div class="team-item text-center rounded overflow-hidden">
                         <div class="rounded-circle overflow-hidden m-4">
                             {{-- <img class="img-fluid" src="img/team-2.jpg" alt=""> --}}
-                            <form action="" method="get">
-                                <input type="hidden" id="role" name="role" value="childcare">
-                                <input type="image" class="img-fluid" src="/img/childnanny.png" alt="Submit">
+                            <form action="{{route('bookhelp.fill')}}" method="get">
+                                
+                                <input type="image" class="img-fluid" src="/img/accept.jpg" alt="Submit">
                             </form>
                             </div>
-                        <h5 class="mb-0">Childcare</h5>
+                        <h5 class="mb-0">Accept clients</h5>
                         <small>Designation</small>
                         <div class="d-flex justify-content-center mt-3">
 

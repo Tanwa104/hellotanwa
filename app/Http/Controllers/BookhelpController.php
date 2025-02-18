@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Helper;
 use App\Models\Booking;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 class BookhelpController extends Controller
 {
@@ -39,6 +40,7 @@ class BookhelpController extends Controller
     }
     public function acceptbook($bid)
         {
+
             $ubid=$bid;
            $books= Booking::get();
            foreach($books as $book)
@@ -49,10 +51,22 @@ class BookhelpController extends Controller
                 $book->save();
                 $timeid=$book->timeline_id;
                 $helpid=$book->helper_id;
+                $userid=$book->user_id;
+                $items[]=$book;
             }
         }
             DB::table('proposals')->where('cust_timeid', $timeid)->where('helper_id', $helpid)->delete();
             DB::table('createseva')->where('timeline_id', $timeid)->delete();
+            $users= User::get();
+            foreach($users as $user)
+            {
+                if($userid==$user->id)
+                {
+                        $email=$user->email;
+                }
+            }
+            Mail::to($email)->send(new MessageUserMail($items));
+            return redirect()->back()->with('msg','you have accepted the booking');
 
 
 
@@ -73,6 +87,8 @@ class BookhelpController extends Controller
             }
             DB::table('proposals')->where('cust_timeid', $timeid)->where('helper_id', $helpid)->delete();
 
+
+            return redirect()->back()->with('msg1','you have rejected the booking');
 
         }
 

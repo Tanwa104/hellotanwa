@@ -26,7 +26,7 @@
                     <div class="dropdown-menu m-0">
                         <a href="loguser" class="dropdown-item">User</a>
                         <a href="loghelp" class="dropdown-item">Helper</a>
-                        <a href="" class="dropdown-item">Testimonial</a>
+                        {{-- <a href="" class="dropdown-item">Testimonial</a> --}}
                     </div>
                 </div>
                 @endif

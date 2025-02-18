@@ -9,98 +9,68 @@
                         <p class="text-white animated slideInLeft mb-4 pb-2">Your everyday needs, expertly handled.
                             Home services, simplified. Connecting you with top-rated pros. Get things done, the easy way.
                             Trusted professionals, at your service.</p>
-
+                       
                     </div>
                     <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                        <img class="img-fluid" src="img/hero.png" alt="">
+                        <img class="img-fluid hero-image" src="img/hero.png" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Team Start -->
-    <div class="container-xxl pt-5 pb-3">
+    <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h5 class="section-title ff-secondary text-center text-primary fw-normal">services</h5>
+                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Services</h5>
                 <h1 class="mb-5">Available</h1>
             </div>
             <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item text-center rounded overflow-hidden">
-                        <div class="rounded-circle overflow-hidden m-4">
-                            {{-- <img class="img-fluid" src="img/team-1.jpg" alt=""> --}}
-                            <form action="{{ route('fliter') }}" method="get">
-                                <input type="hidden" id="role" name="role" value="Housecleaner">
-                                <input type="image" class="img-fluid" src="/img/gharclean.png" alt="Submit">
-                            </form>
-                            </div>
-                    
-                        <h5 class="mb-0">Housecleaning</h5>
-                        <small>Designation</small>
-                        <div class="d-flex justify-content-center mt-3">
-
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded overflow-hidden">
+                        <form action="{{ route('fliter') }}" method="get">
+                            <input type="hidden" name="role" value="Housecleaner">
+                            <button type="submit" class="service-image-container">
+                                <img class="img-fluid service-image" src="/img/gharclean.png" alt="House Cleaning">
+                            </button>
+                        </form>
+                        <div class="p-4 text-center">
+                            <h5 class="mb-3">Housecleaning</h5>
+                            <p>Keep your home sparkling clean with our professional house cleaning services.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item text-center rounded overflow-hidden">
-                        <div class="rounded-circle overflow-hidden m-4">
-                            {{-- <img class="img-fluid" src="img/team-2.jpg" alt=""> --}}
-                            <form action="{{ route('fliter') }}" method="get">
-                                <input type="hidden" id="role" name="role" value="childcare">
-                                <input type="image" class="img-fluid" src="/img/childnanny.png" alt="Submit">
-                            </form>
-                            </div>
-                        <h5 class="mb-0">Childcare</h5>
-                        <small>Designation</small>
-                        <div class="d-flex justify-content-center mt-3">
-
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item rounded overflow-hidden">
+                         <form action="{{ route('fliter') }}" method="get">
+                            <input type="hidden" name="role" value="childcare">
+                            <button type="submit" class="service-image-container">
+                                <img class="img-fluid service-image" src="/img/childnanny.png" alt="Childcare">
+                            </button>
+                        </form>
+                        <div class="p-4 text-center">
+                            <h5 class="mb-3">Childcare</h5>
+                            <p>Trust our experienced childcare providers to care for your little ones.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item text-center rounded overflow-hidden">
-                        <div class="rounded-circle overflow-hidden m-4">
-                            {{-- <img class="img-fluid" src="img/team-3.jpg" alt=""> --}}
-                            <form action="{{ route('fliter') }}" method="get">
-                                <input type="hidden" id="role3" name="role" value="houseCook">
-                                <input type="image" class="img-fluid" src="/img/housecook.png" alt="Submit">
-                            </form>
-                            </div>
-                        <h5 class="mb-0">Homecook</h5>
-                        <small>Designation</small>
-                        <div class="d-flex justify-content-center mt-3">
-
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item rounded overflow-hidden">
+                         <form action="{{ route('fliter') }}" method="get">
+                            <input type="hidden" name="role" value="houseCook">
+                            <button type="submit" class="service-image-container">
+                                <img class="img-fluid service-image" src="/img/housecook.png" alt="Home Cook">
+                            </button>
+                        </form>
+                        <div class="p-4 text-center">
+                            <h5 class="mb-3">Home Cook</h5>
+                            <p>Enjoy delicious, home-cooked meals prepared by our talented chefs.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    <!-- Team End -->
-
-
-
-
-
-
-    <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 @endsection
