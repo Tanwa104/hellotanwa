@@ -58,7 +58,7 @@ class bookcontroller extends Controller
                     $helpid[]=$book->helper_id;
                     $timeid[]=$book->timeline_id;
                     $addid[]=$book->useradd_id;
-                    
+                    $ibook[]=$book;
                 
                 }
             }
@@ -109,7 +109,7 @@ class bookcontroller extends Controller
             }
            
 
-return view('bookview',compact('role','items','itime','iadd'));
+return view('bookview',compact('role','items','itime','iadd','ibook'));
 
             
             

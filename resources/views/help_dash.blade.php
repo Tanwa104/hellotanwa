@@ -65,12 +65,12 @@
                     <div class="team-item text-center rounded overflow-hidden">
                         <div class="rounded-circle overflow-hidden m-4">
                             {{-- <img class="img-fluid" src="img/team-3.jpg" alt=""> --}}
-                            <form action="" method="get">
+                            <form action="{{route('rate.see')}}" method="get">
                                 <input type="hidden" id="role3" name="role" value="houseCook">
-                                <input type="image" class="img-fluid" src="/img/housecook.png" alt="Submit">
+                                <input type="image" class="img-fluid" src="/img/reviews.jpg" alt="Submit">
                             </form>
                             </div>
-                        <h5 class="mb-0">Homecook</h5>
+                        <h5 class="mb-0">Veiw ratings</h5>
                         <small>Designation</small>
                         <div class="d-flex justify-content-center mt-3">
 

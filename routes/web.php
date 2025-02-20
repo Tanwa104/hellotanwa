@@ -20,6 +20,8 @@ use App\Http\Controllers\AcceptMailController;
 use App\Http\Controllers\OtpController;
 use App\Http\Controllers\bookcontroller;
 use App\Http\Controllers\BookhelpController;
+ use App\Http\Controllers\RatingController;
+ use App\Http\Controllers\HelpRateViewController;
 
 
 /*
@@ -140,6 +142,8 @@ Route::resource('newc', NewClientController::class);
 Route::resource('cust', CustController::class)->names(['index'=> 'user.build']);;
 Route::resource('add', UserAddressController::class);
 Route::resource('help', helpController::class)->names(['index'=> 'help.build']);;
+Route::get('/rating/{bid}', [RatingController::class, 'add_rate'])->name('rate.build');
+Route::get('/rate-see', [HelpRateViewController::class, 'view_rate'])->name('rate.see');
 Route::get('/cleaner', [CleanerController::class, 'cleaner'])->name('clean');
 Route::get('/nanny', [CleanerController::class, 'nanny'])->name('nanny');
 Route::get('/cook', [CleanerController::class, 'cook'])->name('cook');

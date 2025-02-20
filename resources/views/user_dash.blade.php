@@ -18,7 +18,9 @@
             </div>
         </div>
     </div>
-
+    @if (session('message'))
+    <div class="alert" style="background-color:green;color:white">{{ session('message') }}</div>
+@endif
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
