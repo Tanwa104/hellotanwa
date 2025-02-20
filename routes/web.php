@@ -121,6 +121,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/book-view', [bookcontroller::class, 'viewbook'])->name('booking.select');
 Route::get('/viewpro/{id}', [ViewProfileController::class, 'index'])->name('viewpro.index');
 Route::get('/cust-view/{id}', [CustController::class, 'view'])->name('cust.view');
 Route::get('/addarea', [NewClientController::class, 'addarea'])->name('area.fill');

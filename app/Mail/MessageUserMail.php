@@ -19,7 +19,8 @@ class MessageUserMail extends Mailable
     public $items;
     public function __construct($items)
     {
-        $this->items->$items;
+        $item1=json_decode($items);
+        $this->items=$item1;
     }
 
     /**
@@ -38,7 +39,7 @@ class MessageUserMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.sendmsg',
         );
     }
 

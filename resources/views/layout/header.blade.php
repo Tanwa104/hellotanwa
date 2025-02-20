@@ -33,7 +33,7 @@
                 @if(auth()->user()!=null)
                 @if(auth()->user()->role_id==1)
                 <a href="{{route('edus.index')}}" class="nav-item nav-link">Edit Profile</a>
-                <a href="" class="nav-item nav-link">Bookings</a>
+                <a href="{{route('booking.select')}}" class="nav-item nav-link">Bookings</a>
                 <a href="{{route('propuser.select')}}" class="nav-item nav-link">view proposals</a>
                 
             </div>
