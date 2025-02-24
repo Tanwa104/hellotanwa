@@ -7,11 +7,27 @@
 <body>
 <div class="container-xxl position-relative p-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-        <a href="" class="navbar-brand p-0">
+        {{-- @if(auth()->user()==null)
+        <a href="{{}}" class="navbar-brand p-0">
             <h1 class="text-primary m-0">GruhSeva</h1>
             <!-- <img src="img/logo.png" alt="Logo"> -->
-        </a>
+        </a> --}}
+       {{-- @endif --}}
+       @if(auth()->user()!=null)
+       @if(auth()->user()->role_id==1)
+       <a href="{{route('user.build')}}" class="navbar-brand p-0">
+           <h1 class="text-primary m-0">GruhSeva</h1>
+           <!-- <img src="img/logo.png" alt="Logo"> -->
+       </a>
+       @endif
+       @if(auth()->user()->role_id==2)
+       <a href="{{route('help.build')}}" class="navbar-brand p-0">
+           <h1 class="text-primary m-0">GruhSeva</h1>
+           <!-- <img src="img/logo.png" alt="Logo"> -->
+       </a>
        
+       @endif
+      @endif
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="fa fa-bars"></span>
         </button>

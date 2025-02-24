@@ -1,54 +1,145 @@
 @extends('layout.master')
 @section('container')
-    <div class="container-xxl bg-white p-0">
-        <div class="container-xxl py-5 bg-dark hero-header mb-5">
-            <div class="container my-5 py-5">
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-6 text-center text-lg-start">
-                        <h1 class="display-3 text-white animated slideInLeft">Karvae<br>Ghar ki seva</h1>
-                        <p class="text-white animated slideInLeft mb-4 pb-2">Your everyday needs, expertly handled.
-                          Home services, simplified. Connecting you with top-rated pros. Get things done, the easy way.
-                          Trusted professionals, at your service.</p>
 
-                    </div>
-                    <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                        <img class="img-fluid" src="img/hero.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
+<style>
+  
+    .card {
+        margin-top: 30px; /* Adjusted margin */
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #f0f0f0; /* Light gray */
+        padding: 15px;
+        font-weight: bold;
+        text-align: center; /* Center header text */
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .info-row { /* Style for each info row */
+        display: flex;
+        align-items: center; /* Vertically align items */
+        margin-bottom: 10px;
+    }
+
+    .info-label { /* Style for labels (name, city, time) */
+        font-weight: bold;
+        width: 120px; /* Set a fixed width for labels */
+        margin-right: 10px;
+    }
+
+    .info-value { /* Style for values */
+        flex-grow: 1; /* Allow values to take up remaining space */
+    }
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px; /* Increased padding */
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #eee; /* Lighter gray for table header */
+        font-weight: bold;
+    }
+
+    .highlight-message {
+        background-color: #ffc107; /* Amber/yellow */
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+        margin-top: 20px;
+        border-radius: 5px;
+    }
+
+    .card-footer {
+        padding: 15px;
+        background-color: #f0f0f0;
+        text-align: right;
+    }
+
+    .btn-back {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+</style>
+
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">View your request</h1>
     </div>
+</div>
 
-    <div class="card text-center">
+<div class="container">
+    <div class="card">
         <div class="card-header">
-          @php
-          $no1=count($us)
-          @endphp
-          View the proposals made by the helpers
+            View the proposals made by the helpers
         </div>
         <div class="card-body">
-           
-          <h5 class="card-title">{{$itemadd->name}}</h5>
-          <p class="card-text">{{$city}}</p>
-          {{ \Carbon\Carbon::parse($us[$no1-1]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($us[$no1-1]->end_time)->format('g:i A') }}
-        <p class="card-text">{{$us[$no1-1]->weekdays}}</p>
-          <table border  class="card-text">
-            <tr><th>childname</th>
-                <th>age</th>
-                <th>gender</th></tr>
-          @for($i=0;$i<$no;$i++)
-          <tr><td>{{$items[$i]->childname}}</td><td>{{$items[$i]->childage}}</td><td>{{$items[$i]->childgender}}</td></tr>
-          @endfor
-          </table>
-          <p class="card-text" style="background-color: orange;color:white"> your request has been registered and you will get the proposals soon<br>
-            go to view proposals to see proposals made
-          </p>
+            @php
+            $no1=count($us)
+            @endphp
+
+            <div class="info-row">
+                <div class="info-label">Name:</div>
+                <div class="info-value">{{$itemadd->name}}</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">City:</div>
+                <div class="info-value">{{$city}}</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Time:</div>
+                <div class="info-value">
+                    {{ \Carbon\Carbon::parse($us[$no1-1]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($us[$no1-1]->end_time)->format('g:i A') }}
+                    <br>
+                    {{$us[$no1-1]->weekdays}}
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Child Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for($i=0;$i<$no;$i++)
+                    <tr>
+                        <td>{{$items[$i]->childname}}</td>
+                        <td>{{$items[$i]->childage}}</td>
+                        <td>{{$items[$i]->childgender}}</td>
+                    </tr>
+                    @endfor
+                </tbody>
+            </table>
+
+            <p class="highlight-message">
+                Your request has been registered and you will get the proposals soon.<br>
+                Go to view proposals to see proposals made.
+            </p>
         </div>
-        <div class="card-footer text-body-secondary">
-          <a href="{{route('user.build')}}">Back</a>     
-    
-              </div>
-      </div>
-    </html>
-    
-    @endsection
+        <div class="card-footer">
+            <a href="{{route('user.build')}}" class="btn-back">Back</a>
+        </div>
+    </div>
+</div>
+
+@endsection

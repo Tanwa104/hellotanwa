@@ -152,10 +152,23 @@
 
 /*** Hero Header ***/
 .hero-header {
-    background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .9)), url(../img/bg-hero.jpg);
+    background: linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .7)), url(../img/bg-hero.jpg); /* Adjust opacity here */
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: 100px 0; /* Add some padding */
+}
+
+.hero-header h1 {
+    font-size: 3rem; /* Adjust font size */
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+}
+
+.hero-header .breadcrumb {
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
 .hero-header img {

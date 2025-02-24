@@ -1,23 +1,17 @@
 @extends('layout.master')
 @section('container')
-    <div class="container-xxl bg-white p-0">
-        <div class="container-xxl py-5 bg-dark hero-header mb-5">
-            <div class="container my-5 py-5">
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-6 text-center text-lg-start">
-                        <h1 class="display-3 text-white animated slideInLeft">Karvae<br>Ghar ki seva</h1>
-                        <p class="text-white animated slideInLeft mb-4 pb-2">Your everyday needs, expertly handled.
-                            Home services, simplified. Connecting you with top-rated pros. Get things done, the easy way.
-                            Trusted professionals, at your service.</p>
-                       
-                    </div>
-                    <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                        <img class="img-fluid hero-image" src="img/hero.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
+
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Karvae Ghar ki Seva</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase">
+                
+            </ol>
+        </nav>
     </div>
+</div>
+
     @if (session('message'))
     <div class="alert" style="background-color:green;color:white">{{ session('message') }}</div>
 @endif
@@ -75,4 +69,5 @@
     </div>
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+    
 @endsection
