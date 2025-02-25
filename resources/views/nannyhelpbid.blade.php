@@ -10,6 +10,64 @@
         </nav>
     </div>
 </div>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  City and area filter
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">city and area filter</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="GET" action="{{route('area.fill')}}">
+          <div>
+              <div class="text-center">
+               <label for="city">Enter the city</label>
+               <input type="text" id="city" name="city1" required>  
+          <label for="textbox-count">Enter the number of areas: </label>
+          <input type="number" name="textbox-count" id="textbox-count" min="1" placeholder="Number of textboxes" ><br><br>
+          <button onclick="addTextboxes()">Enter areas</button><br><br>
+      
+          <div id="textbox-container" class="textbox-container"></div><br><br>
+
+          <input type="submit" value="submit"/>
+          </div>
+          </div>
+          <script>
+              function addTextboxes() {
+                  // Get the number of textboxes to create
+                  event.preventDefault();
+                  const count = document.getElementById('textbox-count').value;
+                  const container = document.getElementById('textbox-container');
+                  
+                  // Clear the container before adding new textboxes
+                  container.innerHTML = '';
+                  
+                  // Add the specified number of textboxes
+                  for (let i = 0; i < count; i++) {
+                      const input = document.createElement('input');
+                      input.type = 'text';
+                      input.name=`city[${i}]`;
+                      input.placeholder = `Area ${i + 1}`;
+                      container.appendChild(input);
+                      container.appendChild(document.createElement('br'));  // Adding line breaks for better layout
+                  }
+              }
+          </script>
+
+          <div></div>
+      
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 @php
     $n=count($users);   
     $no=count($usernanny);

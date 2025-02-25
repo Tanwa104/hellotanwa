@@ -33,6 +33,7 @@ class UserAddressController extends Controller
         
         $add1=$request->input('address1');
         $add2=$request->input('address2');
+        $area=$request->input('area');
         $city=$request->input('city');
         $state=$request->input('state');
         $country=$request->input('country');
@@ -40,6 +41,7 @@ class UserAddressController extends Controller
         $add->user_id=$uid;
         $add->address_line_1=$add1;
         $add->address_line_2=$add2;
+        $add->area=$area;
         $add->city=$city;
         $add->state=$state;
         $add->country=$country;

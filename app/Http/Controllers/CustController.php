@@ -55,6 +55,7 @@ class CustController extends Controller
             if($add->id==$id)
             {
                 $addid=$add->id;
+                $area=$add->area;
                 $city=$add->city;
                 $add1=$add->address_line_1;
                 $add2=$add->address_line_2;
@@ -62,7 +63,7 @@ class CustController extends Controller
                 $country=$add->country;
             }
         }
-        $addstring=$add1." ".$add2." ".$city." ".$state." ".$country;
+        $addstring=$add1." ".$add2." ".$area." ".$city." ".$state." ".$country;
 
         $request->session()->put('addstr', $addstring);
         $request->session()->put('addid', $addid);

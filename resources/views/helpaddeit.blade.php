@@ -6,9 +6,7 @@
         <h1 class="display-3 text-white mb-3 animated slideInDown">Edit Address</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center text-uppercase">
-                <li class="breadcrumb-item"><a class="text-white" href="{{route('help.build')}}">Back</a></li>
-                <li class="breadcrumb-item text-white"><a class="text-white" href="{{route('edhelp.edit', $data->id)}}">Edit Profile</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">Edit Address</li>
+               
             </ol>
         </nav>
     </div>
@@ -25,6 +23,10 @@
                 <div class="mb-3">
                     <label for="address2" class="form-label">Address Line 2</label>
                     <input type="text" class="form-control" id="address2" name="address2" value="{{$data->address_line_2}}">
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">Area</label>
+                    <input type="text" class="form-control" id="area" name="area" value="{{$data->area}}" required>
                 </div>
                 <div class="mb-3">
                     <label for="city" class="form-label">City</label>

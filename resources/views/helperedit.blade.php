@@ -6,8 +6,7 @@
         <h1 class="display-3 text-white mb-3 animated slideInDown">Edit your profile</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center text-uppercase">
-                <li class="breadcrumb-item"><a class="text-white" href="{{route('help.build')}}">Back</a></li> <span class="mx-2 text-white">/</span>
-                <li class="breadcrumb-item text-white active" aria-current="page">Edit Profile</li>
+                
             </ol>
         </nav>
     </div>

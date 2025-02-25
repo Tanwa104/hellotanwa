@@ -6,7 +6,7 @@
         <h1 class="display-3 text-white mb-3 animated slideInDown">Change profile</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center text-uppercase">
-                <li class="breadcrumb-item"><a class="text-white" href="{{route('user.build')}}">Back</a></li>
+                
             </ol>
         </nav>
     </div>
@@ -71,6 +71,7 @@
                 <tr>
                     <th>Address Line 1</th>
                     <th>Address Line 2</th>
+                    <th>Area</th>
                     <th>City</th>
                     <th>Updated At</th>
                     <th>Actions</th>
@@ -81,6 +82,7 @@
                     <tr>
                         <td>{{$dat->address_line_1}}</td>
                         <td>{{$dat->address_line_2}}</td>
+                        <td>{{$dat->area}}</td>
                         <td>{{$dat->city}}</td>
                         <td>{{$dat->updated_at}}</td>
                         <td>

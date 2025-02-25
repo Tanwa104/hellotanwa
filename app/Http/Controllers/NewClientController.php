@@ -105,14 +105,20 @@ return view('multiadd');
   public function addarea(Request $request)
   {
     $uid=auth()->user()->id;
+
     $areas=new Area();
     $ui=$request->input('textbox-count');
-    
+    $city1=$request->input('city1');
+$areas->city=$city1;
     $cities = $request->input('city');
+    
 $areas->user_id=$uid;
+$areas->city=$city1;
     $areas->areas=$cities;
     $areas->save();
-    $message = 'Your action was successful!';
+    $lasare= Area::latest()->first();
+    
+    return redirect()->back()->with('array', [$lasare]);
     
     
     

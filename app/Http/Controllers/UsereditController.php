@@ -111,6 +111,8 @@ class UsereditController extends Controller
         $uid->address_line_1=$add1;
         $add2=$request->input('address2');
         $uid->address_line_2=$add2;
+        $area=$request->input('area');
+        $uid->area=$area;
         $city=$request->input('city');
         $uid->city=$city;
         $state=$request->input('state');

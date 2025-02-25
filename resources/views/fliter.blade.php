@@ -41,7 +41,7 @@
                                             
                                             @if ($item != null)
                                                 <option value="{{ $item->id }}" {{ $item->id == $id   ? 'selected' : '' }}>
-                                                    {{ $item->address_line_1 }}&nbsp;{{ $item->address_line_2 }}&nbsp;{{ $item->city }}</option>
+                                                    {{ $item->address_line_1 }}&nbsp;{{ $item->address_line_2 }}&nbsp;{{$item->area}}&nbsp;{{ $item->city }}</option>
                                             @endif
                                         @endforeach
                                        
@@ -79,12 +79,17 @@
                         <label for="floatingInput">Address line 2</label>
                     </div>
                     <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="area" placeholder="name">
+                        <label for="floatingInput">area</label>
+                    </div>
+                    <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingInput" name="city" placeholder="name">
                         <label for="floatingInput">city</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingInput" name="state" placeholder="name">
                         <label for="floatingInput">State</label>
+                    </div>
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingInput" name="country"
                                 placeholder="name">
