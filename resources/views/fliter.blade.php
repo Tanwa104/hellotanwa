@@ -99,12 +99,12 @@
                             <input type="text" class="form-control" id="floatingInput" name="zip"
                                 placeholder="name">
                             <label for="floatingInput">Zipcode</label>
+                            <input type="submit" class="btn btn-primary">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" value="Save Changes">
+
                 </div>
             </form>
         </div>

@@ -7,7 +7,7 @@ use Illuminate\Support\Carbon;
 use App\Models\Timeline;
 use App\Models\User;
 use App\Models\Area;
-
+use App\Models\createseva;
 class NewClientController extends Controller
 {
     /**
@@ -104,21 +104,50 @@ return view('multiadd');
 
   public function addarea(Request $request)
   {
-    $uid=auth()->user()->id;
+    // dd($request->all());
+    $crea=createseva::with('address')->first();
+    // dd($crea);
+    // $createSeva = createseva::where('roletype','childcare')->has('address')
+    // ->with(['address' => function($q) use($request){
+    //     $q ->where('city', 'LIKE', '%' . $request->city1 . '%');
+    //     foreach($request->city as $item){
+    //         $q ->where('area', 'LIKE', '%' . $item . '%');
+    //     }
+    // }])->get();
+    $createSeva = CreateSeva::where('roletype', 'childcare')
+    ->whereHas('address', function ($q) use ($request) {
+        $q->where('city', 'LIKE', '%' . $request->city1 . '%');
 
-    $areas=new Area();
-    $ui=$request->input('textbox-count');
-    $city1=$request->input('city1');
-$areas->city=$city1;
-    $cities = $request->input('city');
+        if (!empty($request->city) && is_array($request->city)) {
+            $q->where(function ($query) use ($request) {
+                foreach ($request->city as $item) {
+                    $query->orWhere('area', 'LIKE', '%' . $item . '%');
+                }
+            });
+        }
+    })
+    ->with(['address' => function ($q) use ($request) {
+        $q->where('city', 'LIKE', '%' . $request->city1 . '%');
+
+        if (!empty($request->city) && is_array($request->city)) {
+            $q->where(function ($query) use ($request) {
+                foreach ($request->city as $item) {
+                    $query->orWhere('area', 'LIKE', '%' . $item . '%');
+                }
+            });
+        }
+    }])
+    ->get();
+
     
-$areas->user_id=$uid;
-$areas->city=$city1;
-    $areas->areas=$cities;
-    $areas->save();
-    $lasare= Area::latest()->first();
-    
-    return redirect()->back()->with('array', [$lasare]);
+
+    // createSeva::with(['products' => function ($q) use($wholesalers_id,$r){
+    //     $q->when($r->keyword, function ($query) use($r){
+    //         $query->where('name', 'LIKE', '%' . $r->keyword . '%');
+    //     });
+
+
+    return redirect()->back()->with(['data' => $createSeva]);
     
     
     
