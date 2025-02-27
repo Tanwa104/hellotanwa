@@ -27,8 +27,26 @@
                     <form method="GET" action="{{ route('area.fill') }}">
                         <div>
                             <div class="text-center">
-                                <label for="city">Enter the city</label>
-                                <input type="text" id="city" name="city1" required>
+                                <div class="form-group mb-3">
+
+                                    <select  id="country-dropdown" class="form-control">
+            
+                                        <option value="">-- Select City --</option>
+            
+                                        @foreach ($data as $dat)
+            
+                                        <option value="{{$dat}}">
+            
+                                            {{$dat}}
+            
+                                        </option>
+            
+                                        @endforeach
+            
+                                    </select>
+            
+                                </div>
+                                
                                 <label for="textbox-count">Enter the number of areas: </label>
                                 <input type="number" name="textbox-count" id="textbox-count" min="1"
                                     placeholder="Number of textboxes"><br><br>
@@ -54,7 +72,7 @@
                                     const input = document.createElement('input');
                                     input.type = 'text';
                                     input.name = `city[${i}]`;
-                                    input.placeholder = `Area ${i + 1}`;
+                                    input.placeholder = `please enter correct name`;
                                     container.appendChild(input);
                                     container.appendChild(document.createElement('br')); // Adding line breaks for better layout
                                 }

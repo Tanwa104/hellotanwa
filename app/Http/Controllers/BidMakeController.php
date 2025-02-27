@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Helper;
 use App\Models\Nannyreq;
 use App\Models\Cookreq;
+use App\Models\UserAdd;
+use App\Models\Booking;
+use App\Models\Timelines;
 class BidMakeController extends Controller
 {
     public function cleanhelper()
@@ -23,6 +26,7 @@ class BidMakeController extends Controller
         
         if($helper->role=="Housecleaner")
         {
+            
             $users = DB::table('createseva')
             ->leftJoin('users', 'users.id', '=', 'createseva.user_id')
             ->where('createseva.roletype', '=', 'Housecleaner')
@@ -42,7 +46,9 @@ class BidMakeController extends Controller
             ->leftJoin('cleanerreq', 'cleanerreq.timeline_id', '=', 'createseva.timeline_id')
             ->where('createseva.roletype', '=', 'Housecleaner')
             ->get();
-          return view('cleanhelpbid',compact('users','useradd','usertime','userclean')); 
+            $data = Useradd::distinct('city')->pluck('city');
+
+          return view('cleanhelpbid',compact('users','useradd','usertime','userclean','data')); 
 
         }
 
@@ -51,6 +57,30 @@ class BidMakeController extends Controller
   
         if($helper->role=="childcare")
         {  
+            $books=Booking::get();
+            foreach($books as $book)
+            {
+                
+                if($book->helper_id==$helper->id)
+                {
+                    
+                    $bhelp=$book;
+                    $timeid=$book->timeline_id;
+                }
+            }
+            $times=Timeline::get();
+            foreach ($times as $time)
+            {
+                if($timeid==$time->id)
+                {
+                        $start=$time->start_time;
+                        $end=$time->end_time;
+                } 
+
+            }
+            
+            
+            
         $users = DB::table('createseva')
         ->leftJoin('users', 'users.id', '=', 'createseva.user_id')
         ->where('createseva.roletype', '=', 'childcare')
@@ -70,8 +100,12 @@ class BidMakeController extends Controller
         ->get()
         ->groupBy('timeline_id');
       
-      
-      return view('nannyhelpbid',compact('users','useradd','usertime','usernanny')); 
+        $data = Useradd::distinct('city')->pluck('city');
+
+        
+
+    
+      return view('nannyhelpbid',compact('users','useradd','usertime','usernanny','data')); 
     
 }
 if($helper->role=="houseCook")
@@ -95,8 +129,10 @@ $usercook = Cookreq::query()
 ->get()
 ->groupBy('timeline_id');
 
+$data = Useradd::distinct('city')->pluck('city');
 
-return view('cookhelpbid',compact('users','useradd','usertime','usercook')); 
+return view('cookhelpbid',compact('users','useradd','usertime','usercook','data')); 
+
 
 }
 }

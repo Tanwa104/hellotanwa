@@ -102,6 +102,56 @@ $sec->save();
 return view('multiadd');
 }
 
+  public function addareaclean(Request $request)
+  {
+    // dd($request->all());
+    $crea=createseva::with('address')->first();
+    // dd($crea);
+    // $createSeva = createseva::where('roletype','childcare')->has('address')
+    // ->with(['address' => function($q) use($request){
+    //     $q ->where('city', 'LIKE', '%' . $request->city1 . '%');
+    //     foreach($request->city as $item){
+    //         $q ->where('area', 'LIKE', '%' . $item . '%');
+    //     }
+    // }])->get();
+    $createSeva = CreateSeva::where('roletype', 'Housecleaner')
+    ->whereHas('address', function ($q) use ($request) {
+        $q->where('city', 'LIKE', '%' . $request->city1 . '%');
+
+        if (!empty($request->city) && is_array($request->city)) {
+            $q->where(function ($query) use ($request) {
+                foreach ($request->city as $item) {
+                    $query->orWhere('area', 'LIKE', '%' . $item . '%');
+                }
+            });
+        }
+    })
+    ->with(['address' => function ($q) use ($request) {
+        $q->where('city', 'LIKE', '%' . $request->city1 . '%');
+
+        if (!empty($request->city) && is_array($request->city)) {
+            $q->where(function ($query) use ($request) {
+                foreach ($request->city as $item) {
+                    $query->orWhere('area', 'LIKE', '%' . $item . '%');
+                }
+            });
+        }
+    }])
+    ->get();
+
+    
+
+    // createSeva::with(['products' => function ($q) use($wholesalers_id,$r){
+    //     $q->when($r->keyword, function ($query) use($r){
+    //         $query->where('name', 'LIKE', '%' . $r->keyword . '%');
+    //     });
+
+
+    return redirect()->back()->with(['data' => $createSeva]);
+    
+    
+    
+  }
   public function addarea(Request $request)
   {
     // dd($request->all());
@@ -115,6 +165,57 @@ return view('multiadd');
     //     }
     // }])->get();
     $createSeva = CreateSeva::where('roletype', 'childcare')
+    ->whereHas('address', function ($q) use ($request) {
+        $q->where('city', 'LIKE', '%' . $request->city1 . '%');
+
+        if (!empty($request->city) && is_array($request->city)) {
+            $q->where(function ($query) use ($request) {
+                foreach ($request->city as $item) {
+                    $query->orWhere('area', 'LIKE', '%' . $item . '%');
+                }
+            });
+        }
+    })
+    ->with(['address' => function ($q) use ($request) {
+        $q->where('city', 'LIKE', '%' . $request->city1 . '%');
+
+        if (!empty($request->city) && is_array($request->city)) {
+            $q->where(function ($query) use ($request) {
+                foreach ($request->city as $item) {
+                    $query->orWhere('area', 'LIKE', '%' . $item . '%');
+                }
+            });
+        }
+    }])
+    ->get();
+
+    
+
+    // createSeva::with(['products' => function ($q) use($wholesalers_id,$r){
+    //     $q->when($r->keyword, function ($query) use($r){
+    //         $query->where('name', 'LIKE', '%' . $r->keyword . '%');
+    //     });
+
+
+    return redirect()->back()->with(['data' => $createSeva]);
+    
+    
+    
+  }
+
+  public function addareacook(Request $request)
+  {
+    // dd($request->all());
+    $crea=createseva::with('address')->first();
+    // dd($crea);
+    // $createSeva = createseva::where('roletype','childcare')->has('address')
+    // ->with(['address' => function($q) use($request){
+    //     $q ->where('city', 'LIKE', '%' . $request->city1 . '%');
+    //     foreach($request->city as $item){
+    //         $q ->where('area', 'LIKE', '%' . $item . '%');
+    //     }
+    // }])->get();
+    $createSeva = CreateSeva::where('roletype', 'houseCook')
     ->whereHas('address', function ($q) use ($request) {
         $q->where('city', 'LIKE', '%' . $request->city1 . '%');
 
