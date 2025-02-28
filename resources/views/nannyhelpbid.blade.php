@@ -11,7 +11,7 @@
         </div>
     </div>
     @php
-
+        use Carbon\Carbon;
     @endphp
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         City and area filter
@@ -29,24 +29,22 @@
                             <div class="text-center">
                                 <div class="form-group mb-3">
 
-                                    <select  id="country-dropdown" class="form-control">
-            
+                                    <select id="country-dropdown" class="form-control">
+
                                         <option value="">-- Select City --</option>
-            
+
                                         @foreach ($data as $dat)
-            
-                                        <option value="{{$dat}}">
-            
-                                            {{$dat}}
-            
-                                        </option>
-            
+                                            <option value="{{ $dat }}">
+
+                                                {{ $dat }}
+
+                                            </option>
                                         @endforeach
-            
+
                                     </select>
-            
+
                                 </div>
-                                
+
                                 <label for="textbox-count">Enter the number of areas: </label>
                                 <input type="number" name="textbox-count" id="textbox-count" min="1"
                                     placeholder="Number of textboxes"><br><br>
@@ -94,100 +92,125 @@
         $las = session()->get('data');
         $n = count($users);
         $no = count($usernanny);
-        
 
     @endphp
-    @if ($las != null)
-       
-       @php
-           $noi=count($las);
-       @endphp
-        @for ($i = 0; $i < $n; $i++)
-          
-                @for ($j = 0; $j < $noi; $j++)
-                @if ($useradd[$i]->city == $las[$j]->address->city)
-                    @if ($las[$j]->address->area == $useradd[$i]->area)
-                        <div class="card text-center">
-                            <div class="card-header">
-                                Find Assistence
-                            </div>
-                            <div class="card-body">
-                               
-                                <h5 class="card-title">{{ $users[$i]->name }}&nbsp;{{ $users[$i]->lastname }}</h5>
-                                <p>{{ $useradd[$i]->address_line_1 }}&nbsp;{{ $useradd[$i]->address_line_2 }}&nbsp;{{ $useradd[$i]->area }}&nbsp;{{ $useradd[$i]->city }}&nbsp;{{ $useradd[$i]->state }}
-                                </p>
-                                {{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}<br>
-                                <p class="card-text">{{ $usertime[$i]->weekdays }}</p>
-                                <table border class="card-text">
-                                    <tr>
-                                        <th>childname</th>
-                                        <th>age</th>
-                                        <th>gender</th>
-                                    </tr>
 
-                                    @php
-                                        $no = count($usernanny[$usertime[$i]->id]);
-                                    @endphp
-                                    @for ($j = 0; $j < $no; $j++)
+    @if ($las != null)
+
+
+        @php
+            $noi = count($las);
+            // $no2 = count($btime);
+         @endphp
+         @for ($i = 0; $i < $n; $i++)
+            {{-- @php
+        //         $ustart = Carbon::parse($usertime[$i]->start_time);
+        //         $uend = Carbon::parse($usertime[$i]->end_time);
+        //         $string1 = $usertime[$i]->weekdays;
+        //         $uweek = explode(',', $string1);
+        //     @endphp
+        //     @for ($k = 0; $k < $no2; $k++)
+        //         @php
+        //             $start = Carbon::parse($time[$k]->start_time);
+        //             $end = Carbon::parse($time[$k]->end_time);
+        //             $string2 = $time[$k]->weekdays;
+        //             $week = explode(',', $string2);
+        //             $hasMatch = collect($uweek)->intersect($week);
+        //         @endphp --}}
+
+
+                {{-- @if ($ustart->lessThanOrEqualTo($end) && $uend->greaterThanOrEqualTo($start) && $hasMatch->isNotEmpty())
+                    hidden
+                @endif --}}
+                @for ($j = 0; $j < $noi; $j++)
+                    @if ($useradd[$i]->city == $las[$j]->address->city)
+                        @if ($las[$j]->address->area == $useradd[$i]->area)
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    Find Assistence
+                                </div>
+                                <div class="card-body">
+
+                                    <h5 class="card-title">{{ $users[$i]->name }}&nbsp;{{ $users[$i]->lastname }}</h5>
+                                    <p>{{ $useradd[$i]->address_line_1 }}&nbsp;{{ $useradd[$i]->address_line_2 }}&nbsp;{{ $useradd[$i]->area }}&nbsp;{{ $useradd[$i]->city }}&nbsp;{{ $useradd[$i]->state }}
+                                    </p>
+                                    {{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}<br>
+                                    <p class="card-text">{{ $usertime[$i]->weekdays }}</p>
+                                    <table border class="card-text">
                                         <tr>
-                                            <td>{{ $usernanny[$usertime[$i]->id][$j]->childname }}</td>
-                                            <td>{{ $usernanny[$usertime[$i]->id][$j]->childage }}</td>
-                                            <td>{{ $usernanny[$usertime[$i]->id][$j]->childgender }}</td>
+                                            <th>childname</th>
+                                            <th>age</th>
+                                            <th>gender</th>
                                         </tr>
-                                    @endfor
-                                </table>
-                                <a href="#" class="btn btn-primary">book</a>
-                            </div>
-                            <div class="card-footer text-body-secondary">
-                                <a
-                                    href="{{ route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id]) }}">make
-                                    proposal</a>
-                            </div>
-                        </div><br><br>
-                    @endif
+
+                                        @php
+                                            $no = count($usernanny[$usertime[$i]->id]);
+                                        @endphp
+                                        @for ($j = 0; $j < $no; $j++)
+                                            <tr>
+                                                <td>{{ $usernanny[$usertime[$i]->id][$j]->childname }}</td>
+                                                <td>{{ $usernanny[$usertime[$i]->id][$j]->childage }}</td>
+                                                <td>{{ $usernanny[$usertime[$i]->id][$j]->childgender }}</td>
+                                            </tr>
+                                        @endfor
+                                    </table>
+                                    <a href="#" class="btn btn-primary">book</a>
+                                </div>
+                                <div class="card-footer text-body-secondary">
+                                    <a
+                                        href="{{ route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id]) }}">make
+                                        proposal</a>
+                                </div>
+                            </div><br><br>
+                        @endif
                     @endif
                 @endfor
-            
-        @endfor
+            @endfor
+      
     @endif
     @if ($las == null)
-        @for ($i = 0; $i < $n; $i++)
-            <div class="card text-center">
-                <div class="card-header">
-                    Find Assistence
-                </div>
-                <div class="card-body">
 
-                    <h5 class="card-title">{{ $users[$i]->name }}&nbsp;{{ $users[$i]->lastname }}</h5>
-                    <p>{{ $useradd[$i]->address_line_1 }}&nbsp;{{ $useradd[$i]->address_line_2 }}&nbsp;{{ $useradd[$i]->area }}&nbsp;{{ $useradd[$i]->city }}&nbsp;{{ $useradd[$i]->state }}
-                    </p>
-                    {{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}<br>
-                    <p class="card-text">{{ $usertime[$i]->weekdays }}</p>
-                    <table border class="card-text">
-                        <tr>
-                            <th>childname</th>
-                            <th>age</th>
-                            <th>gender</th>
-                        </tr>
+        
+            @for ($i = 0; $i < $n; $i++)
+               
+          
+                <div class="card text-center">
+                    <div class="card-header">
+                        Find Assistence
+                    </div>
+                    <div class="card-body">
 
-                        @php
-                            $no = count($usernanny[$usertime[$i]->id]);
-                        @endphp
-                        @for ($j = 0; $j < $no; $j++)
+                        <h5 class="card-title">{{ $users[$i]->name }}&nbsp;{{ $users[$i]->lastname }}</h5>
+                        <p>{{ $useradd[$i]->address_line_1 }}&nbsp;{{ $useradd[$i]->address_line_2 }}&nbsp;{{ $useradd[$i]->area }}&nbsp;{{ $useradd[$i]->city }}&nbsp;{{ $useradd[$i]->state }}
+                        </p>
+                        {{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}<br>
+                        <p class="card-text">{{ $usertime[$i]->weekdays }}</p>
+                        <table border class="card-text">
                             <tr>
-                                <td>{{ $usernanny[$usertime[$i]->id][$j]->childname }}</td>
-                                <td>{{ $usernanny[$usertime[$i]->id][$j]->childage }}</td>
-                                <td>{{ $usernanny[$usertime[$i]->id][$j]->childgender }}</td>
+                                <th>childname</th>
+                                <th>age</th>
+                                <th>gender</th>
                             </tr>
-                        @endfor
-                    </table>
-                    <a href="#" class="btn btn-primary">book</a>
-                </div>
-                <div class="card-footer text-body-secondary">
-                    <a href="{{ route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id]) }}">make
-                        proposal</a>
-                </div>
-            </div><br><br>
-        @endfor
+
+                            @php
+                                $no = count($usernanny[$usertime[$i]->id]);
+                            @endphp
+                            @for ($j = 0; $j < $no; $j++)
+                                <tr>
+                                    <td>{{ $usernanny[$usertime[$i]->id][$j]->childname }}</td>
+                                    <td>{{ $usernanny[$usertime[$i]->id][$j]->childage }}</td>
+                                    <td>{{ $usernanny[$usertime[$i]->id][$j]->childgender }}</td>
+                                </tr>
+                            @endfor
+                        </table>
+                        <a href="#" class="btn btn-primary">book</a>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        <a href="{{ route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id]) }}">make
+                            proposal</a>
+                    </div>
+                </div><br><br>
+            @endfor
+       
     @endif
 @endsection
