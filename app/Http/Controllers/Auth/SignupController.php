@@ -48,6 +48,8 @@ $emailid=$request->email;
             'phone'=>$request->phone,
             'role_id'=>$rid,
             'lastname'=>$lname,
+            'gender'=>$request->dgen,
+            'DOB'=>$request->DOB,
         ]);
 
         event(new Registered($user));

@@ -122,9 +122,9 @@
                 {{-- @if ($ustart->lessThanOrEqualTo($end) && $uend->greaterThanOrEqualTo($start) && $hasMatch->isNotEmpty())
                     hidden
                 @endif --}}
-                @for ($j = 0; $j < $noi; $j++)
-                    @if ($useradd[$i]->city == $las[$j]->address->city)
-                        @if ($las[$j]->address->area == $useradd[$i]->area)
+                @for ($k = 0; $k < $noi; $k++)
+                    @if ($useradd[$i]->city == $las[$k]->address->city)
+                        @if ($las[$k]->address->area == $useradd[$i]->area)
                             <div class="card text-center">
                                 <div class="card-header">
                                     Find Assistence

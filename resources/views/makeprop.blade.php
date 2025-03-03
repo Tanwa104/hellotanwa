@@ -142,6 +142,10 @@
                                     <label for="floatingInput">Address Line 2</label>
                                 </div>
                                 <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInput" name="area" placeholder="area" required>
+                                    <label for="floatingInput">Area</label>
+                                </div>
+                                <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingInput" name="city" placeholder="City" required>
                                     <label for="floatingInput">City</label>
                                 </div>
@@ -157,11 +161,9 @@
                                     <input type="text" class="form-control" id="floatingInput" name="zip" placeholder="Zip Code" required>
                                     <label for="floatingInput">Zip Code</label>
                                 </div>
+                                <input type="submit" class="btn btn-primary" value="submit"/>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <input type="submit" class="btn btn-primary" value="Save Changes">
-                            </div>
+                           
                         </form>
                     </div>
                 </div>

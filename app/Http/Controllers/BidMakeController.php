@@ -102,14 +102,14 @@ class BidMakeController extends Controller
         //         $ustart=$utime->start_time;
         //         $uend=$utime->end_time;
         //     $conflict = false;
-            $times=Timeline::get();
-            $newProposals = [];
-            // $helperBookings = Booking::
-            foreach ($times as $time)
-            {
-                if($time->id==$timeid)
-                $btime[]=$time;
-            }
+            // $times=Timeline::get();
+            // $newProposals = [];
+            // // $helperBookings = Booking::
+            // foreach ($times as $time)
+            // {
+            //     if($time->id==$timeid)
+            //     $btime[]=$time;
+            // }
             // dd($btime);
             //dd($usertime);
 

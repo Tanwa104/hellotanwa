@@ -59,7 +59,24 @@
                     <input type="tel" class="form-control" id="phone" name="phone" value="{{$item->phone}}" required>
                 </div>
             </div>
-
+            <div class="row mb-3">
+                <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+                <div class="col-sm-10">
+                    
+                    <select class="form-select" id="gender" name="gen">
+                  <option>select</option>
+                        <option value="male" {{$item->gender == 'male' ? 'selected' : ''}}>Male</option>
+                        <option value="female" {{$item->gender == 'female' ? 'selected' : ''}}>Female</option>
+                        <option value="other" {{$item->gender == 'other' ? 'selected' : ''}}>Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="DoB" class="col-sm-2 col-form-label">Date of Birth</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="DoB" name="DoB" value="{{$item->DOB}}" required>
+                </div>
+            </div>
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
@@ -97,9 +114,68 @@
                         </td>
                     </tr>
                 @endforeach
+
             </tbody>
         </table>
     @endforeach
+    <button  data-bs-toggle="modal" class="btn btn-primary col-4" data-bs-target="#exampleModal"
+     type="button">add new Address</button>
+  
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" action="{{ route('add.store') }}">
+
+                <div class="modal-body">
+                    @csrf
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="address1"
+                            placeholder="name">
+                        <label for="floatingInput">Address line 1</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="address2"
+                            placeholder="name">
+                        <label for="floatingInput">Address line 2</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="area" placeholder="name">
+                        <label for="floatingInput">area</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="city" placeholder="name">
+                        <label for="floatingInput">city</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="state" placeholder="name">
+                        <label for="floatingInput">State</label>
+                    </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="country"
+                                placeholder="name">
+                            <label for="floatingInput">Country</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="zip"
+                                placeholder="name">
+                            <label for="floatingInput">Zipcode</label>
+                            <input type="submit" class="btn btn-primary">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </div>
 
 @endsection

@@ -65,19 +65,39 @@
                 </div>
             </div>
 
-            @foreach($item->helpers as $helper)
-                <div class="row mb-3">
-                    <label for="role" class="col-sm-2 col-form-label">Role</label>
-                    <div class="col-sm-10">
-                        <select class="form-select" id="role" name="roles">
-                            <option value="Housecleaner" {{$helper->role == 'Housecleaner' ? 'selected' : ''}}>House Cleaner</option>
-                            <option value="childcare" {{$helper->role == 'childcare' ? 'selected' : ''}}>Child Care</option>
-                            <option value="houseCook" {{$helper->role == 'houseCook' ? 'selected' : ''}}>House Cook</option>
-                        </select>
-                    </div>
+           
+            <div class="row mb-3">
+                <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+                <div class="col-sm-10">
+                    <select class="form-select" id="gender" name="gender">
+                    
+                        <option value="male" {{$item->gender == 'male' ? 'selected' : ''}}>Male</option>
+                        <option value="female" {{$item->gender == 'female' ? 'selected' : ''}}>Female</option>
+                        <option value="other" {{$item->gender == 'other' ? 'selected' : ''}}>Other</option>
+                    </select>
                 </div>
-            @endforeach
+            </div>
+            <div class="row mb-3">
+                <label for="DoB" class="col-sm-2 col-form-label">Date of Birth</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="DoB" name="DoB" value="{{$item->DOB}}" required>
+                </div>
+            </div>
+            @foreach($item->helpers as $helper)
+            <div class="row mb-3">
+                <label for="role" class="col-sm-2 col-form-label">Role</label>
+                <div class="col-sm-10">
+                    <select class="form-select" id="role" name="roles">
+                        
+                        <option value="Housecleaner" {{$helper->role == 'Housecleaner' ? 'selected' : ''}}>House Cleaner</option>
+                        <option value="childcare" {{$helper->role == 'childcare' ? 'selected' : ''}}>Child Care</option>
+                        <option value="houseCook" {{$helper->role == 'houseCook' ? 'selected' : ''}}>House Cook</option>
+                    </select>
+                </div>
+            </div>
+        @endforeach
 
+        
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-primary">Submit Changes</button>
             </div>
@@ -114,7 +134,54 @@
             </tbody>
         </table>
     @endforeach
-
-</div>
-
+    <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add Address
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Address</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="{{route('add.store')}}">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="address1" placeholder="Address Line 1" required>
+                            <label for="floatingInput">Address Line 1</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="address2" placeholder="Address Line 2">
+                            <label for="floatingInput">Address Line 2</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="area" placeholder="area" required>
+                            <label for="floatingInput">Area</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="city" placeholder="City" required>
+                            <label for="floatingInput">City</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="state" placeholder="State" required>
+                            <label for="floatingInput">State</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="country" placeholder="Country" required>
+                            <label for="floatingInput">Country</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="zip" placeholder="Zip Code" required>
+                            <label for="floatingInput">Zip Code</label>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="submit"/>
+                    </div>
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
+<br><br>
 @endsection

@@ -50,6 +50,20 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
                             <input type="text" class="form-control" name="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                           </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">gender</span>
+                            <select class="form-select" name="dgen"> 
+                                <option>select</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                          </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Date of birth</span>
+                                <input type="date" class="form-control" name="DOB" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                              </div>
+                          
                                           
                                             <input type="submit" value="submit" class="btn btn-dark"/>
                                             

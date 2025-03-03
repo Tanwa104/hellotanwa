@@ -60,8 +60,10 @@ class UsereditController extends Controller
         $pass=$request->password;
         
         $con=$request->password_confirmation;
-       
+      
         $phone=$request->phone;
+        $gen=$request->gen;
+        $DOB=$request->DoB;
         if($pass==$con)
         {
         $user->name=$name;
@@ -69,7 +71,9 @@ class UsereditController extends Controller
         $user->email=$ename;
         $user->password=Hash::make($pass);
         $user->phone=$phone;
-        $user->role_id=1;
+        $user->gender=$gen;
+        $user->DOB=$DOB;
+       
         $user->save();
         return redirect()->back()->with('msg','success');
         }

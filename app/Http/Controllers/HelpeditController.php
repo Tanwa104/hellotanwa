@@ -80,7 +80,9 @@ public function changes(Request $request, string $id)
     
     $con=$request->password_confirmation;
    $role=$request->roles;
+   $gender=$request->gender;
     $phone=$request->phone;
+    $DOB=$request->DoB;
     if($pass==$con)
     {
     $user->name=$name;
@@ -90,6 +92,8 @@ public function changes(Request $request, string $id)
     $user->phone=$phone;
     $user->role_id=2;
     $helper->role=$role;
+    $user->gender=$gender;
+        $user->DOB=$DOB;
     $user->save();
     $helper->save();
     return redirect()->back()->with('msg','success');

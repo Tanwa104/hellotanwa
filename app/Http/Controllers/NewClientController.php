@@ -188,6 +188,14 @@ return view('multiadd');
         }
     }])
     ->get();
+    $createSeva1 = CreateSeva::where('roletype', 'childcare')
+    ->whereHas('address', function ($q) use ($request) {
+        $q->where('city', 'LIKE', '%' . $request->city1 . '%');
+    })
+    ->with(['address' => function ($q) use ($request) {
+        $q->where('city', 'LIKE', '%' . $request->city1 . '%');
+    }])
+    ->get();
 
     
 
