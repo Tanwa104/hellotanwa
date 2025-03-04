@@ -56,7 +56,15 @@ class User extends Authenticatable
     // {
     //     return $this->belongsToMany(Helper::class,'help_user');
     // }
+    public function bookings()  
+    {  
+        return $this->hasMany(Booking::class, 'user_id');  
+    }  
 
+    public function helperBookings()  
+    {  
+        return $this->hasMany(Booking::class, 'helper_id');  
+    }  
     public function helpers()
     {
         return $this->hasMany(Helper::class);

@@ -24,23 +24,32 @@
        $no2=count($props);
        @endphp
                         @for($i=0;$i<$no;$i++)
-          <div class="card-header">
-            View the proposals made by the helpers
-          </div>
-          <div class="card-body">
-
-            <h5 class="card-title">{{$user[$i]->name}}&nbsp;{{$user[$i]->lastname}}</h5>
-            
-    
-            <p class="card-text">Experience&nbsp;{{$helper[$i]->exp}}&nbsp;yrs</p>
-            <p class="card-text">for&nbsp;{{$helper[$i]->role}}</p>
-        
-            <p class="card-text">price&nbsp;{{$props[$i]->price}}</p>
-    
-          
-            <a class="btn btn-primary col-4" href="{{route('book',[$props[$i]->id])}}">book</a>
-           
-          </div>
+                        <div class="card mb-4 shadow-sm">
+                          <div class="card-header bg-primary text-white text-center">
+                              View Proposals from Helpers
+                          </div>
+                          <div class="card-body">
+                              <h5 class="card-title text-center mb-3">
+                                  {{ $user[$i]->name }} {{ $user[$i]->lastname }}
+                              </h5>
+                      
+                              <div class="mb-3">
+                                  <p class="card-text">
+                                      <strong>Experience:</strong> {{ $helper[$i]->exp }} yrs
+                                  </p>
+                                  <p class="card-text">
+                                      <strong>Role:</strong> {{ $helper[$i]->role }}
+                                  </p>
+                                  <p class="card-text">
+                                      <strong>Price:</strong> ₹{{ $props[$i]->price }}
+                                  </p>
+                              </div>
+                      
+                              <div class="d-grid gap-2 d-md-block text-center">
+                                  <a class="btn btn-success" href="{{ route('book', [$props[$i]->id]) }}">Book Now</a>
+                              </div>
+                          </div>
+                      </div>
           <div class="card-footer text-body-secondary">
           @endfor
 
@@ -48,7 +57,5 @@
         </div>
        
           
-          </div>
-        </div>
-      
+          
 @endsection

@@ -196,6 +196,7 @@ return view('multiadd');
         $q->where('city', 'LIKE', '%' . $request->city1 . '%');
     }])
     ->get();
+    
 
     
 

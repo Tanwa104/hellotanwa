@@ -8,7 +8,7 @@ class RatingController extends Controller
 {
     public function add_rate(Request $request ,$bid)
     {
-        // dd($request->all());
+        
         $rate=$request->input('product_rating');
         $comments=$request->input('review');
         $rating=new Rating();

@@ -25,6 +25,11 @@ class HelpRateViewController extends Controller
 
             }
         }
+        $bookings = Booking::with(['user', 'helper', 'timeline', 'userAddress'])  
+    ->where('helper_id', $$helpid) // uid contains the user ID  
+    ->get();
+
+    $rates=Rating::with(['Bookings'])->get();//change tommorow
         $books=Booking::get();
         foreach($books as $book)
         {

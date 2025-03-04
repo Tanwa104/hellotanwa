@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item rounded overflow-hidden">
-                         <form action="{{ route('fliter') }}" method="get">
+                        <form action="{{ route('fliter') }}" method="get">
                             <input type="hidden" name="role" value="childcare">
                             <button type="submit" class="service-image-container">
                                 <img class="img-fluid service-image" src="/img/childnanny.png" alt="Childcare">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item rounded overflow-hidden">
-                         <form action="{{ route('fliter') }}" method="get">
+                        <form action="{{ route('fliter') }}" method="get">
                             <input type="hidden" name="role" value="houseCook">
                             <button type="submit" class="service-image-container">
                                 <img class="img-fluid service-image" src="/img/housecook.png" alt="Home Cook">
@@ -65,6 +65,36 @@
                     </div>
                 </div>
             </div>
+            
+            <style>
+                .service-item {
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+            
+                .service-item:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+                }
+            
+                .service-image-container {
+                    display: block;
+                    width: 100%;
+                    overflow: hidden;
+                    border: none;
+                    background: none;
+                    padding: 0;
+                }
+            
+                .service-image {
+                    width: 100%;
+                    height: auto;
+                    transition: transform 0.3s ease;
+                }
+            
+                .service-image-container:hover .service-image {
+                    transform: scale(1.1);
+                }
+            </style>
         </div>
     </div>
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

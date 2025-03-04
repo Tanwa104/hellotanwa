@@ -16,35 +16,57 @@ $no=count($usernanny);
 @endphp
 @for($i=0;$i<$n;$i++)      
 <div class="card text-center">
-<div class="card-header">
-  Find Assistence
-</div>
-<div class="card-body">
-   
-  <h5 class="card-title">{{$users[$i]->name}}&nbsp;{{$users[$i]->lastname}}</h5>
-<p>{{$useradd[$i]->address_line_1}}&nbsp;{{$useradd[$i]->address_line_2}}&nbsp;{{$useradd[$i]->city}}&nbsp;{{$useradd[$i]->state}}</p>
-{{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}<br>
-<p class="card-text">{{$usertime[$i]->weekdays}}</p>
-<table border  class="card-text">
-    <tr><th>childname</th>
-        <th>age</th>
-        <th>gender</th></tr>
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header bg-warning text-white text-center">
+        Find Assistance
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-center mb-3">
+            {{ $users[$i]->name }} {{ $users[$i]->lastname }}
+        </h5>
+        <div class="mb-3 text-center">
+            <p class="card-text">
+                {{ $useradd[$i]->address_line_1 }}, {{ $useradd[$i]->address_line_2 }}, {{ $useradd[$i]->city }}, {{ $useradd[$i]->state }}
+            </p>
+            <p class="card-text">
+                {{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }} to {{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}
+            </p>
+            <p class="card-text">
+                Days: {{ str_replace(['[', ']', '"'], '', $usertime[$i]->weekdays) }}
+            </p>
+        </div>
 
-  @php
-  $no=count($usernanny[$usertime[$i]->id]);
-  @endphp
-  @for($j=0;$j<$no;$j++)
-  <tr><td>{{$usernanny[$usertime[$i]->id][$j]->childname}}</td><td>{{$usernanny[$usertime[$i]->id][$j]->childage}}</td><td>{{$usernanny[$usertime[$i]->id][$j]->childgender}}</td></tr>
-  
-  @endfor</table>
-  @php
-  $num=$usertime[$i]->id
-  @endphp
-  <a href="{{route('propsee.build',[$num])}}" class="btn btn-primary">View Proposals</a>
-</div>
-<div class="card-footer text-body-secondary">
-  
-</div>
+        <div class="mb-3">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Child Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $no = count($usernanny[$usertime[$i]->id]);
+                    @endphp
+                    @for ($j = 0; $j < $no; $j++)
+                        <tr>
+                            <td>{{ $usernanny[$usertime[$i]->id][$j]->childname }}</td>
+                            <td>{{ $usernanny[$usertime[$i]->id][$j]->childage }}</td>
+                            <td>{{ $usernanny[$usertime[$i]->id][$j]->childgender }}</td>
+                        </tr>
+                    @endfor
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-grid">
+            @php
+                $num = $usertime[$i]->id;
+            @endphp
+         <div class="text-center">   <a href="{{ route('propsee.build', [$num]) }}" class="btn btn-primary col-4">View Proposals</a>
+         </div>   </div>
+    </div>
 </div><br><br>
 @endfor
 

@@ -140,7 +140,7 @@
                                            
                                             <span id="inputEmail4" class="form-control">
                                                 <select name="bhours">
-                                                  
+                                                  <option>--</option>
                                                   <option value="1">1</option>
                                                   <option value="2">2</option>
                                                   <option value="3">3</option>
@@ -155,12 +155,14 @@
                                                   <option value="12">12</option>
                                                  </select>
                                                  <select name="bmin" >
+                                                    <option>--</option>
                                                   <option value=":00">:00</option> 
                                                   <option value=":15">:15</option>
                                                   <option value=":30">:30</option>
                                                   <option value=":45">:45</option>
                                                  </select>
                                                  <select name="bampm">
+                                                    <option>--</option>
                                                   <option value="am">am</option> 
                                                   <option value="pm">pm</option>
                                                   </select>
@@ -174,6 +176,7 @@
                                         <div class="form-floating">
                                            <span id="inputEmail5" class="form-control">
                                             <select name="ahours">
+                                                <option>--</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -188,12 +191,14 @@
                                                 <option value="12">12</option>
                                                </select>
                                                <select name="amins">
+                                                <option>--</option>
                                                 <option value=":00">:00</option> 
                                                 <option value=":15">:15</option>
                                                 <option value=":30">:30</option>
                                                 <option value=":45">:45</option>
                                                </select>
                                                <select name="aampm">
+                                                <option>--</option>
                                                 <option value="am">am</option> 
                                                 <option value="pm">pm</option>
                                                </select>

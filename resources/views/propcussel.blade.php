@@ -10,21 +10,35 @@
         </nav>
     </div>
 </div>
-<div style="margin-left:45%;">
-    <form action="{{ route('propuser.build') }}" method="get">
-        <input type="hidden" id="role" name="role" value="Housecleaner">
-        <input type="image" src="/img/cleaning.png" alt="Submit"
-            width="48" height="48" >
-    </form>house clean<br>
-    <form action="{{ route('propuser.build') }}" method="get">
-        <input type="hidden" id="role" name="role" value="childcare">
-         <input type="image" src="/img/nanny.png" alt="Submit"
-            width="48" height="48">
-    </form>childcare<br>
-    <form action="{{ route('propuser.build') }}" method="get">
-        <input type="hidden" id="role" name="role" value="houseCook">
-        <input type="image" src="/img/cook.png" alt="Submit"
-            width="48" height="48">
-    </form>cook
-  </div></body></html>
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 20px; padding: 20px;">
+    <div style="display: flex; align-items: center; flex-direction: column;">
+        <form action="{{ route('propuser.build') }}" method="get" style="display: flex; flex-direction: column; align-items: center;">
+            <input type="hidden" id="role" name="role" value="Housecleaner">
+            <button type="submit" style="background: none; border: none; padding: 0;">
+                <img src="/img/cleaning.png" alt="House Cleaning" width="64" height="64">
+            </button>
+            <span style="margin-top: 5px;">House Cleaning</span>
+        </form>
+    </div>
+
+    <div style="display: flex; align-items: center; flex-direction: column;">
+        <form action="{{ route('propuser.build') }}" method="get" style="display: flex; flex-direction: column; align-items: center;">
+            <input type="hidden" id="role" name="role" value="childcare">
+            <button type="submit" style="background: none; border: none; padding: 0;">
+                <img src="/img/nanny.png" alt="Childcare" width="64" height="64">
+            </button>
+            <span style="margin-top: 5px;">Childcare</span>
+        </form>
+    </div>
+
+    <div style="display: flex; align-items: center; flex-direction: column;">
+        <form action="{{ route('propuser.build') }}" method="get" style="display: flex; flex-direction: column; align-items: center;">
+            <input type="hidden" id="role" name="role" value="houseCook">
+            <button type="submit" style="background: none; border: none; padding: 0;">
+                <img src="/img/cook.png" alt="Cook" width="64" height="64">
+            </button>
+            <span style="margin-top: 5px;">Cook</span>
+        </form>
+    </div>
+</div>
 @endsection

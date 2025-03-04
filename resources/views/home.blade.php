@@ -25,76 +25,69 @@
                 <div class="col-lg-6">
                     <div class="row g-3">
                         <div class="col-6 text-start">
-                            <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="/img/gharclean.png">
+                            <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="/img/gharclean.png" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                         </div>
                         <div class="col-6 text-start">
-                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="/img/cooker.jpg" style="margin-top: 25%;">
+                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="/img/cooker.jpg" style="margin-top: 25%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                         </div>
                         <div class="col-6 text-end">
-                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="/img/login.jpg">
+                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="/img/login.jpg" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                         </div>
                         <div class="col-6 text-end">
-                            <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="/img/childlook.jpg">
+                            <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="/img/childlook.jpg" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <h5 class="section-title ff-secondary text-start text-primary fw-normal">About Us</h5>
-                    <h1 class="mb-4">Welcome to <i class="fa fa-utensils text-primary me-2"></i>Restoran</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos erat ipsum et lorem et sit, sed stet lorem sit.</p>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                   
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+                    <h1 class="mb-4" style="font-weight: bold;">Welcome to Gruhseva</h1>
+                    <p class="mb-4" style="font-size: 1.1rem; line-height: 1.8;">Your trusted platform for finding reliable and skilled service providers for your home needs. Whether you need a professional house cleaner, a caring nanny, or an experienced cook, we connect you with the right experts to make your life easier.</p>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">Our mission is to provide hassle-free and efficient home services, ensuring safety, quality, and convenience at your fingertips. With Gruhseva, booking a trusted service provider is just a few clicks away!.</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
 
- <!-- Service Start -->
- <div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item rounded pt-3">
-                    <div class="p-4">
-                        <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                        <h5>Master Chefs</h5>
-                        <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+    <div class="container-xxl py-5" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Features</h5>
+                <h2 class="mb-4" style="font-weight: bold;">Our Key Features</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded pt-3" style="background-color: #fff8e1; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; height: 100%;">
+                        <div class="p-4" style="background-color:#ffe0b2; flex-grow: 1;">
+                            <h5 style="font-weight: bold; color:black;">Bidding Request</h5>
+                            <p style="font-size: 1rem; line-height: 1.6; color:black;">Helpers bid on user requests, allowing users to select the most suitable offer.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item rounded pt-3">
-                    <div class="p-4">
-                        <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
-                        <h5>Quality Food</h5>
-                        <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item rounded pt-3" style="background-color: #fff8e1; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; height: 100%;">
+                        <div class="p-4" style="background-color:#ffe0b2; flex-grow: 1;">
+                            <h5 style="font-weight: bold; color:black;">Ratings Feature</h5>
+                            <p style="font-size: 1rem; line-height: 1.6; color:black;">Users rate helpers based on their work, ensuring quality and trust.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item rounded pt-3">
-                    <div class="p-4">
-                        <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
-                        <h5>Online Order</h5>
-                        <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item rounded pt-3" style="background-color: #fff8e1; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; height: 100%;">
+                        <div class="p-4" style="background-color: #ffe0b2; flex-grow: 1;">
+                            <h5 style="font-weight: bold; color:black;">Easy Connect</h5>
+                            <p style="font-size: 1rem; line-height: 1.6; color:black;">Seamlessly connect with and book helpers with just a few clicks.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="service-item rounded pt-3">
-                    <div class="p-4">
-                        <i class="fa fa-3x fa-headset text-primary mb-4"></i>
-                        <h5>24/7 Service</h5>
-                        <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item rounded pt-3" style="background-color: #fff8e1; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; height: 100%;">
+                        <div class="p-4" style="background-color: #ffe0b2; flex-grow: 1;">
+                            <h5 style="font-weight: bold; color:black;">24/7 Booking</h5>
+                            <p style="font-size: 1rem; line-height: 1.6; color:black;">Book services anytime, ensuring flexibility and convenience.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Service End -->
-    
 @endsection
-

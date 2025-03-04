@@ -6,13 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Helper extends Model
 {
     protected $table='helpers';
     use HasFactory;
-    public function user(): HasMany
-    {
-        return $this->hasMany(User::class);
+    /**
+         * Get the user that owns the Helper
+         *
+         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+         */
+        public function user(): BelongsTo
+        {
+            return $this->belongsTo(User::class);
+       
     }
 
     /**

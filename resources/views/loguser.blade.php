@@ -32,7 +32,20 @@
                         </div>
                 </div>
                 <div class="col-md-6">
-                    <div id="response" style="background-color: greenyellow"></div>
+                    <div id="response" style="
+    background-color: #e8f5e9; /* Light green background */
+    color: #1b5e20; /* Dark green text */
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #a5d6a7; /* Light green border */
+    display: none; /* Initially hide the message */
+">
+    </div>
                                 <form>
                     <input type="email" name="ni" id="ni"class="form-control" placeholder="Enter Email"><br>
                                     <input type="button" value="genrate OTP" class="btn btn-primary" onclick="fetchData()">
@@ -68,10 +81,10 @@ const inputValue = input.value;
                 },
                 success: function(response) {
                     console.log(response);
-                    $("#response").text(response.message);
+                    $("#response").text(response.message).css({'display':'block'});
                 },
                 error: function(xhr) {
-                    $("#response").text("Error: " + xhr.statusText);
+                    $("#response").text("Error: " + xhr.statusText).css({'display':'block'});
                 }
             });
         }
