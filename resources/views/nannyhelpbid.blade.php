@@ -39,11 +39,11 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="textbox-count" class="form-label">Enter the number of areas:</label>
                         <input type="number" name="textbox-count" id="textbox-count" class="form-control" min="1" placeholder="Number of textboxes">
                     </div>
-                    <button type="button" class="btn btn-secondary" onclick="addTextboxes()">Enter Areas</button>
+                    <button type="button" class="btn btn-secondary" onclick="addTextboxes()">Enter Areas</button> --}}
                     <div id="textbox-container" class="mt-3"></div>
                     <input type="submit" class="btn btn-primary mt-3" value="Submit" />
                 </form>
@@ -84,91 +84,137 @@
         @php
             $noi = count($las);
         @endphp
-        @for ($i = 0; $i < $n; $i++)
-            @for ($k = 0; $k < $noi; $k++)
-                @if ($useradd[$i]->city == $las[$k]->address->city && $las[$k]->address->area == $useradd[$i]->area)
-                    <div class="card mb-4 shadow-sm">
-                        <div class="card-header bg-primary text-white text-center">
-                            Find Assistance
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center mb-3">{{ $users[$i]->name }} {{ $users[$i]->lastname }}</h5>
-                            <p class="text-center">{{ $useradd[$i]->address_line_1 }}, {{ $useradd[$i]->address_line_2 }}, {{ $useradd[$i]->area }}, {{ $useradd[$i]->city }}, {{ $useradd[$i]->state }}</p>
-                            <p class="text-center">{{ Carbon::parse($usertime[$i]->start_time)->format('g:i A') }} to {{ Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}</p>
-                            <p class="text-center">Days: {{ str_replace(['[', ']', '"'], '', $usertime[$i]->weekdays) }}</p>
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Child Name</th>
-                                        <th>Age</th>
-                                        <th>Gender</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php
-                                        $childCount = count($usernanny[$usertime[$i]->id]);
-                                    @endphp
-                                    @for ($j = 0; $j < $childCount; $j++)
-                                        <tr>
-                                            <td>{{ $usernanny[$usertime[$i]->id][$j]->childname }}</td>
-                                            <td>{{ $usernanny[$usertime[$i]->id][$j]->childage }}</td>
-                                            <td>{{ $usernanny[$usertime[$i]->id][$j]->childgender }}</td>
-                                        </tr>
-                                    @endfor
-                                </tbody>
-                            </table>
-                            <div class="d-grid gap-2">
-                                <a href="#" class="btn btn-outline-secondary">Book</a>
-                            </div>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="{{ route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id]) }}" class="btn btn-primary">Make Proposal</a>
-                        </div>
+        @php
+        $processedUsers = [];
+    @endphp
+    
+    @for ($i = 0; $i < $n; $i++)
+        @for ($k = 0; $k < $noi; $k++)
+            @if ($useradd[$i]->city == $las[$k]->address->city && !in_array($usertime[$i]->id, $processedUsers))
+                @php
+                    $processedUsers[] = $users[$i]->id; // Add user ID to prevent duplication
+                @endphp
+    
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-primary text-white text-center">
+                        Find Assistance
                     </div>
-                @endif
-            @endfor
-        @endfor
-    @else
-        @for ($i = 0; $i < $n; $i++)
-            <div class="card mb-4 shadow-sm">
-                <div class="card-header bg-primary text-white text-center">
-                    Find Assistance
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center mb-3">{{ $users[$i]->name }} {{ $users[$i]->lastname }}</h5>
-                    <p class="text-center">{{ $useradd[$i]->address_line_1 }}, {{ $useradd[$i]->address_line_2 }}, {{ $useradd[$i]->area }}, {{ $useradd[$i]->city }}, {{ $useradd[$i]->state }}</p>
-                    <p class="text-center">{{ Carbon::parse($usertime[$i]->start_time)->format('g:i A') }} to {{ Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}</p>
-                    <p class="text-center">Days: {{ str_replace(['[', ']', '"'], '', $usertime[$i]->weekdays) }}</p>
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Child Name</th>
-                                <th>Age</th>
-                                <th>Gender</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                                $childCount = count($usernanny[$usertime[$i]->id]);
-                            @endphp
-                            @for ($j = 0; $j < $childCount; $j++)
+                    <div class="card-body">
+                        <h5 class="card-title text-center mb-3">{{ $users[$i]->name }} {{ $users[$i]->lastname }}</h5>
+                        <p class="text-center">
+                            {{ $useradd[$i]->address_line_1 }}, 
+                            {{ $useradd[$i]->address_line_2 }}, 
+                            {{ $useradd[$i]->area }}, 
+                            {{ $useradd[$i]->city }}, 
+                            {{ $useradd[$i]->state }}
+                        </p>
+                        <p class="text-center">
+                            {{ Carbon::parse($usertime[$i]->start_time)->format('g:i A') }} 
+                            to 
+                            {{ Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}
+                        </p>
+                        <p class="text-center">Days: {{ str_replace(['[', ']', '"'], '', $usertime[$i]->weekdays) }}</p>
+                        <p class="text-center">time preference:{{$usertime[$i]->jobtype}}</p>
+                        <table class="table table-bordered table-striped">
+                            <thead>
                                 <tr>
-                                    <td>{{ $usernanny[$usertime[$i]->id][$j]->childname }}</td>
-                                    <td>{{ $usernanny[$usertime[$i]->id][$j]->childage }}</td>
-                                    <td>{{ $usernanny[$usertime[$i]->id][$j]->childgender }}</td>
+                                    <th>Child Name</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
                                 </tr>
-                            @endfor
-                        </tbody>
-                    </table>
-                    <div class="d-grid gap-2">
-                        <a href="#" class="btn btn-outline-secondary">Book</a>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $childCount = count($usernanny[$usertime[$i]->id]);
+                                @endphp
+                                @for ($j = 0; $j < $childCount; $j++)
+                                    <tr>
+                                        <td>{{ $usernanny[$usertime[$i]->id][$j]->childname }}</td>
+                                        <td>{{ $usernanny[$usertime[$i]->id][$j]->childage }}</td>
+                                        <td>{{ $usernanny[$usertime[$i]->id][$j]->childgender }}</td>
+                                    </tr>
+                                @endfor
+                            </tbody>
+                        </table>
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-outline-secondary">Book</a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{{ route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id]) }}" class="btn btn-primary">Make Proposal</a>
                     </div>
                 </div>
-                <div class="card-footer text-center">
-                    <a href="{{ route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id]) }}" class="btn btn-primary">Make Proposal</a>
+            @endif
+        @endfor
+    @endfor
+    
+    @else
+    @php
+    $usedUsers = []; // Track displayed usertime IDs
+@endphp
+
+@for ($i = 0; $i < $n; $i++)
+    @if (!in_array($usertime[$i]->id, $usedUsers))
+        @php
+            $usedUsers[] = $usertime[$i]->id; // Mark usertime ID as displayed
+        @endphp
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-primary text-white text-center">
+                Find Assistance
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-center mb-3">
+                    {{ $users[$i]->name }} {{ $users[$i]->lastname }}
+                </h5>
+                <p class="text-center">
+                    {{ $useradd[$i]->address_line_1 }}, {{ $useradd[$i]->address_line_2 }}, 
+                    {{ $useradd[$i]->area }}, {{ $useradd[$i]->city }}, {{ $useradd[$i]->state }}
+                </p>
+                <p class="text-center">
+                    {{ Carbon::parse($usertime[$i]->start_time)->format('g:i A') }} to 
+                    {{ Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}
+                </p>
+                <p class="text-center">
+                    Days: {{ str_replace(['[', ']', '"'], '', $usertime[$i]->weekdays) }}
+                </p>
+                <p class="text-center">time preference:{{$usertime[$i]->jobtype}}</p>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Child Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!empty($usernanny[$usertime[$i]->id])) 
+                            @foreach ($usernanny[$usertime[$i]->id] as $nanny)
+                                <tr>
+                                    <td>{{ $nanny->childname }}</td>
+                                    <td>{{ $nanny->childage }}</td>
+                                    <td>{{ $nanny->childgender }}</td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="3" class="text-center">No children listed.</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+
+                <div class="d-grid gap-2">
+                    <a href="#" class="btn btn-outline-secondary">Book</a>
                 </div>
             </div>
-        @endfor
+            <div class="card-footer text-center">
+                <a href="{{ route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id]) }}" class="btn btn-primary">Make Proposal</a>
+            </div>
+        </div>
+    @endif
+@endfor
+
     @endif
 </div>
 @endsection

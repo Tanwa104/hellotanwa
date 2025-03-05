@@ -97,9 +97,11 @@
                     <br>
                     {{$us[$no1-1]->weekdays}}
                 </div>
+                <div class="info-label">jobtype:</div>{{$us[$no1-1]->jobtype}}
             </div>
 
             <div class="info-row">
+
                 <div class="info-label">Type of House:</div>
                 <div class="info-value">
                     @foreach($user->cleanerreqs as $add)

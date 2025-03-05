@@ -35,9 +35,9 @@
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <div class="footer-menu">
-                        <a href="">Home</a>
+                        {{-- <a href="">Home</a>
                         <a href="">Privacy Policy</a>
-                        <a href="">Terms & Conditions</a>
+                        <a href="">Terms & Conditions</a> --}}
                     </div>
                 </div>
             </div>

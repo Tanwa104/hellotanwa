@@ -114,7 +114,7 @@
                         @endif
                     </div>
 
-                    <div class="info-label">Enter the price for the made request:</div>
+                    <div class="info-label">Enter the price for the made request:--if fulltime enter the price per month</div>
                     <div class="info-value">
                         <input type="text" name="price" id="price" required/>
                     </div>

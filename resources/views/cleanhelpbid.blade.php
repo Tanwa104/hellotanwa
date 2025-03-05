@@ -35,13 +35,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="textbox-count" class="form-label">Enter the number of areas:</label>
-                        <input type="number" name="textbox-count" id="textbox-count" class="form-control" min="1" placeholder="Number of textboxes">
-                    </div>
-
-                    <button type="button" class="btn btn-secondary" onclick="addTextboxes()">Enter Areas</button>
-                    <div id="textbox-container" class="mt-3"></div>
+                    
                     <input type="submit" class="btn btn-primary mt-3" value="Submit" />
                 </form>
             </div>
@@ -78,44 +72,75 @@ $n = count($users);
 <div class="container mt-4">
     @if ($las != null)
         @php
+        
         $noi = count($las);
         @endphp
-        @for ($i = 0; $i < $n; $i++)
-            @for ($j = 0; $j < $noi; $j++)
-                @if ($useradd[$i]->city == $las[$j]->address->city && $las[$j]->address->area == $useradd[$i]->area)
-                    <div class="card mb-4 shadow-sm">
-                        <div class="card-header bg-primary text-white text-center">
-                            Find Assistance
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center mb-3">{{ $users[$i]->name }} {{ $users[$i]->lastname }}</h5>
-                            <p class="text-center">{{ $useradd[$i]->address_line_1 }}, {{ $useradd[$i]->address_line_2 }}, {{ $useradd[$i]->area }}, {{ $useradd[$i]->city }}, {{ $useradd[$i]->state }}</p>
-                            <p class="text-center">{{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }} to {{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}</p>
-                            <p class="text-center">Days: {{ str_replace(['[', ']', '"'], '', $usertime[$i]->weekdays) }}</p>
-                            <p class="card-text"><strong>Type of house:</strong> {{ $userclean[$i]->hometype }}</p>
-                            <p class="card-text"><strong>Number of bedrooms:</strong> {{ $userclean[$i]->bedroomno }}</p>
-                            <p class="card-text"><strong>Number of halls:</strong> {{ $userclean[$i]->hallno }}</p>
-                            <p class="card-text"><strong>Number of kitchens:</strong> {{ $userclean[$i]->kichenno }}</p>
-                            <p class="card-text"><strong>Type of cleaning:</strong> {{ $userclean[$i]->cleaningtype }}</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="{{ route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id]) }}" class="btn btn-primary">Make Proposal</a>
-                        </div>
-                    </div>
-                @endif
-            @endfor
-        @endfor
-    @else
-        @foreach ($users as $i => $user)
+      @php
+      $processedUsers = [];
+  @endphp
+  
+  @for ($i = 0; $i < $n; $i++)
+      @for ($j = 0; $j < $noi; $j++)
+          @if ($useradd[$i]->city == $las[$j]->address->city && !in_array($usertime[$i]->id, $processedUsers))
+              @php
+                  $processedUsers[] = $users[$i]->id; // Add user ID to prevent duplication
+              @endphp
+  
+              <div class="card mb-4 shadow-sm">
+                  <div class="card-header bg-primary text-white text-center">
+                      Find Assistance
+                  </div>
+                  <div class="card-body">
+                      <h5 class="card-title text-center mb-3">{{ $users[$i]->name }} {{ $users[$i]->lastname }}</h5>
+                      <p class="text-center">{{ $useradd[$i]->address_line_1 }}, {{ $useradd[$i]->address_line_2 }}, {{ $useradd[$i]->area }}, {{ $useradd[$i]->city }}, {{ $useradd[$i]->state }}</p>
+                      <p class="text-center">{{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }} to {{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}</p>
+                     <p class="text-center">time preference:{{$usertime[$i]->jobtype}}</p>
+                      <p class="text-center">Days: {{ str_replace(['[', ']', '"'], '', $usertime[$i]->weekdays) }}</p>
+                      <p class="card-text"><strong>Type of house:</strong> {{ $userclean[$i]->hometype }}</p>
+                      <p class="card-text"><strong>Number of bedrooms:</strong> {{ $userclean[$i]->bedroomno }}</p>
+                      <p class="card-text"><strong>Number of halls:</strong> {{ $userclean[$i]->hallno }}</p>
+                      <p class="card-text"><strong>Number of kitchens:</strong> {{ $userclean[$i]->kichenno }}</p>
+                      <p class="card-text"><strong>Type of cleaning:</strong> {{ $userclean[$i]->cleaningtype }}</p>
+                  </div>
+                  <div class="card-footer text-center">
+                      <a href="{{ route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id]) }}" class="btn btn-primary">Make Proposal</a>
+                  </div>
+              </div>
+          @endif
+      @endfor
+  @endfor
+  
+   @php
+    $usedUsers = []; // Track displayed usertime IDs
+@endphp
+
+@else
+    @foreach ($users as $i => $user)
+        @if (!in_array($usertime[$i]->id, $usedUsers))
+            @php
+                $usedUsers[] = $usertime[$i]->id; // Mark usertime ID as displayed
+            @endphp
+
             <div class="card mb-4 shadow-sm">
                 <div class="card-header bg-primary text-white text-center">
                     Find Assistance
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title text-center mb-3">{{ $user->name }} {{ $user->lastname }}</h5>
-                    <p class="text-center">{{ $useradd[$i]->address_line_1 }}, {{ $useradd[$i]->address_line_2 }}, {{ $useradd[$i]->area }}, {{ $useradd[$i]->city }}, {{ $useradd[$i]->state }}</p>
-                    <p class="text-center">{{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }} to {{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}</p>
-                    <p class="text-center">Days: {{ str_replace(['[', ']', '"'], '', $usertime[$i]->weekdays) }}</p>
+                    <h5 class="card-title text-center mb-3">
+                        {{ $user->name }} {{ $user->lastname }}
+                    </h5>
+                    <p class="text-center">
+                        {{ $useradd[$i]->address_line_1 }}, {{ $useradd[$i]->address_line_2 }}, 
+                        {{ $useradd[$i]->area }}, {{ $useradd[$i]->city }}, {{ $useradd[$i]->state }}
+                    </p>
+                    <p class="text-center">
+                        {{ \Carbon\Carbon::parse($usertime[$i]->start_time)->format('g:i A') }} to 
+                        {{ \Carbon\Carbon::parse($usertime[$i]->end_time)->format('g:i A') }}
+                    </p>
+                    <p class="text-center">
+                        Days: {{ str_replace(['[', ']', '"'], '', $usertime[$i]->weekdays) }}
+                    </p>
+                    <p class="text-center">time preference:{{$usertime[$i]->jobtype}}</p>
                     <p class="card-text"><strong>Type of house:</strong> {{ $userclean[$i]->hometype }}</p>
                     <p class="card-text"><strong>Number of bedrooms:</strong> {{ $userclean[$i]->bedroomno }}</p>
                     <p class="card-text"><strong>Number of halls:</strong> {{ $userclean[$i]->hallno }}</p>
@@ -126,8 +151,10 @@ $n = count($users);
                     <a href="{{ route('propindex.build', ['id' => $users[$i]->id, 'tid' => $usertime[$i]->id]) }}" class="btn btn-primary">Make Proposal</a>
                 </div>
             </div>
-        @endforeach
-    @endif
+        @endif
+    @endforeach
+@endif
+
 </div>
 
 @endsection

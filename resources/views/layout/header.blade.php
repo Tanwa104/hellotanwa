@@ -13,6 +13,12 @@
             <!-- <img src="img/logo.png" alt="Logo"> -->
         </a> --}}
        {{-- @endif --}}
+       @if(auth()->user()==null)
+       <a href="" class="navbar-brand p-0">
+        <h1 class="text-primary m-0">GruhSeva</h1>
+        <!-- <img src="img/logo.png" alt="Logo"> -->
+    </a>
+       @endif
        @if(auth()->user()!=null)
        @if(auth()->user()->role_id==1)
        <a href="{{route('user.build')}}" class="navbar-brand p-0">

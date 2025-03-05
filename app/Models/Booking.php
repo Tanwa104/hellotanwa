@@ -27,5 +27,11 @@ class Booking extends Model
     public function userAddress()  
     {  
         return $this->belongsTo(UserAdd::class, 'useradd_id');  
-    }  
+
+
+    } 
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, 'booking_id', 'id');
+    } 
 }

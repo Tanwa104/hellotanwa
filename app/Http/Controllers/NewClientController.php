@@ -104,6 +104,7 @@ return view('multiadd');
 
   public function addareaclean(Request $request)
   {
+    $cityName = $request->input('city');
     // dd($request->all());
     $crea=createseva::with('address')->first();
     // dd($crea);
@@ -138,6 +139,15 @@ return view('multiadd');
         }
     }])
     ->get();
+    $createSeva1 = CreateSeva::where('roletype', 'Housecleaner')
+    ->whereHas('address', function ($q) use ($cityName) {
+        $q->whereRaw("BINARY city = ?", [$cityName]); // Ensures case-sensitive match
+    })
+    ->with('address') // Load the relation without filtering again
+    ->get();
+
+    
+
 
     
 
@@ -147,13 +157,15 @@ return view('multiadd');
     //     });
 
 
-    return redirect()->back()->with(['data' => $createSeva]);
+    return redirect()->back()->with(['data' => $createSeva1]);
     
     
     
   }
   public function addarea(Request $request)
   {
+    $cityName = $request->input('city');
+    
     // dd($request->all());
     $crea=createseva::with('address')->first();
     // dd($crea);
@@ -189,14 +201,11 @@ return view('multiadd');
     }])
     ->get();
     $createSeva1 = CreateSeva::where('roletype', 'childcare')
-    ->whereHas('address', function ($q) use ($request) {
-        $q->where('city', 'LIKE', '%' . $request->city1 . '%');
+    ->whereHas('address', function ($q) use ($cityName) {
+        $q->whereRaw("BINARY city = ?", [$cityName]); // Ensures case-sensitive match
     })
-    ->with(['address' => function ($q) use ($request) {
-        $q->where('city', 'LIKE', '%' . $request->city1 . '%');
-    }])
+    ->with('address') // Load the relation without filtering again
     ->get();
-    
 
     
 
@@ -206,7 +215,7 @@ return view('multiadd');
     //     });
 
 
-    return redirect()->back()->with(['data' => $createSeva]);
+    return redirect()->back()->with(['data' => $createSeva1]);
     
     
     
@@ -214,6 +223,7 @@ return view('multiadd');
 
   public function addareacook(Request $request)
   {
+    $cityName = $request->input('city');
     // dd($request->all());
     $crea=createseva::with('address')->first();
     // dd($crea);
@@ -248,6 +258,14 @@ return view('multiadd');
         }
     }])
     ->get();
+    $createSeva1 = CreateSeva::where('roletype', 'houseCook')
+    ->whereHas('address', function ($q) use ($cityName) {
+        $q->whereRaw("BINARY city = ?", [$cityName]); // Ensures case-sensitive match
+    })
+    ->with('address') // Load the relation without filtering again
+    ->get();
+    
+
 
     
 
@@ -257,7 +275,7 @@ return view('multiadd');
     //     });
 
 
-    return redirect()->back()->with(['data' => $createSeva]);
+    return redirect()->back()->with(['data' => $createSeva1]);
     
     
     

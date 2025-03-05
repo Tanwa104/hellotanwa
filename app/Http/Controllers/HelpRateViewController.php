@@ -26,59 +26,64 @@ class HelpRateViewController extends Controller
             }
         }
         $bookings = Booking::with(['user', 'helper', 'timeline', 'userAddress'])  
-    ->where('helper_id', $$helpid) // uid contains the user ID  
-    ->get();
+        ->where('helper_id', $helpid) // uid contains the user ID  
+        ->get();
+   $n=count($bookings);
 
-    $rates=Rating::with(['Bookings'])->get();//change tommorow
-        $books=Booking::get();
-        foreach($books as $book)
-        {
-            if($helpid==$book->helper_id)
-            {
-                $heid[]=$book->id;
-                $userid[]=$book->user_id;
-                $addid[]=$book->useradd_id;
-            }
+    for ($i = 0; $i < $n; $i++) {
+        $rates[$bookings[$i]->id] = Rating::with('Bookings')->where('booking_id', $bookings[$i]->id)->get();
+    }
+   
+   
+        // $books=Booking::get();
+        // foreach($books as $book)
+        // {
+        //     if($helpid==$book->helper_id)
+        //     {
+        //         $heid[]=$book->id;
+        //         $userid[]=$book->user_id;
+        //         $addid[]=$book->useradd_id;
+        //     }
 
-        }
-        $n=count($heid);
-        $rates=Rating::get();
-        foreach($rates as $rate)
-        {
-            for($i=0;$i<$n;$i++)
-            {
-                if($heid[$i]==$rate->booking_id)
-                {
-                    $items[]=$rate;
-                }
-            }
-        }
-        $n1=count($userid);
-        $users=User::get();
-        foreach($users as $user)
-        {
-            for($i=0;$i<$n1;$i++)
-            {
-                if($userid[$i]==$user->id)
-                {
-                    $itemuser[]=$user;
-                }
-            }
-        }
-        $n2=count($addid);
-        $adds=UserAdd::get();
-        foreach($adds as $add)
-        {
-            for($i=0;$i<$n2;$i++)
-            {
-                if($addid[$i]==$add->id)
-                {
-                    $itemadd[]=$add;
-                }
-            }
-        }
+        // }
+        // $n=count($heid);
+        // $rates=Rating::get();
+        // foreach($rates as $rate)
+        // {
+        //     for($i=0;$i<$n;$i++)
+        //     {
+        //         if($heid[$i]==$rate->booking_id)
+        //         {
+        //             $items[]=$rate;
+        //         }
+        //     }
+        // }
+        // $n1=count($userid);
+        // $users=User::get();
+        // foreach($users as $user)
+        // {
+        //     for($i=0;$i<$n1;$i++)
+        //     {
+        //         if($userid[$i]==$user->id)
+        //         {
+        //             $itemuser[]=$user;
+        //         }
+        //     }
+        // }
+        // $n2=count($addid);
+        // $adds=UserAdd::get();
+        // foreach($adds as $add)
+        // {
+        //     for($i=0;$i<$n2;$i++)
+        //     {
+        //         if($addid[$i]==$add->id)
+        //         {
+        //             $itemadd[]=$add;
+        //         }
+        //     }
+        // }
 
-        return view('viewratings',compact('items','itemuser','itemadd'));
+        return view('viewratings',compact('bookings','rates'));
 
     }
 

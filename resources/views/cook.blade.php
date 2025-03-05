@@ -55,7 +55,9 @@
 
         <!-- Number of meals to prepare -->
         <div class="mb-3">
-            <label for="meals" class="form-label">Enter the number of meals you want to prepare</label>
+            <label for="meals" class="form-label">Enter the number of meals you want to prepare --
+                if fultime enter the demo day meals--
+            </label>
             <input type="number" name="meals" id="meals" class="form-control" required/>
         </div>
 

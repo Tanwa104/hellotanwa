@@ -5,8 +5,7 @@
         <h1 class="display-3 text-white mb-3 animated slideInDown">Kare Ghar ki Seva</h1>  
         <nav aria-label="breadcrumb">  
             <ol class="breadcrumb justify-content-center text-uppercase">  
-                <li class="breadcrumb-item"><a href="#" class="text-white">Home</a></li>  
-                <li class="breadcrumb-item active" aria-current="page">Services</li>  
+                
             </ol>  
         </nav>  
     </div>  

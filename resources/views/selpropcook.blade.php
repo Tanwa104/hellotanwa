@@ -34,6 +34,7 @@ $n=count($users);
             <p class="card-text">
                 Days: {{ str_replace(['[', ']', '"'], '', $usertime[$i]->weekdays) }}
             </p>
+            <p class="text-center">time preference:{{$usertime[$i]->jobtype}}</p>
         </div>
 
         <div class="mb-3">
