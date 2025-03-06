@@ -95,7 +95,7 @@
                 <div class="info-value">
                     {{ \Carbon\Carbon::parse($us[$no1-1]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($us[$no1-1]->end_time)->format('g:i A') }}
                     <br>
-                    {{$us[$no1-1]->weekdays}}
+                    {{ str_replace(['[', ']', '"'], '', $us[$no1-1]->weekdays) }}
                 </div>
                 <div class="info-label">jobtype:</div>{{$us[$no1-1]->jobtype}}
             </div>

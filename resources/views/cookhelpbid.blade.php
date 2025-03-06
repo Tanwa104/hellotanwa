@@ -79,10 +79,7 @@ $n = count($users);
         @php
         $noi = count($las);
         @endphp
-     @php
-     $usedUsers = []; // Array to track displayed users
- @endphp
- 
+    
  @php
  $usedUsers = []; // Track displayed usertime IDs
 @endphp
@@ -159,7 +156,7 @@ $n = count($users);
 
         <div class="card mb-4 shadow-sm">
             <div class="card-header bg-primary text-white text-center">
-                Find Assistance
+                Find job
             </div>
             <div class="card-body">
                 <h5 class="card-title text-center mb-3">{{ $users[$i]->name }} {{ $users[$i]->lastname }}</h5>

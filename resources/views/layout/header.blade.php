@@ -71,7 +71,6 @@
         @if(auth()->user()->role_id==2)
         
                 <a href="{{route('edhelp.index')}}" class="nav-item nav-link">Edit profile</a>
-                <a href="" class="nav-item nav-link">rules and regulation</a>
                 
             </div>
             

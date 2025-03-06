@@ -52,10 +52,7 @@
                 <option value="houseCook">houseCook</option>
             </select>
             <br>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" name="city" placeholder="name">
-                            <label for="floatingInput">City</label>
-                          </div>
+                       
                           <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingInput" name="exp" placeholder="name">
                             <label for="floatingInput">Experience(in yrs)</label>

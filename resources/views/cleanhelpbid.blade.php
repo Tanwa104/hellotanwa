@@ -13,7 +13,7 @@
 
 <div class="container text-center mb-4">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        City and Area Filter
+        City Filter
     </button>
 </div>
 
@@ -21,7 +21,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">City and Area Filter</h5>
+                <h5 class="modal-title" id="exampleModalLabel">City  Filter</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -88,7 +88,7 @@ $n = count($users);
   
               <div class="card mb-4 shadow-sm">
                   <div class="card-header bg-primary text-white text-center">
-                      Find Assistance
+                      Find job
                   </div>
                   <div class="card-body">
                       <h5 class="card-title text-center mb-3">{{ $users[$i]->name }} {{ $users[$i]->lastname }}</h5>
@@ -109,12 +109,16 @@ $n = count($users);
           @endif
       @endfor
   @endfor
-  
-   @php
+  @php
     $usedUsers = []; // Track displayed usertime IDs
 @endphp
 
+   
 @else
+@php
+    $usedUsers = []; // Track displayed usertime IDs
+@endphp
+
     @foreach ($users as $i => $user)
         @if (!in_array($usertime[$i]->id, $usedUsers))
             @php

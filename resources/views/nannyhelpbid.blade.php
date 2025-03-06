@@ -92,7 +92,7 @@
         @for ($k = 0; $k < $noi; $k++)
             @if ($useradd[$i]->city == $las[$k]->address->city && !in_array($usertime[$i]->id, $processedUsers))
                 @php
-                    $processedUsers[] = $users[$i]->id; // Add user ID to prevent duplication
+                    $processedUsers[] = $usertime[$i]->id; // Add user ID to prevent duplication
                 @endphp
     
                 <div class="card mb-4 shadow-sm">

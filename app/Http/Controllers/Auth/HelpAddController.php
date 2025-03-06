@@ -56,11 +56,11 @@ class HelpAddController extends Controller
         $request->validate([
            
            
-                        'city'=>['required'],
+                        
                         'exp'=>['required'],
         ]);
         $role=$request->input('roles');
-        $city=$request->input('city');
+       
         $exp=$request->input('exp');
         $value = $request->session()->get('email');
         
@@ -76,7 +76,7 @@ class HelpAddController extends Controller
         $helper = new Helper();
         $helper->user_id=$id;
         $helper->role=$role;
-        $helper->city=$city;
+       
         $helper->exp=$exp;
         $helper->save();
 

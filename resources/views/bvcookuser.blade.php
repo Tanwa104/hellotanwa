@@ -86,7 +86,7 @@
 
 <div class="container">  <div class="card">
         <div class="card-header">
-            View the proposals made by the helpers
+            View the request
         </div>
         <div class="card-body">
             @php
@@ -94,13 +94,13 @@
             @endphp
             <h5 class="card-title">{{$itemadd->name}}</h5>
             <p class="card-text">{{$city}}</p>
-            <p class="card-text">Time wanted: {{ \Carbon\Carbon::parse($us[$no1-1]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($us[$no1-1]->end_time)->format('g:i A') }}</p>
-            <p class="card-text">{{$us[$no1-1]->weekdays}}</p>
-            <p class="card-text">{{$us[$no1-1]->jobtype}}</p>
+            <p class="card-text"><b>Time wanted:</b> {{ \Carbon\Carbon::parse($us[$no1-1]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($us[$no1-1]->end_time)->format('g:i A') }}</p>
+            <p class="card-text"> {{ str_replace(['[', ']', '"'], '', $us[$no1-1]->weekdays) }}</p>
+            <p class="card-text"><b>Job type:</b> {{$us[$no1-1]->jobtype}}</p>
 
-            <p class="card-text">Type of occasion: {{$items[0]->ocassion}}</p>
-            <p class="card-text">Number of people: {{$items[0]->peopleno}}</p>
-            <p class="card-text">Type of cuisine: {{$items[0]->cusine}}</p>
+            <p class="card-text"><b>Type of occasion:</b> {{$items[0]->ocassion}}</p>
+            <p class="card-text"><b>Number of people:</b> {{$items[0]->peopleno}}</p>
+            <p class="card-text"><b>Type of cuisine:</b> {{$items[0]->cusine}}</p>
 
             <table>
                 <tr>
