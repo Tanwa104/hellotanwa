@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
         $valmail = Session::get('mail');
         
         $otpreq=$request->input('otp');
-        $rid=1;
+        $rid='user';
         $lname=$request->lastname;
         
      $users=User::get();
@@ -57,7 +57,7 @@ if($valotp==$otpreq)
         $user = User::create([
            
             'email' => $valmail,
-            'role_id'=> $rid,
+            'userrole'=> $rid,
         ]);
 
         event(new Registered($user));

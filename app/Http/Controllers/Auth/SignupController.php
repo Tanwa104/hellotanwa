@@ -31,7 +31,7 @@ class SignupController extends Controller
     {
         $lname=$request->lastname;
         
-        $rid=2;
+        $rid='helper';
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
@@ -46,7 +46,7 @@ $emailid=$request->email;
             'email' => $request->email,
           
             'phone'=>$request->phone,
-            'role_id'=>$rid,
+            'userrole'=>$rid,
             'lastname'=>$lname,
             'gender'=>$request->dgen,
             'DOB'=>$request->DOB,
