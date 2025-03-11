@@ -13,6 +13,9 @@
             <!-- <img src="img/logo.png" alt="Logo"> -->
         </a> --}}
        {{-- @endif --}}
+       @php
+    
+       @endphp
        @if(auth()->user()==null)
        <a href="" class="navbar-brand p-0">
         <h1 class="text-primary m-0">GruhSeva</h1>
@@ -20,13 +23,13 @@
     </a>
        @endif
        @if(auth()->user()!=null)
-       @if(auth()->user()->role_id==1)
+       @if(auth()->user()->userrole=='user')
        <a href="{{route('user.build')}}" class="navbar-brand p-0">
            <h1 class="text-primary m-0">GruhSeva</h1>
            <!-- <img src="img/logo.png" alt="Logo"> -->
        </a>
        @endif
-       @if(auth()->user()->role_id==2)
+       @if(auth()->user()->userrole=='helper')
        <a href="{{route('help.build')}}" class="navbar-brand p-0">
            <h1 class="text-primary m-0">GruhSeva</h1>
            <!-- <img src="img/logo.png" alt="Logo"> -->
@@ -53,7 +56,7 @@
                 </div>
                 @endif
                 @if(auth()->user()!=null)
-                @if(auth()->user()->role_id==1)
+                @if(auth()->user()->userrole=='user')
                 <a href="{{route('edus.index')}}" class="nav-item nav-link">Edit Profile</a>
                 <a href="{{route('booking.select')}}" class="nav-item nav-link">Bookings</a>
                 <a href="{{route('propuser.select')}}" class="nav-item nav-link">view proposals</a>
@@ -68,7 +71,7 @@
                </form>
     
         @endif
-        @if(auth()->user()->role_id==2)
+        @if(auth()->user()->userrole=='helper')
         
                 <a href="{{route('edhelp.index')}}" class="nav-item nav-link">Edit profile</a>
                 

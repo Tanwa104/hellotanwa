@@ -8,6 +8,6 @@ class AdminviewController extends Controller
 {
     public function view()
     {
-        return view('admin/homie');
+        return view('admin/dash');
     }
 }

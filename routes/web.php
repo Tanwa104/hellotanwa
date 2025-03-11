@@ -22,7 +22,7 @@ use App\Http\Controllers\bookcontroller;
 use App\Http\Controllers\BookhelpController;
  use App\Http\Controllers\RatingController;
  use App\Http\Controllers\HelpRateViewController;
- use App\Http\Controllers\AdminController;
+
  use App\Http\Controllers\AdminviewController;
 
 
@@ -116,17 +116,16 @@ Route::get('/helperedit', function () {
             Route::get('/cookreq', function () {
                 return view('cook');});
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-Route::get('/addmin-log', [AdminController::class, 'index'])->name('admin.log');
-Route::get('/addmin-seen', [AdminController::class, 'create'])->name('admin.seen');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
 Route::get('/addmin-dash', [AdminviewController::class, 'view'])->name('admin.dashboard');
 
 Route::get('/book-view', [bookcontroller::class, 'viewbook'])->name('booking.select');

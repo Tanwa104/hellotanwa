@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\Auth\SigninController;
 use App\Http\Controllers\Auth\HelpAddController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -27,7 +28,8 @@ Route::middleware('guest')->group(function () {
     Route::get('signup', [SignupController::class, 'create'])
     ->name('signup');
 
-
+    Route::get('/addmin-log', [AdminController::class, 'index'])->name('admin.log');
+    Route::get('/addmin-seen', [AdminController::class, 'create'])->name('admin.seen');
 Route::post('signup', [SignupController::class, 'store'])->name('signup.build');
 
 Route::get('signin', [SigninController::class, 'create'])
