@@ -13,4 +13,6 @@ class user_address extends Model
     {
         return $this->belongsTo(Post::class);
     }
+   
+
 }

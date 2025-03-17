@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
  
 
 class UserAdd extends Model
@@ -32,11 +34,20 @@ class UserAdd extends Model
 
     }
     
+    public function bookings(): HasMany
+    {
+        return $this->hasMany(Booking::class,'useradd_id','id');
+    }
 
     public function Createseva(): HasMany
     {
         return $this->hasMany(createseva::class,'useradd_id','id');
     }
 
+    
+    public function user()  
+    {  
+        return $this->belongsTo(User::class, 'user_id');  
+    }  
 }
 

@@ -127,6 +127,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/addmin-dash', [AdminviewController::class, 'view'])->name('admin.dashboard');
+Route::get('/addmin-rep', [AdminviewController::class, 'seereports'])->name('admin.reports');
 
 Route::get('/book-view', [bookcontroller::class, 'viewbook'])->name('booking.select');
 Route::get('/viewpro/{id}', [ViewProfileController::class, 'index'])->name('viewpro.index');
