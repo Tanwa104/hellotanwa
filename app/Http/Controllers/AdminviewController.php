@@ -29,9 +29,13 @@ class AdminviewController extends Controller
      // Load the related bookings
     ->get()
     ->groupBy('city');
+
+    $bookuser=Booking::with('user')->get()->groupBy('user_id');
+
         // $books=$useradd->bookings->get()->groupBy('city')
-        return view('admin/reports',compact('useradd'));
+        return view('admin/reports',compact('useradd','bookuser'));
 
     }
+
 
 }
