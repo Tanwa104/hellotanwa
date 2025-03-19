@@ -13,7 +13,7 @@
 
 <div class="container text-center mb-4">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        City and Area Filter
+        City  Filter
     </button>
 </div>
 
@@ -21,11 +21,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-info text-white">
-                <h5 class="modal-title" id="exampleModalLabel">City and Area Filter</h5>
+                <h5 class="modal-title" id="exampleModalLabel">City  Filter</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="GET" action="{{ route('area.fill') }}">
+                <form method="GET" action="{{ route('areacook.fill') }}">
                     <div class="mb-3">
                         <label for="country-dropdown" class="form-label">Select City</label>
                         <select id="country-dropdown" class="form-select" name="city">

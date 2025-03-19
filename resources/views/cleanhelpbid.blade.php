@@ -25,7 +25,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="GET" action="{{ route('area.fill') }}">
+                <form method="GET" action="{{ route('areaclean.fill') }}">
                     <div class="mb-3">
                         <label for="country-dropdown" class="form-label">Select City</label>
                         <select id="country-dropdown" class="form-select" name="city">

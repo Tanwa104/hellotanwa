@@ -90,7 +90,7 @@ public function changes(Request $request, string $id)
     $user->email=$ename;
     $user->password=Hash::make($pass);
     $user->phone=$phone;
-    $user->role_id=2;
+    $user->userrole='helper';
     $helper->role=$role;
     $user->gender=$gender;
         $user->DOB=$DOB;

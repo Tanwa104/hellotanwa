@@ -133,6 +133,8 @@ Route::get('/book-view', [bookcontroller::class, 'viewbook'])->name('booking.sel
 Route::get('/viewpro/{id}', [ViewProfileController::class, 'index'])->name('viewpro.index');
 Route::get('/cust-view/{id}', [CustController::class, 'view'])->name('cust.view');
 Route::get('/addarea', [NewClientController::class, 'addarea'])->name('area.fill');
+Route::get('/addarea-cook', [NewClientController::class, 'addareacook'])->name('areacook.fill');
+Route::get('/addarea-clean', [NewClientController::class, 'addareaclean'])->name('areaclean.fill');
 Route::get('/clientacc', [BookhelpController::class, 'bookhelp'])->name('bookhelp.fill');
 Route::get('/acceptbook/{bid}', [BookhelpController::class, 'acceptbook'])->name('acceptbook.fill');
 Route::get('/deniedbook{bid}', [BookhelpController::class, 'deniedbook'])->name('deniedbook.fill');
