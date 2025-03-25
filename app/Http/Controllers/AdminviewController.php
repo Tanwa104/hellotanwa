@@ -14,7 +14,7 @@ class AdminviewController extends Controller
     public function view()
     {
         $users = User::where('userrole', '=', 'user')->get();
-        $helpers=Helper::with('user')->get();
+        $helpers=Helper::with('user')->where('status','accepted')->get();
         $bookings = Booking::with(['user', 'helper', 'timeline', 'userAddress'])  
    
     ->get();
