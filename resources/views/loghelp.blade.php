@@ -22,7 +22,20 @@
                 <div class="col-12">
                     <div class="row gy-4">
 
-
+                        @if (\Session::has('msg'))
+                        <div class="alert alert-info">
+                            <ul>
+                                <li>{!! \Session::get('msg') !!}</li>
+                            </ul>
+                        </div>
+                    @endif
+                    @if (\Session::has('msg1'))
+                    <div class="alert alert-danger">
+                        <ul>
+                            <li>{!! \Session::get('msg1') !!}</li>
+                        </ul>
+                    </div>
+                @endif
                         
                     </div>
                 </div>

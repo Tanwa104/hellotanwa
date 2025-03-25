@@ -21,6 +21,11 @@ class Helper extends Model
             return $this->belongsTo(User::class);
        
     }
+    public function bookings(): HasMany
+    {
+        return $this->hasMany(Booking::class);
+    }
+
 
     /**
      * Get the user associated with the Helper

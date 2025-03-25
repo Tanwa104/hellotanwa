@@ -2,11 +2,13 @@
     <div class="copyright">
       &copy; Copyright <strong><span>GruhSeva</span></strong>. All Rights Reserved
     </div>
+    <div class="text-center">
     <a href="{{route('admin.reports')}}" class="btn btn-primary">Reports</a>
+    <a href="{{route('admin.addnew')}}" class="btn btn-primary">Add the Helper</a></div>
    
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <button type="submit" class="btn btn-primary" style="margin-left:90%">Logout</button>
+            <button type="submit" class="btn btn-danger" style="margin-left:90%">Logout</button>
         </form>
    
     <div class="credits">

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Helper;
 use App\Models\Booking;
 use App\Models\UserAdd;
+use App\Models\Rating;
 
 class AdminviewController extends Controller
 {
@@ -32,9 +33,16 @@ class AdminviewController extends Controller
 
     $bookuser=Booking::with('user')->get()->groupBy('user_id');
 
+
         // $books=$useradd->bookings->get()->groupBy('city')
         return view('admin/reports',compact('useradd','bookuser'));
 
+    }
+
+    public function addnewhelp()
+    {
+        $helpers=Helper::with('user')->get();
+        return view('admin/addnewhelp',compact('helpers'));
     }
 
 

@@ -24,6 +24,7 @@ use App\Http\Controllers\BookhelpController;
  use App\Http\Controllers\HelpRateViewController;
 
  use App\Http\Controllers\AdminviewController;
+ use App\Http\Controllers\AddHelperController;
 
 
 /*
@@ -67,7 +68,9 @@ Route::get('/useraddedit', function () {
     return view('useraddedit');
     
     
+    
 });
+
 // Route::get('/userdash', function () {
 //     return view('user_dash');
 // });
@@ -128,6 +131,9 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/addmin-dash', [AdminviewController::class, 'view'])->name('admin.dashboard');
 Route::get('/addmin-rep', [AdminviewController::class, 'seereports'])->name('admin.reports');
+Route::get('/addmin-addneo', [AdminviewController::class, 'addnewhelp'])->name('admin.addnew');
+Route::get('/accepthelp/{id}', [AddHelperController::class, 'accepthelp'])->name('helper.accept');
+Route::get('/rejecthelp/{id}', [AddHelperController::class, 'rejecthelp'])->name('helper.deny');
 
 Route::get('/book-view', [bookcontroller::class, 'viewbook'])->name('booking.select');
 Route::get('/viewpro/{id}', [ViewProfileController::class, 'index'])->name('viewpro.index');

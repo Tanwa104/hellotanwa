@@ -6,15 +6,11 @@
     $cityNames = [];
 
     foreach ($useradd as $user) {
-        $no = count($user);
-        for ($i = 0; $i < $no; $i++) {
-            $acceptedBookings = $user[$i]->bookings->where('Acceptedpending', 'accepted');
+        foreach ($user as $entry) {
+            $acceptedBookings = $entry->bookings->where('Acceptedpending', 'accepted');
             if ($acceptedBookings->isNotEmpty()) {
-                $city = $user[$i]->city;
-                if (!isset($bookingCounts[$city])) {
-                    $bookingCounts[$city] = 0;
-                }
-                $bookingCounts[$city] += $acceptedBookings->count();
+                $city = $entry->city;
+                $bookingCounts[$city] = ($bookingCounts[$city] ?? 0) + $acceptedBookings->count();
             }
         }
     }
@@ -22,19 +18,13 @@
     $cityNames = array_keys($bookingCounts);
     $cityBookingData = array_values($bookingCounts);
 
-    $userNames = [];
     $userBookingData = [];
 
     foreach ($bookuser as $booking) { 
-        $no = count($booking);
-        for ($i = 0; $i < $no; $i++) {
-            $userName = $booking[$i]->user->name;
-            if ($booking[$i]->Acceptedpending === 'accepted') {
-                if (isset($userBookingData[$userName])) {
-                    $userBookingData[$userName] += 1;
-                } else {
-                    $userBookingData[$userName] = 1;
-                }
+        foreach ($booking as $entry) {
+            $userName = $entry->user->name;
+            if ($entry->Acceptedpending === 'accepted') {
+                $userBookingData[$userName] = ($userBookingData[$userName] ?? 0) + 1;
             }
         }
     }
@@ -42,6 +32,7 @@
     $userNames = array_keys($userBookingData);
     $userBookingData = array_values($userBookingData);
 @endphp
+
 <div class="col-12">
     <div class="card">
         <div class="card-body">
@@ -54,7 +45,7 @@
 <div class="col-12">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title"></h5>
+            <h5 class="card-title">Number of Bookings per User</h5>
             <canvas id="userBarChart" style="max-height: 400px;"></canvas>
         </div>
     </div>
@@ -65,7 +56,7 @@
     document.addEventListener("DOMContentLoaded", () => {
         var cityNames = @json($cityNames);
         var cityBookingData = @json($cityBookingData);
-        
+
         new Chart(document.querySelector('#cityBarChart'), {
             type: 'bar',
             data: {
@@ -87,14 +78,17 @@
                     }
                 },
                 scales: {
-                    y: { beginAtZero: true }
+                    y: { 
+                        beginAtZero: true,
+                        ticks: { precision: 0 }  // Ensures absolute numbers (integers)
+                    }
                 }
             }
         });
-    
+
         var userNames = @json($userNames);
         var userBookingData = @json($userBookingData);
-        
+
         new Chart(document.querySelector('#userBarChart'), {
             type: 'bar',
             data: {
@@ -116,7 +110,10 @@
                     }
                 },
                 scales: {
-                    y: { beginAtZero: true }
+                    y: { 
+                        beginAtZero: true,
+                        ticks: { precision: 0 }  // Ensures absolute numbers (integers)
+                    }
                 }
             }
         });
