@@ -97,10 +97,10 @@
 
             <div class="info-row">
                 <div class="info-label">Name:</div>
-                <div class="info-value">{{$itemadd->name}}</div>
+                <div class="info-value">{{$itemadd->name}}&nbsp;{{$itemadd->lastname}}</div>
             </div>
             <div class="info-row">
-                <div class="info-label">City:</div>
+                <div class="info-label">Address:</div>
                 <div class="info-value">{{$city}}</div>
             </div>
             <div class="info-row">

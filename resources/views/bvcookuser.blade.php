@@ -92,7 +92,7 @@
             @php
             $no1=count($us)
             @endphp
-            <h5 class="card-title">{{$itemadd->name}}</h5>
+            <h5 class="card-title">{{$itemadd->name}}&nbsp;{{$itemadd->lastname}}</h5>
             <p class="card-text">{{$city}}</p>
             <p class="card-text"><b>Time wanted:</b> {{ \Carbon\Carbon::parse($us[$no1-1]->start_time)->format('g:i A') }}&nbsp;to&nbsp;{{ \Carbon\Carbon::parse($us[$no1-1]->end_time)->format('g:i A') }}</p>
             <p class="card-text"> {{ str_replace(['[', ']', '"'], '', $us[$no1-1]->weekdays) }}</p>

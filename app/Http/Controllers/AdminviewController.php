@@ -33,9 +33,13 @@ class AdminviewController extends Controller
 
     $bookuser=Booking::with('user')->get()->groupBy('user_id');
 
+    $booktype=Booking::get()->groupBy('Acceptedpending');
+
+    $servicetype=Helper::with('bookings')->where('status','accepted')->get()->groupBy('role');
+        
 
         // $books=$useradd->bookings->get()->groupBy('city')
-        return view('admin/reports',compact('useradd','bookuser'));
+        return view('admin/reports',compact('useradd','bookuser','booktype','servicetype'));
 
     }
 

@@ -17,7 +17,7 @@
 
 <div class="container text-center mb-4">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        City and Area Filter
+        City Filter
     </button>
 </div>
 
@@ -25,7 +25,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-info text-white">
-                <h5 class="modal-title" id="exampleModalLabel">City and Area Filter</h5>
+                <h5 class="modal-title" id="exampleModalLabel">City Filter</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -137,7 +137,7 @@
                             </tbody>
                         </table>
                         <div class="d-grid gap-2">
-                            <a href="#" class="btn btn-outline-secondary">Book</a>
+                            {{-- <a href="#" class="btn btn-outline-secondary">Book</a> --}}
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -205,7 +205,7 @@
                 </table>
 
                 <div class="d-grid gap-2">
-                    <a href="#" class="btn btn-outline-secondary">Book</a>
+                    {{-- <a href="#" class="btn btn-outline-secondary">Book</a> --}}
                 </div>
             </div>
             <div class="card-footer text-center">

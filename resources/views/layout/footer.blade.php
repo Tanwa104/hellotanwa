@@ -9,7 +9,7 @@
                 <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
                 <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>104 Rajesh towers Harni, Vadodara, Gujarat</p>
                 <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>9313153909
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>22BCUOS072@ddu.ac.in
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>22bcuos072@ddu.ac.in
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening Hours</h4>

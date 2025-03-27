@@ -104,7 +104,9 @@ return view('multiadd');
 
   public function addareaclean(Request $request)
   {
+
     $cityName = $request->input('city');
+    
     // dd($request->all());
     $crea=createseva::with('address')->first();
     // dd($crea);
