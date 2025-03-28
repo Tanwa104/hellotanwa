@@ -51,6 +51,10 @@ class RegisteredUserController extends Controller
             return redirect()->route('user.build');
         }
      }
+     if($valotp!=$otpreq)
+     {
+        return redirect()->back();
+     }
     }
 if($valotp==$otpreq)
 {
@@ -65,6 +69,10 @@ if($valotp==$otpreq)
         Auth::login($user);
 
         return redirect()->route('user.build');
+    }
+    if($valotp!=$otpreq){
+        return redirect()->back();
+
     }
 }
 }
