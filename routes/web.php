@@ -25,6 +25,8 @@ use App\Http\Controllers\BookhelpController;
 
  use App\Http\Controllers\AdminviewController;
  use App\Http\Controllers\AddHelperController;
+ use App\Http\Controllers\ReqAgainController;
+
 
 
 /*
@@ -134,6 +136,7 @@ Route::get('/addmin-rep', [AdminviewController::class, 'seereports'])->name('adm
 Route::get('/addmin-addneo', [AdminviewController::class, 'addnewhelp'])->name('admin.addnew');
 Route::get('/accepthelp/{id}', [AddHelperController::class, 'accepthelp'])->name('helper.accept');
 Route::get('/rejecthelp/{id}', [AddHelperController::class, 'rejecthelp'])->name('helper.deny');
+Route::get('/req-again', [ReqAgainController::class, 'index'])->name('request.new');
 
 Route::get('/book-view', [bookcontroller::class, 'viewbook'])->name('booking.select');
 Route::get('/viewpro/{id}', [ViewProfileController::class, 'index'])->name('viewpro.index');
